@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2018-11-24
-    category:
+    category: 
       - 原生js
     tag:
       - 编程思想

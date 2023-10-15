@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2019-04-08,2019-04-08
-    category:
+    category: 
       - 项目总结
     tag:
       - js

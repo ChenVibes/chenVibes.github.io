@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
-    date: 2021-10-09,
-    category:
+    date: 2021-10-09
+    category: 
       - css
     tag:
       - 随笔

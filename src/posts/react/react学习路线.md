@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
-    date: 2022-05-17,2022-05-17
-    category:
+    date: 2022-05-17
+    category: 
       - react
     tag:
       - 转载

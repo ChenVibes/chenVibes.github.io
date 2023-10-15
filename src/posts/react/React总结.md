@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2018-08-22
-    category:
+    category: 
       - react
     tag:
       - 随笔

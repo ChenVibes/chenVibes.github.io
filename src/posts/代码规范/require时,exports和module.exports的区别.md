@@ -1,7 +1,7 @@
 ---    
     icon: pen-to-square
     date: 2019-08-20
-    category:
+    category: 
       - 代码规范
     tag:
       - 转载

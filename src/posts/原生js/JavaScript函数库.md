@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2018-09-19
-    category:
+    category: 
       - 原生js
     tag:
       - 随笔

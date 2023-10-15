@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2018-08-17
-    category:
+    category: 
       - app
     tag:
       - 随笔

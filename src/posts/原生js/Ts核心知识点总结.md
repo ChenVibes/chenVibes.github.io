@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2020-12-21
-    category:
+    category: 
       - 原生js
     tag:
       - 转载

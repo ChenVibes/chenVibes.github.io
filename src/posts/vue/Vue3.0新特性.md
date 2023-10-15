@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2021-04-12
-    category:
+    category: 
       - vue
     tag:
       - js 技术框架

@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
-    date: 2019-06-12,2019-06-12
-    category:
+    date: 2019-06-12
+    category: 
       - 原生js
     tag:
       - js

@@ -1,11 +1,11 @@
 ---
     icon: pen-to-square
-    date: 2019-04-08,2019-04-08
-    category:
+    date: 2019-04-08
+    category: 
       - 原生js
     tag:
+      - js
 
--js
 ---
 
 # ES6、ES7、ES8、ES9、ES10 新特性一览

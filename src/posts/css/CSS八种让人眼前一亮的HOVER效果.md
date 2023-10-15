@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
-    date: 2020-08-19,2020-08-19
-    category:
+    date: 2020-08-19
+    category: 
       - css
     tag:
       - 转载

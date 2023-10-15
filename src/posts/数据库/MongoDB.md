@@ -1,8 +1,10 @@
---- icon: pen-to-square
+---
+icon: pen-to-square
 date: 2018-08-08
-category: - 数据库
+category:
+  - 数据库
 tag:
-      - node
+  - node
 ---
 
 # MongoDB

@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
-    date:   2019-04-12,2019-04-12
-    category:
+    date: 2019-04-12
+    category: 
       - 前端基建
     tag:
       - vue

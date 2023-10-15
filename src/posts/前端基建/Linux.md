@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
-    date:   2018-08-20,2018-08-20
-    category:
+    date: 2018-08-20
+    category: 
       - 前端基建
     tag:
 

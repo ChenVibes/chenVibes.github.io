@@ -1,10 +1,9 @@
 ---
     icon: pen-to-square
-    date: 2019-04-08,2019-04-08
+    date: 2019-04-08
     category:
       - 数据库
     tag:
-
       - node
 ---
 

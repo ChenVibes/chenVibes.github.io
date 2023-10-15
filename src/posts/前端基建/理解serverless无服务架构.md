@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2022-02-24
-    category:
+    category: 
       - 前端基建
     tag:
       - 随笔

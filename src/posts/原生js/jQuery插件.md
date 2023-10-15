@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2018-08-29
-    category:
+    category: 
       - 原生js
     tag:
       - js

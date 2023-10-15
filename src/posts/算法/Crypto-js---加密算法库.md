@@ -1,15 +1,10 @@
 ---    
     icon: pen-to-square
-    date: null
-    category:
+    date: 2018-08-08
+    category: 
       - 算法
     tag:
-
----加密算法库'
-date: 2018-08-08
-tags: 随笔
-
-color: 'rgb(154,133,255)'
+      - 随笔
 ---
 
 #### MD5 加密：

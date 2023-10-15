@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2018-09-07
-    category:
+    category: 
       - react
     tag:
       - js 技术框架

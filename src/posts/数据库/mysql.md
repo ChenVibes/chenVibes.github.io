@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2019-10-29
-    category:
+    category: 
       - 数据库
     tag:
       - 随笔

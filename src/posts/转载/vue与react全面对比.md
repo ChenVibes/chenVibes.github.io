@@ -1,7 +1,7 @@
 ---
     icon: pen-to-square
     date: 2019-06-15
-    category:
+    category: 
       - 转载
     tag:
       - 随笔

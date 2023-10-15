@@ -1,11 +1,11 @@
 ---
     icon: pen-to-square
-    date:   2018-08-08
-    category:
+    date: 2018-08-08
+    category: 
       - html
     tag:
-
-      - html css
+      - html 
+      - css
 ---
 
 ### 过渡
