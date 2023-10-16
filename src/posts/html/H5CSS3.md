@@ -144,15 +144,14 @@ linear-gradient 线性渐变指沿着某条直线朝一个方向产生渐变效�
 2. 渐变的颜色和范围(常用百分比,px 也可以), 如果不设置范围, 颜色平均分布
 
 ```css
-/**由于本身渐变的存在, 就是为了替换掉渐变的背景图片的, 所以是 background-image**/
-background-image: linear-gradient(方向, 颜色 范围, 颜色 范围, ....);
+/**由于本身渐变的存在, 就是为了替换掉渐变的背景图片的, 所以是 background-image: linear-gradient(方向, 颜色 范围, 颜色 范围, ....) **/
 ```
 
 #### 径向渐变
 
 最常见用法 :
 
-```CSS
+```css
 /**径向渐变: 半径(渐变范围) at 圆心位置, 颜色, 颜色, 颜色...
 radial-gradient( 100px at 100px 100px, red, blue, green )
 超出半径区域的用最外面的颜色来填充88?
@@ -899,8 +898,11 @@ rem 来做宽高定型有个最大的问题是，font-size 如何计算的问题
 
 ```js
     <script type="text/javascript">
-    function mouseDownHandler(event) { var event = event || window.event;
-    //var event = event ? event : window.event; var x = event.offsetX || event.layerX; var y = event.offsetX || event.layerY; }
+    function mouseDownHandler(event) {
+    var e = event ? event : window.event;
+    var x = e.offsetX || e.layerX;
+    var y = e.offsetX || e.layerY;
+    }
     </script>
 
 ```
@@ -921,7 +923,10 @@ rem 来做宽高定型有个最大的问题是，font-size 如何计算的问题
 - ie：event 对象有 toElement 属性，但没有 relatedTarget 属性
 - ff：event 对象没有有 toElement 属性，但有 relatedTarget 属性
 - 解决办法：
-  var target = e.relatedTarget || e.toElement;
+
+```js
+var target = e.relatedTarget || e.toElement
+```
 
 ##### 6. 标签的 x 和 y 的坐标位置，
 
@@ -959,7 +964,10 @@ document.body.clientWidth 和 document.body.clientHeight；
 - ie：如果给标签 div1 定义了一个属性 value，可以 div1.value 和 div1["value"]取得该值
 - ff：不能用 div1.value 和 div1["value"]
 - 解决办法：
-  div1.getAttribute('value')
+
+```js
+div1.getAttribute('value')
+```
 
 ##### 10. document.form.item
 
@@ -1043,11 +1051,15 @@ document.getElementsByName("inputName")(1)
 - FF：document.body.onload = init();
 - 解决办法：
 
-统一使用 document.body.onload = new Function('init()');
+```js
+//统一使用
+document.body.onload = new Function('init()')
 
-或者
-
-docuement.body.onload = function(){/_ 这里是代码 _/}
+//或者
+docuement.body.onload = function () {
+  //这里是代码
+}
+```
 
 ##### 20. 父元素的区别
 

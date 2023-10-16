@@ -2,9 +2,9 @@
 home: true
 layout: BlogHome
 icon: home
-title: 博客主页
+title: Mr.Chen's blog
 heroImage: /logo.svg
-heroText: 你博客的名称
+heroText: 梦想乐章
 heroFullScreen: true
 tagline: 你可以在这里放置你的口号与标语
 projects:
@@ -38,7 +38,7 @@ projects:
     desc: 自定义详细介绍
     link: https://你的自定义链接
 
-footer: 自定义你的页脚文字
+footer: frontchen © 2020 - 2023
 ---
 
 这是一个博客主页的案例。

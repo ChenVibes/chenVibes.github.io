@@ -18,7 +18,7 @@ function readDir(dir: string, depth: number): any {
   }
   if (depth === 0) {
     folderItem.text = '博文'
-    folderItem.prefix = '/zh/' + folderItem.prefix + '/'
+    folderItem.prefix = '/posts/' + folderItem.prefix + '/'
   }
   files.forEach(file => {
     const filePath = path.join(dir, file) // 获取文件的完整路径
@@ -33,8 +33,8 @@ function readDir(dir: string, depth: number): any {
       const fileName = file.replace('.md', '')
       const fileItem = {
         text: fileName,
-        link: fileName,
-        depth
+        link: fileName + '.html',
+        depth: folderItem.depth + 1
       }
       folderItem.children.push(fileItem)
     }
@@ -42,4 +42,5 @@ function readDir(dir: string, depth: number): any {
   return folderItem
 }
 const routes = readDir(contentDir, 0)
-export const zhNavbar = navbar(['/zh/', '/zh/demo/', routes])
+console.log(['route', JSON.stringify(routes)])
+export const zhNavbar = navbar(['/zh/', routes])
