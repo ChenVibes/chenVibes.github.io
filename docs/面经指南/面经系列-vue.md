@@ -1,8 +1,7 @@
 ---
 title: 面经系列-vue
 date: 2021-01-08
-category:
-  - 面经指南
+category: 面经指南
 ---
 
 ## 来，先介绍一下 Vue 的响应式系统

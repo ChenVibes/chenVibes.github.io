@@ -1,8 +1,7 @@
 ---
 title: 面经系列-html
 date: 2021-01-08
-category:
-  - 面经指南
+category: 面经指南
 ---
 
 ### 图片中 title 和 alt 区别？

@@ -1,8 +1,7 @@
 ---
 title: 面经系列-css
 date: 2021-01-08
-category:
-  - 面经指南
+category: 面经指南
 ---
 
 ### link 与 @import 的区别
@@ -38,11 +37,11 @@ category:
 
 ### Css3 新增伪类 - 伪元素
 
-- `p:first-of-type` 选择属于其⽗元素的⾸个 <p> 元素的每个 <p> 元素。
-- `p:last-of-type` 选择属于其⽗元素的最后 <p> 元素的每个 <p> 元素。
-- `p:only-of-type` 选择属于其⽗元素唯⼀的 <p> 元素的每个 <p> 元素。
-- `p:only-child` 选择属于其⽗元素的唯⼀⼦元素的每个 <p> 元素。
-- `p:nth-child(2)` 选择属于其⽗元素的第⼆个⼦元素的每个 <p> 元素。
+- `p:first-of-type` 选择属于其⽗元素的⾸个 p 元素的每个 p 元素。
+- `p:last-of-type` 选择属于其⽗元素的最后 p 元素的每个 p 元素。
+- `p:only-of-type` 选择属于其⽗元素唯⼀的 p 元素的每个 p 元素。
+- `p:only-child` 选择属于其⽗元素的唯⼀⼦元素的每个 p 元素。
+- `p:nth-child(2)` 选择属于其⽗元素的第⼆个⼦元素的每个 p 元素。
 - `:enabled` 已启⽤的表单元素。
 - `:disabled` 已禁⽤的表单元素。
 - `:checked` 单选框或复选框被选中。
@@ -242,89 +241,103 @@ category:
 
 #### 水平居中
 
-    // 方式1： 使用margin： 0 auto居中
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        margin: 0 auto;
-    	width: 100px;
-    	height: 100px;
-        background: pink;
-    }
+```html
+<style>
+     /* // 方式1： 使用margin： 0 auto居中 */
+  /* css: */
+  * {margin: 0; padding: 0;}
+  .content {
+      margin: 0 auto;
+  	   width: 100px;
+  	   height: 100px;
+      background: pink;
+  }
 
-    // 方式2： 使用 定位 + left 居中
+  /* // 方式2： 使用 定位 + left 居中 */
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-    	width: 100px;
-    	height: 100px;
-        background: pink;
-        position： relative；
-        left： 50%；
-        margin-left: -50px;
-    }
-
-    html:
-       <div class="content"></div>
+  /* css: */
+  * {margin: 0; padding: 0;}
+  .content {
+  	width: 100px;
+  	height: 100px;
+      background: pink;
+      position： relative；
+      left： 50%；
+      margin-left: -50px;
+  }
+</style>
+<div class="content"></div>
+```
 
 #### 垂直居中
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-    	width: 100px;
-    	height: 100px;
-        background: pink;
-        position: absolute;
-        top:50%;
-        left: 50%;
-        transform: translate(-50%, -50%);    //  更新： 此处感谢小伙伴留言指出
-    }
-
-    html:
-    <div class="content"></div>
+```html
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); //  更新： 此处感谢小伙伴留言指出
+  }
+</style>
+<div class="content"></div>
+```
 
 #### 居中浮动元素
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-    	width: 600px;
-    	height: 600px;
-        border: 1px solid green;
-    }
-    .left: {
-        height:100px;
-        width: 100px;
-        background-color: pink;
-        margin-left: 50%;   // 水平居中
-        position: relative;
-        left: -50px;
-    }
-
-    html:
-    <div class="content">
-        <div class="left"> </div>
-    </div>
+```html
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 600px;
+    height: 600px;
+    border: 1px solid green;
+  }
+  .left: {
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    margin-left: 50%; // 水平居中
+    position: relative;
+    left: -50px;
+  }
+</style>
+<div class="content">
+  <div class="left"></div>
+</div>
+```
 
 #### 如何让绝对定位的 div 居中
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        margin: 0 auto;
-        position: absolute;
-        width: 1500px;
-        background: pink;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-
-    html:
-    <div class="content"></div>
+```html
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    margin: 0 auto;
+    position: absolute;
+    width: 1500px;
+    background: pink;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+</style>
+<div class="content"></div>
+```
 
 ### 7.display 有哪些值？他们的作用是什么？
 
@@ -455,38 +468,44 @@ inherit
 
 #### 方法一：隐藏上，左，右三条边，颜色设定为（transparent）
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        width: 0;
-        height: 0;
-        margin: 0 auto;
-        border-width: 20px;
-        border-style: solid;
-        border-color: transparent transparent pink transparent;  // 对应上右下左，此处为 下 粉色
-    }
-
-    html:
-    <div class="content"></div>
+```html
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent pink transparent; // 对应上右下左，此处为 下 粉色
+  }
+</style>
+<div class="content"></div>
+```
 
 #### 方法二： 采用的是均分原理
 
 实现步骤： 1.首先保证元素是块级元素；2.设置元素的边框；3.不需要显示的边框使用透明色。
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        width:0;
-        height:0;
-        margin:0 auto;
-        border:50px solid transparent;
-        border-top: 50px solid pink;
-    }
-
-    html:
-    <div class="content"></div>
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
+```html
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border: 50px solid transparent;
+    border-top: 50px solid pink;
+  }
+</style>
+<div class="content"></div>
+```
 
 ---
 
@@ -584,8 +603,6 @@ inherit
 
 `content` 属性专门应用在 `before/after` 伪元素上，用于插入额外内容或样式。
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
 ---
 
 ### 21.🧐 请解释一下 CSS3 的 Flexbox（弹性盒布局模型）以及适用场景？
@@ -651,8 +668,6 @@ inherit
 在网页中的应该使用“偶数”字体：
 
 偶数字号相对更容易和 `web` 设计的其他部分构成比例关系，使用奇数号字体时文本段落无法对齐，宋体的中文网页排布中使用最多的就是 `12` 和 `14`。
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
 
 ---
 
@@ -738,8 +753,6 @@ inherit
 
 浏览器解析`CSS`是从上到下，从右到左解析的，这样会提高查找选择器所对应的元素的效率（至于原因，有兴趣的童鞋可以自行去了解）。
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
 ---
 
 ### 41.🤭 全屏滚动的原理是什么？用到了 CSS 的哪些属性？
@@ -824,40 +837,43 @@ inherit
 
 方法有挺多种，但是比较简单的方式就是： 上面的`div`宽度设置为 100%，底下两个`div`设置成`50%`，并使用`float`或者`inline`使其保持在同一行即可（具体的样式可以自己微调）。如下：
 
-    css:
-    .content {
+```html
+<!-- css: -->
+<style>
+  .content {
     width: 50%;
     height: 150px;
     margin: 0 auto;
-    }
-    .top {
+  }
+  .top {
     width: 40%;
     height: 50px;
     background-color: pink;
     margin-bottom: 50px;
     margin-left: 30%;
-    }
-    .left {
+  }
+  .left {
     width: 45%;
     height: 50px;
     background-color: pink;
     float: left;
-    }
-    .right {
+  }
+  .right {
     width: 45%;
     height: 50px;
     background-color: pink;
     float: right;
-    }
+  }
+</style>
 
-    html:
-    <div class="content">
-    <div class="top"></div>
-    <div class="left"></div>
-    <div class="right"></div>
-    </div>>
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="720" height="176"></svg>)
+<!-- html: -->
+<div class="content">
+  <div class="top"></div>
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+>
+```
 
 ### 49.经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用 hack 的技巧 ？
 
@@ -874,8 +890,6 @@ inherit
 - `box-sizing: content-box;` // 默认的标准`(W3C)`盒模型元素效果；
 - `box-sizing: border-box;` // 触发怪异`(IE)`盒模型元素的效果；
 - `box-sizing: inherit;` // 继承父元素 `box-sizing` 属性的值；
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
 
 ---
 
@@ -939,15 +953,19 @@ inherit
 - 父级`div`定义`overflow：hidden`;
 - 利用`：after`和`：before`来在元素内部插入两个元素块，从而达到清除浮动的效果。
 
-  .clear { zoom:1; }
-  .clear:after {
-  content:" ";
-  clear:both;
-  display:block;
-  height:0;
-  overflow:hidden;
-  visibility:hidden;
-  }
+```css
+.clear {
+  zoom: 1;
+}
+.clear:after {
+  content: ' ';
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+```
 
 ### 57\. css hack 概念以及简述几个 css hack?
 
@@ -998,8 +1016,6 @@ inherit
 在用户使用历史遗留版本的时候，通过通告栏告知用户使用现代浏览器，获取更多的功能，拥有更好的用户体验等（升级）。当用户的浏览器不能兼容时，提示用户只是使用什么版本的浏览器才能使用网站（下载可以兼容的浏览器）。
 
 🍀**注意**：项目开始前就需要确认兼容支持的最低版本是多少，以此设计一个对应的兼容方案。
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
 
 ---
 
@@ -1180,8 +1196,6 @@ id 选择器
 
 开发者使用这种语言进行 web 页面上样式设计，再编译成正常的`css`文件使用。使用 CSS 预处理器，可以使`CSS`更加简洁，适应性更强，可读性更佳，无需考虑兼容性。最常用的`CSS`预处理器语言包括： `Sass(Scss)`和`Less`。
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
 ---
 
 ### 81\. 🤧 设置元素浮动后，该元素的 display 值会如何变化？
@@ -1254,8 +1268,6 @@ id 选择器
 - 尽量避免在`html`中使用压缩图片；
 - 使用恰当的图片格式；
 - 使用`css sprites`技巧对图片优化；
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
 
 ---
 

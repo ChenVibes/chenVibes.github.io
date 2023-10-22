@@ -1,13 +1,10 @@
 ---
 title: 面经系列-js
 date: 2021-01-08
-category:
-  - 面经指南
+category: 面经指南
 ---
 
 ### 1\. 介绍一下 js 的数据类型有哪些,值是如何存储的
-
-具体可看我之前的文章：[「前端料包」可能是最透彻的 JavaScript 数据类型详解](https://juejin.im/post/5dc6bfbcf265da4d2f31df25)
 
 JavaScript 一共有 8 种数据类型，其中有 7 种基本数据类型：Undefined、Null、Boolean、Number、String、Symbol（es6 新增，表示独一无二的值）和 BigInt（es10 新增）；
 
