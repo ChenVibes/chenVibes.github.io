@@ -8,8 +8,11 @@ export default defineUserConfig({
   base: '/',
   dest: './dist',
   lang: 'zh-CN',
+  port: 3000,
   title: "Mr Chen's Blog",
   description: '一个专注于编程开发技术的个人知识库博客',
+  temp: './.temp',
+  cache: './.cache',
   plugins: [
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components')
@@ -21,6 +24,6 @@ export default defineUserConfig({
     })
   ],
   theme,
-  shouldPrefetch: false,
-  head: [['link', { rel: 'icon', href: '/logo.jpg' }]]
+  shouldPrefetch: false
+  // head: [['link', { rel: 'icon', href: '/logo.jpg' }]]
 })

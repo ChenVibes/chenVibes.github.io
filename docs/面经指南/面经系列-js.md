@@ -200,7 +200,7 @@ undefined 在 js 中不是一个保留字，这意味着我们可以使用 undef
 
 [《JavaScript 深入理解之 undefined 与 null》](http://cavszhouyou.top/JavaScript%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%B9%8Bundefined%E4%B8%8Enull.html)
 
-### 8\. {} 和 \[\] 的 valueOf 和 toString 的结果是什么？
+### 8\. {} 和 [] 的 valueOf 和 toString 的结果是什么？
 
     {} 的 valueOf 结果为 {} ，toString 的结果为 "[object Object]"
 
@@ -264,26 +264,27 @@ undefined 在 js 中不是一个保留字，这意味着我们可以使用 undef
 
 ### 12\. 寄生式组合继承的实现？
 
-    function Person(name) {
-      this.name = name;
-    }
+```js
+function Person(name) {
+  this.name = name
+}
 
-    Person.prototype.sayName = function() {
-      console.log("My name is " + this.name + ".");
-    };
+Person.prototype.sayName = function () {
+  console.log('My name is ' + this.name + '.')
+}
 
-    function Student(name, grade) {
-      Person.call(this, name);
-      this.grade = grade;
-    }
+function Student(name, grade) {
+  Person.call(this, name)
+  this.grade = grade
+}
 
-    Student.prototype = Object.create(Person.prototype);
-    Student.prototype.constructor = Student;
+Student.prototype = Object.create(Person.prototype)
+Student.prototype.constructor = Student
 
-    Student.prototype.sayMyGrade = function() {
-      console.log("My grade is " + this.grade + ".");
-
-    };
+Student.prototype.sayMyGrade = function () {
+  console.log('My grade is ' + this.grade + '.')
+}
+```
 
 ### 13\. 谈谈你对 this、call、apply 和 bind 的理解
 
@@ -455,7 +456,7 @@ addEvent(document, 'DOMContentLoaded', () => {
 
 假设有如下的 HTML 结构：
 
-```js
+```html
 <div class="grandparent">
   <div class="parent">
     <div class="child">1</div>
@@ -853,7 +854,10 @@ console.log(array1) // [22, 12, 35, 3, 31, 12]
 
 可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。例如，splice (2,1,4,6)会删除当前数组位置 2 的项，然后再从位置 2 开始插入 4 和 6。
 
-    const array1 = [22, 3, 31, 12];array1.splice(1, 1, 8);   //[3]console.log(array1);  // [22, 8, 31, 12]
+```js
+const array1 = [22, 3, 31, 12]
+array1.splice(1, 1, 8) //[3]console.log(array1);  // [22, 8, 31, 12]
+```
 
 ##### 9.indexOf()和 lastIndexOf()
 
@@ -1436,35 +1440,43 @@ four() // Throws an error  - arguments is not defined
 
 当我们调用函数 four 时，它会抛出一个`ReferenceError: arguments is not defined error`。使用 rest 语法，可以解决这个问题。
 
-    const four = (...args) => args;
+```js
+const four = (...args) => args
+```
 
 这会自动将所有参数值放入数组中。
 
 ### 35\. 为什么在调用这个函数时，代码中的`b`会变成一个全局变量?
 
-    function myFunc() {
-      let a = b = 0;
-    }
+```js
+function myFunc() {
+  let a = (b = 0)
+}
 
-    myFunc();
+myFunc()
+```
 
 原因是赋值运算符是从右到左的求值的。这意味着当多个赋值运算符出现在一个表达式中时，它们是从右向左求值的。所以上面代码变成了这样：
 
-    function myFunc() {
-      let a = (b = 0);
-    }
+```js
+function myFunc() {
+  let a = (b = 0)
+}
 
-    myFunc();
+myFunc()
+```
 
 首先，表达式 b = 0 求值，在本例中 b 没有声明。因此，JS 引擎在这个函数外创建了一个全局变量 b，之后表达式 b = 0 的返回值为 0，并赋给新的局部变量 a。
 
 我们可以通过在赋值之前先声明变量来解决这个问题。
 
-    function myFunc() {
-      let a,b;
-      a = b = 0;
-    }
-    myFunc();
+```js
+function myFunc() {
+  let a, b
+  a = b = 0
+}
+myFunc()
+```
 
 ### 36\. 简单介绍一下 V8 引擎的垃圾回收机制
 
@@ -1582,37 +1594,34 @@ const c = 10
 let 和 const 声明形成块作用域
 
 ```js
-    if(1){
-      var a = 100;
-      let b = 10;
-    }
+if (1) {
+  var a = 100
+  let b = 10
+}
 
-    console.log(a); // 100
-    console.log(b)  // 报错：b is not defined  ===> 找不到b这个变量
+console.log(a) // 100
+console.log(b) // 报错：b is not defined  ===> 找不到b这个变量
 
--------------------------------------------------------------
-
-    if(1){
-      var a = 100;
-      const c = 1;
-    }
-    console.log(a); // 100
-    console.log(c)  // 报错：c is not defined  ===> 找不到c这个变量
+if (1) {
+  var a = 100
+  const c = 1
+}
+console.log(a) // 100
+console.log(c) // 报错：c is not defined  ===> 找不到c这个变量
 ```
 
 同一作用域下 let 和 const 不能声明同名变量，而 var 可以
 
 ```js
-    var a = 100;
-    console.log(a); // 100
+var a = 100
+console.log(a) // 100
 
-    var a = 10;
-    console.log(a); // 10
--------------------------------------
-    let a = 100;
-    let a = 10;
+var a = 10
+console.log(a) // 10
+let a = 100
+let a = 10
 
-    //  控制台报错：Identifier 'a' has already been declared  ===> 标识符a已经被声明了。
+//  控制台报错：Identifier 'a' has already been declared  ===> 标识符a已经被声明了。
 ```
 
 暂存死区
@@ -3219,21 +3228,23 @@ xiaoming.sendFlower(B)
 
 - HTML 元 素事件代理
 
-  <ul id="ul">
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-  </ul>
-  <script>
-    let ul = document.querySelector('#ul');
-    ul.addEventListener('click', event => {
-      console.log(event.target);
-    });
-  </script>
+```html
+<ul id="ul">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+<script>
+  let ul = document.querySelector('#ul')
+  ul.addEventListener('click', event => {
+    console.log(event.target)
+  })
+</script>
+```
 
-* ES6 的 proxy [阮一峰 Proxy](https://es6.ruanyifeng.com/#docs/proxy)
+- ES6 的 proxy [阮一峰 Proxy](https://es6.ruanyifeng.com/#docs/proxy)
 
-* jQuery.proxy()方法
+- jQuery.proxy()方法
 
 **优点**
 
