@@ -128,93 +128,115 @@ category:
 
 #### 水平居中
 
-    // 方式1： 使用margin： 0 auto居中
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        margin: 0 auto;
-    	width: 100px;
-    	height: 100px;
-        background: pink;
-    }
+```html
+<style>
+  /*  方式1： 使用margin： 0 auto居中 */
+  /* css: */
+  * {margin: 0; padding: 0;}
+  .content {
+      margin: 0 auto;
+  	width: 100px;
+  	height: 100px;
+      background: pink;
+  }
 
-    // 方式2： 使用 定位 + left 居中
+  /* 方式2： 使用 定位 + left 居中 */
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-    	width: 100px;
-    	height: 100px;
-        background: pink;
-        position： relative；
-        left： 50%；
-        margin-left: -50px;
-    }
+  /* css: */
+  * {margin: 0; padding: 0;}
+  .content {
+  	width: 100px;
+  	height: 100px;
+      background: pink;
+      position： relative；
+      left： 50%；
+      margin-left: -50px;
+  }
+</style>
 
-    html:
-       <div class="content"></div>
-    复制代码
+<!-- html: -->
+<div class="content"></div>
+```
 
 #### 垂直居中
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-    	width: 100px;
-    	height: 100px;
-        background: pink;
-        position: absolute;
-        top:50%;
-        left: 50%;
-        transform: translate(-50%, -50%);    //  更新： 此处感谢小伙伴留言指出
-    }
+```html
+<style>
+  /* css: */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
 
-    html:
-    <div class="content"></div>
-    复制代码
+<!-- html: -->
+<div class="content"></div>
+```
 
 #### 居中浮动元素
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-    	width: 600px;
-    	height: 600px;
-        border: 1px solid green;
-    }
-    .left: {
-        height:100px;
-        width: 100px;
-        background-color: pink;
-        margin-left: 50%;   // 水平居中
-        position: relative;
-        left: -50px;
-    }
+```html
+<style>
+  /* css: */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 600px;
+    height: 600px;
+    border: 1px solid green;
+  }
+  .left: {
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    /* 水平居中 */
+    margin-left: 50%;
+    position: relative;
+    left: -50px;
+  }
+</style>
 
-    html:
-    <div class="content">
-        <div class="left"> </div>
-    </div>
-    复制代码
+<!-- html: -->
+<div class="content">
+  <div class="left"></div>
+</div>
+```
 
 #### 如何让绝对定位的 div 居中
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        margin: 0 auto;
-        position: absolute;
-        width: 1500px;
-        background: pink;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
+```html
+<style>
+  /* css: */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    margin: 0 auto;
+    position: absolute;
+    width: 1500px;
+    background: pink;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+</style>
 
-    html:
-    <div class="content"></div>
-    复制代码
+<!-- html: -->
+<div class="content"></div>
+```
 
 ### 7.display 有哪些值？他们的作用是什么？
 
@@ -345,42 +367,51 @@ inherit
 
 #### 方法一：隐藏上，左，右三条边，颜色设定为（transparent）
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        width: 0;
-        height: 0;
-        margin: 0 auto;
-        border-width: 20px;
-        border-style: solid;
-        border-color: transparent transparent pink transparent;  // 对应上右下左，此处为 下 粉色
-    }
+```html
+<style>
+  /* css: */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border-width: 20px;
+    border-style: solid;
+    /*  对应上右下左，此处为 下 粉色 */
+    border-color: transparent transparent pink transparent;
+  }
+</style>
 
-    html:
-    <div class="content"></div>
-    复制代码
+<!-- html: -->
+<div class="content"></div>
+```
 
 #### 方法二： 采用的是均分原理
 
 实现步骤： 1.首先保证元素是块级元素；2.设置元素的边框；3.不需要显示的边框使用透明色。
 
-    css:
-    * {margin: 0; padding: 0;}
-    .content {
-        width:0;
-        height:0;
-        margin:0 auto;
-        border:50px solid transparent;
-        border-top: 50px solid pink;
-    }
+```html
+<style>
+  /* css: */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border: 50px solid transparent;
+    border-top: 50px solid pink;
+  }
+</style>
 
-    html:
-    <div class="content"></div>
-    复制代码
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
+<!-- html: -->
+<div class="content"></div>
+```
 
 ### 11.🤨 什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的 IE？
 
@@ -477,10 +508,6 @@ inherit
 
 `content` 属性专门应用在 `before/after` 伪元素上，用于插入额外内容或样式。
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
-
 ### 21.🧐 请解释一下 CSS3 的 Flexbox（弹性盒布局模型）以及适用场景？
 
 > 概念： `Flex`是`Flexible Box`的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。采用`Flex`布局的元素，称为`Flex`容器`（flex container）`，简称”容器”。它的所有子元素自动成为容器成员，称为`Flex`项目`（flex item）`，简称”项目”。
@@ -544,10 +571,6 @@ inherit
 在网页中的应该使用“偶数”字体：
 
 偶数字号相对更容易和 `web` 设计的其他部分构成比例关系，使用奇数号字体时文本段落无法对齐，宋体的中文网页排布中使用最多的就是 `12` 和 `14`。
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
 
 ### 31\. 🤥 什么是外边距重叠？ 重叠的结果是什么？
 
@@ -631,10 +654,6 @@ inherit
 
 浏览器解析`CSS`是从上到下，从右到左解析的，这样会提高查找选择器所对应的元素的效率（至于原因，有兴趣的童鞋可以自行去了解）。
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
-
 ### 41.🤭 全屏滚动的原理是什么？用到了 CSS 的哪些属性？
 
 全屏滚动有点类似于轮播，整体的元素一直排列下去，假设有`5`个需要展示的全屏页面，那么高度是`500%`，只是展示`100%`。也可以理解为超出隐藏部分，滚动时显示。
@@ -717,41 +736,41 @@ inherit
 
 方法有挺多种，但是比较简单的方式就是： 上面的`div`宽度设置为 100%，底下两个`div`设置成`50%`，并使用`float`或者`inline`使其保持在同一行即可（具体的样式可以自己微调）。如下：
 
-    css:
-    .content {
+```html
+<style>
+  /* css: */
+  .content {
     width: 50%;
     height: 150px;
     margin: 0 auto;
-    }
-    .top {
+  }
+  .top {
     width: 40%;
     height: 50px;
     background-color: pink;
     margin-bottom: 50px;
     margin-left: 30%;
-    }
-    .left {
+  }
+  .left {
     width: 45%;
     height: 50px;
     background-color: pink;
     float: left;
-    }
-    .right {
+  }
+  .right {
     width: 45%;
     height: 50px;
     background-color: pink;
     float: right;
-    }
-
-    html:
-    <div class="content">
-    <div class="top"></div>
-    <div class="left"></div>
-    <div class="right"></div>
-    </div>>
-    复制代码
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="720" height="176"></svg>)
+  }
+</style>
+<!-- html: -->
+<div class="content">
+  <div class="top"></div>
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+```
 
 ### 49.经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用 hack 的技巧 ？
 
@@ -768,10 +787,6 @@ inherit
 - `box-sizing: content-box;` // 默认的标准`(W3C)`盒模型元素效果；
 - `box-sizing: border-box;` // 触发怪异`(IE)`盒模型元素的效果；
 - `box-sizing: inherit;` // 继承父元素 `box-sizing` 属性的值；
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
 
 ### 51\. 🤤 在网页中的应该使用奇数还是偶数的字体？
 
@@ -793,14 +808,22 @@ inherit
 
 伪元素/伪对象： 不存在在 DOM 文档中，是虚拟的元素，是创建新元素。代表某个元素的子元素，这个子元素虽然在逻辑上存在，但却并不实际存在于文档树中。
 
-    p::first-child {color: red}
-    复制代码
+```css
+p::first-child {
+  color: red;
+}
+```
 
 伪类：存在`DOM`文档中，逻辑上存在但在文档树中却无须标识的“幽灵”分类。
 
-    a:hover {color: #FF00FF}
-    p:first-child {color: red}
-    复制代码
+```css
+a:hover {
+  color: #ff00ff;
+}
+p:first-child {
+  color: red;
+}
+```
 
 🍀**注意**：
 
@@ -819,12 +842,13 @@ inherit
 
 ### 55\. 怎么让 Chrome 支持小于 12px 的文字？
 
-    .shrink {
-    -webkit-transform: scale(0.8);
-    -o-transform: scale(1);
-    display: inilne-block;
-    }
-    复制代码
+```css
+.shrink {
+  -webkit-transform: scale(0.8);
+  -o-transform: scale(1);
+  display: inilne-block;
+}
+```
 
 ### 56\. 将多个元素设置为同一行?清除浮动有几种方式?
 
@@ -836,16 +860,19 @@ inherit
 - 父级`div`定义`overflow：hidden`;
 - 利用`：after`和`：before`来在元素内部插入两个元素块，从而达到清除浮动的效果。
 
-  .clear { zoom:1; }
-  .clear:after {
-  content:" ";
-  clear:both;
-  display:block;
-  height:0;
-  overflow:hidden;
-  visibility:hidden;
-  }
-  复制代码
+```css
+.clear {
+  zoom: 1;
+}
+.clear:after {
+  content: ' ';
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+```
 
 ### 57\. css hack 概念以及简述几个 css hack?
 
@@ -896,8 +923,6 @@ inherit
 在用户使用历史遗留版本的时候，通过通告栏告知用户使用现代浏览器，获取更多的功能，拥有更好的用户体验等（升级）。当用户的浏览器不能兼容时，提示用户只是使用什么版本的浏览器才能使用网站（下载可以兼容的浏览器）。
 
 🍀**注意**：项目开始前就需要确认兼容支持的最低版本是多少，以此设计一个对应的兼容方案。
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
 
 ---
 
@@ -973,8 +998,6 @@ inherit
 - **滚动事件**：`IE`是`MouseWheel`、 `firefox`是`onmousewheel`；
 - **表单元素**：`IE`是 `document.forms(”formname”)` ， `firefox`是`document.forms["formname"]`；
 - **事件对象**： `IE`是`window.event`属性， `firefox`必须给事件处理函数注入实参`event`；
-
-![](https://user-gold-cdn.xitu.io/2020/6/5/17282053da3df444?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 ---
 
@@ -1078,10 +1101,6 @@ id 选择器
 
 开发者使用这种语言进行 web 页面上样式设计，再编译成正常的`css`文件使用。使用 CSS 预处理器，可以使`CSS`更加简洁，适应性更强，可读性更佳，无需考虑兼容性。最常用的`CSS`预处理器语言包括： `Sass(Scss)`和`Less`。
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
-
 ### 81\. 🤧 设置元素浮动后，该元素的 display 值会如何变化？
 
 设置元素浮动后，该元素的`display`值自动变成`block`。
@@ -1153,10 +1172,6 @@ id 选择器
 - 使用恰当的图片格式；
 - 使用`css sprites`技巧对图片优化；
 
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="474" height="89"></svg>)
-
----
-
 ### 91.😯 如何优化图像以及图像格式有什么区别？
 
 **优化图像**：
@@ -1183,8 +1198,12 @@ id 选择器
 
 `fixed`的元素实现相对于整个页面是固定位置的，当在屏幕上滑动时是在滑动整个`viewport`。原来的网页还在，fixed 也没有变过位置，所以说并不是手机端不支持`fixed`，只是`fixed`元素不是相对于手机屏幕固定的，因此我们按照以下方式来设计：
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-    复制代码
+```html
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+/>
+```
 
 ### 93\. css 样式引入方式的优缺点对比
 
@@ -1256,15 +1275,3 @@ id 选择器
 - 内容能被更多的用户以及更广泛的设备访问；
 - 更少的代码和组件，易于维护，改版方便；
 - 不需要动页面内容，同时提供打印版本也不需要复制内容，提高网站的易用性；
-
-### 100\. Happy Ending💃🍃
-
-到了这儿，小编希望本文能帮助到有需要的童鞋，扎实基础知识（亦或是温习遗忘的知识点），温故而知新，逐渐提升。
-
-### 写在最后 🌼🌼
-
-本篇文章会持续保持更新。文中若有不足，亦或是有小伙伴知道还有小编没有写入的知识点的，欢迎留言，小编看到后会第一时间加上。
-
-最后，如果觉得文章对自身有所帮助，麻烦支持一下，因为小编最近有点点想升级（一直卡在最后，真是一言难尽），谢谢大家。后继小编会更加努力推出优质的文章回馈给需要的小伙伴。（发完文，感觉生活又开始美好了 🌻🌻）
-
-![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="257" height="254"></svg>)

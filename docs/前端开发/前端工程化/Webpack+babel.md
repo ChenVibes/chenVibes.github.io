@@ -21,7 +21,7 @@ category: 前端开发
   - AMD define 和 require
 - 非 JS 等静态资源：
   - css/sass/less 文件中的 @import
-  - 图片连接，比如：样式 url(...) 或 HTML <img src=...>
+  - 图片连接，比如：样式 url(...) 或 HTML img
   - 字体 等
 
 ##### webpack 文档和资源

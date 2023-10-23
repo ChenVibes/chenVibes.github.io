@@ -44,8 +44,6 @@ ios或android中的组件（XML） - JSX --> VR - JSX --> 物联网
 
 > React 将 DOM 抽象为虚拟 DOM，虚拟 DOM 其实就是用一个对象来描述 DOM，通过对比前后两个对象的差异，最终只把变化的部分重新渲染，提高渲染的效率
 
-- ![虚拟DOM](./images/JS对象2HTML.png)
-
 - [如何实现一个 Virtual DOM 算法](https://github.com/livoras/blog/issues/13)
 - [理解 Virtual DOM](https://www.zhihu.com/question/31809713)
 
@@ -184,10 +182,8 @@ React将改变每一个子节点，而非保持 <li>Duke</li> 和 <li>Villanova<
 
 ### key demo
 
-- ![Element-diff 无key](./images/Element-diff-1.png)
 - 执行过程：B != A，则创建并插入 B，删除 A；以此类推，创建并插入 A、D、C，删除 B、C、D
 
-- ![Element-diff 有key](./images/Element-diff-2.png)
 - 执行过程：B、D 不做任何操作，A、C 进行移动操作
 
 ---
@@ -311,7 +307,6 @@ ReactDOM.render(dv, document.getElementById('app'))
 
 - 组件是由一个个的 HTML 元素组成的
 - 概念上来讲, 组件就像 JS 中的函数。它们接受用户输入（`props`），并且**返回**一个 React 对象，用来描述展示在页面中的内容
-- ![页面组件化](./images/页面组件化.png) ![页面抽象组件](./images/页面抽象组件.png)
 
 ### React 创建组件的两种方式
 
@@ -603,8 +598,6 @@ class American extends Person {
 
 ## 组件的生命周期
 
-![React中组件的生命周期](./images/组件的生命周期.png)
-
 - 简单说：**一个组件从开始到最后消亡所经历的各种状态，就是一个组件的生命周期**
 
 组件生命周期函数的定义：从组件被创建，到组件挂载到页面上运行，再到页面关闭组件被卸载，这三个阶段总是伴随着组件各种各样的事件，那么这些事件，统称为组件的生命周期函数！
@@ -620,8 +613,6 @@ class American extends Person {
 
 - 说明：通过 `Counter计数器的小案例`，理解组件的生命周期函数基本使用
 - 组件的生命周期包含三个阶段：创建阶段（Mounting）、运行和交互阶段（Updating）、卸载阶段（Unmounting）
-
-![React生命周期表格](./images/生命周期明细表格.png)
 
 - Mounting：
 
@@ -1214,7 +1205,6 @@ ReactDOM.render(<DatePicker />, document.getElementById('app'))
 ### 基本概念说明
 
 - `Router`组件本身只是一个容器，真正的路由要通过`Route组件`定义
-- ![react router](./images/ReactRouter.png)
 
 ### 使用步骤
 

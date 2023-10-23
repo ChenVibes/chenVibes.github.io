@@ -1,10 +1,10 @@
 ---
 title: React-Native总结
-tag: 移动开发
+tag:
+  - 移动开发
   - ReactNative
 date: 2018-08-08
-category:
-  - 前端进阶
+category: 前端进阶
 ---
 
 ### 1.windows-bug 启动不成功--清除 andriod 残余文件
@@ -287,13 +287,6 @@ react-native run-android=8082
 
 ### 7.touchouable 的区别
 
-| 名称                     | 描述                                                                                                                                          | 方法                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| TouchableWithoutFeedback | 触摸后在视觉上没有任何点击效果反馈,<span style="color:#ff9900">该标签不可以添加 style 样式属性，加了也没效果</span>                           | onPress function 当触摸操作结束时调用，但如果被取消了则不调用（譬如响应者被一个滚动操作取代）<br> onLongPress function 当用户长时间按压组件(长按效果)的时候调用该方法。<br> disabled bool 如果设为 true，则禁止此组件的一切交互。<br>onPressIn function 与 onPressOut function 分别是当用户开始点击按钮时与点击结束后被回调。                                                                                                                                                                                                                                                                                                        |
-| TouchableOpacity         | 触摸后实现透明度的触摸反馈 <span style="color:#ff9900">完全同 TouchableHighlight，只是不可以修改颜色，只能修改透明度，可以添加样式效果</span> | 方法同 TouchableHighlight                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| TouchableHighlight       | 触摸后实现高亮的触摸反馈 <span style="color:#ff9900">该标签可以添加 style 样式属性，因为有一层 View 可以使用</span>                           | activeOpacity number 用于设置被按下时按钮的不透明度，默认是 0.85<br>underlayColor color 用于设置被按下时按钮的颜色，默认是 black<br> onShowUnderlay function 最外层的 View 显示的时候调用<br>onHideUnderlay function 最外层的 View 被隐藏的时候调用<br>style View#style 最外层的 View 可以设置样式<br>onPress function 当触摸操作结束时调用，但如果被取消了则不调用（譬如响应者被一个滚动操作取代）<br> onLongPress function 当用户长时间按压组件(长按效果)的时候调用该方法。<br> disabled bool 如果设为 true，则禁止此组件的一切交互。<br> onPressIn function 与 onPressOut function 分别是当用户开始点击按钮时与点击结束后被回调。 |
-| TouchableNativeFeedback  | 在 Android 5.0 以后触摸实现水波纹的效果，（因此仅限 Android 平台，iOS 平台使用会报错）                                                        | TouchableNativeFeedback 在 TouchableWithoutFeedback 所支持的属性的基础上增加了按下去的水波纹效果。我们可以通过 background 属性来自定义原生触摸操作反馈的背景                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-
 #### 示例
 
 ```js
@@ -363,7 +356,7 @@ react-native run-android=8082
 </TouchableHighlight>
 ```
 
-提示二： <Text>组件也有点击功能 可通过 onPress 实现触摸回调
+提示二： `<Text>`组件也有点击功能 可通过 onPress 实现触摸回调
 
 ```js
 //Text也可以实现点击功能

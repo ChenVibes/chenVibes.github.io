@@ -1,10 +1,8 @@
 ---
 title: H5CSS3
-tag:
-  - HTML5
+tag: HTML5
 date: 2018-08-08
-category:
-  - 前端基石
+category: 前端基石
 ---
 
 ### 过渡
@@ -21,9 +19,11 @@ transition-delay 设置过渡延时
 
 以上四属性重在理解
 
-```
-连写顺序要求: 执行时间 必须在 延迟时间前面
-transition: all 1s ease 2s;
+```css
+/* 连写顺序要求: 执行时间 必须在 延迟时间前面  */
+div {
+  transition: all 1s ease 2s;
+}
 ```
 
 ### 伸缩布局 flex
@@ -197,28 +197,34 @@ radial-gradient( 100px at 100px 100px, red, blue, green )
 
 > 用 X、Y、Z 分别表示空间的 3 个维度，三条轴互相垂直。**_注意+Y 是向下的。_**
 
-![](images/zbz.png)
-
 #### rotate 旋转
 
-```javascript
-transform: rotate(45deg);// 让元素在平面2D中旋转
-transform: rotateX(45deg);// 让元素沿着X轴转45度
-transform: rotateY(45deg);// 让元素沿着Y轴转45度
-transform: rotateZ(45deg);// 让元素沿着Z轴转45度
+```css
+div {
+  /* 让元素在平面2D中旋转 */
+  transform: rotate(45deg);
+  /* 让元素沿着X轴转45度 */
+  transform: rotateX(45deg);
+  /* 让元素沿着Y轴转45度 */
+  transform: rotateY(45deg);
+  /* 让元素沿着Z轴转45度 */
+  transform: rotateZ(45deg);
+}
 ```
 
 问题：看不出来怎么转的，为什么现实生活中能够看出来？
 
 #### translate 平移
 
-```javascript
-/*沿着X轴的正方向移动45px*/
-transform: translateX(45px);
-/*沿着Y轴的正方向移动45px*/
-transform: translateY(45px);
-/*沿着Y轴的正方向移动45px*/
-transform: translateZ(45px);
+```css
+div {
+  /*沿着X轴的正方向移动45px*/
+  transform: translateX(45px);
+  /*沿着Y轴的正方向移动45px*/
+  transform: translateY(45px);
+  /*沿着Y轴的正方向移动45px*/
+  transform: translateZ(45px);
+}
 ```
 
 #### perspective 透视
@@ -229,15 +235,13 @@ transform: translateZ(45px);
 
 注意：当为元素定义 perspective 属性时，其子元素会获得透视效果。(给父元素加)
 
-```javascript
-perspective：500px;
+```css
+div{
+  perspective：500px;
+}
 ```
 
 关于近大远小
-
-![](images/per1.jpg)
-
-![](images/per2.jpg)
 
 对于我们眼睛来说，离我们越近的房子，我们会感觉到这个房子越大，离我们越远的房子，就会感觉越小，其实房子的大小都是一样的，只是在视觉上的一种不同。
 
@@ -245,14 +249,14 @@ perspective：500px;
 
 > transform-style 属性规定如何在 3D 空间中呈现被嵌套的元素。注意这个属性也是给父元素添加。
 
-```javascript
-flat:默认值，2d显示
-preserve-3d: 3d显示
+```js
+// flat:默认值，2d显示
+// preserve-3d: 3d显示
 ```
 
 transform-style 与 perspective 的区别
 
-```javascript
+```js
 /*透视：透视只是相当于设置了一个距离，实现了近大远小的效果, 辅助我们查看3D效果的工具，*/
 /*preserve-3d:给父盒子添加，让子元素3D的空间布局，说白了，只有设置了preserve-3d，这个元素才能被称之为3d元素。 */
 
@@ -270,7 +274,7 @@ transform-style 与 perspective 的区别
 
 使用一个动画的基本步骤：
 
-```javascript
+```js
 //1.通过@keyframes指定动画序列
 //2.通过百分比或者from/to将动画分割成多个节点
 //3.在各个节点中分别定义动画属性
@@ -281,15 +285,15 @@ transform-style 与 perspective 的区别
 
 > animation 是一个复合属性，一共有 8 个参数
 
-```javascript
-animation-name:动画名称，由@keyframes定义的
-animation-duration：动画的持续时间
-animation-timing-function：动画的过渡类型
-animation-delay：动画的延迟时间
-animation-iteration-count：动画的循环次数
-animation-direction：设置动画在循环中是否反向运动
-animation-fill-mode：设置动画时间之外的状态
-animattion-play-state:设置动画的状态。
+```js
+// animation-name:动画名称，由@keyframes定义的
+// animation-duration：动画的持续时间
+// animation-timing-function：动画的过渡类型
+// animation-delay：动画的延迟时间
+// animation-iteration-count：动画的循环次数
+// animation-direction：设置动画在循环中是否反向运动
+// animation-fill-mode：设置动画时间之外的状态
+// animattion-play-state:设置动画的状态。
 ```
 
 #### 动画库的使用
@@ -300,7 +304,7 @@ animattion-play-state:设置动画的状态。
 
 ### html5 语义化兼容性问题
 
-```HTML
+```html
 <!-- 现象: IE8 以下版本不支持 html5 语义化标签 -->
 <header>我是header标签， 我应该独占一整行</header>
 ```
@@ -309,17 +313,17 @@ animattion-play-state:设置动画的状态。
 
 1. 在浏览器解析标签之前, 动态创建一下 header 标签, 浏览器就认识了
 
-   ```JS
-   document.createElement("header");
-   ```
+```js
+document.createElement('header')
+```
 
 2. 默认行内, 需要转成块级
 
-```CSS
-   header {
-     /* header 标签应该独占一整行 */
-     display: block;
-   }
+```css
+header {
+  /* header 标签应该独占一整行 */
+  display: block;
+}
 ```
 
 但是 html5 新增了很多语义化标签, 一个个创建太麻烦了, html5shiv 插件很好的解决这个问题
@@ -328,7 +332,7 @@ animattion-play-state:设置动画的状态。
 
 在 head 中 引入 html5shiv 插件包即可解决 IE 8 不识别 html5 语义化标签的问题
 
-```JS
+```js
 <script src="html5shiv.js"></script>
 ```
 
@@ -344,7 +348,7 @@ CSS IE 条件注释 专门用于兼容 IE 低版本
 
 它里面有判断 IE 版本的方式
 
-```CSS
+```css
 lte：就是Less than or equal to的简写，也就是小于或等于的意思。
 lt ：就是Less than的简写，也就是小于的意思。
 gte：就是Greater than or equal to的简写，也就是大于或等于的意思。
@@ -355,22 +359,22 @@ gt ：就是Greater than的简写，也就是大于的意思。
 
 在小于等于 IE 8 的浏览器中才会执行, 在 IE9 中, 就是普通的注释, 不会解析执行
 
-```JS
+```html
 <!--[if lte IE 8]>
-    <script>
-      alert("呵呵, 小于等于IE8都会执行这段话");
-    </script>
-    <script src="html5shiv.js"></script>
+  <script>
+    alert('呵呵, 小于等于IE8都会执行这段话')
+  </script>
+  <script src="html5shiv.js"></script>
 <![endif]-->
 ```
 
 大于 IE 8 的浏览器才执行, 只有 IE 9 认识, 其他浏览器, IE 10 及以上, 都将条件注释当成注释
 
-```JS
+```html
 <!--[if gt IE 8]>
-   <script>
-      alert("只有IE9才执行这句话");
-   </script>
+  <script>
+    alert('只有IE9才执行这句话')
+  </script>
 <![endif]-->
 ```
 
@@ -405,10 +409,10 @@ html5 提供了一种更简单存取数据的方式 dataset
 
 #### 网络状态
 
-```javascript
-navigator.onLine返回用户当前的网络状况，是一个布尔值
-1. 如果浏览器连不上网(包括局域网)，就是离线状态，也就是脱机状态，会返回false
-2. 否则就是在线状态，返回true
+```js
+// navigator.onLine返回用户当前的网络状况，是一个布尔值
+// 1. 如果浏览器连不上网(包括局域网)，就是离线状态，也就是脱机状态，会返回false
+// 2. 否则就是在线状态，返回true
 ```
 
 **注意：返回 true 不一定就是说一定能访问互联网，因为有可能连接的是局域网。但是返回 false 则表示一定没连上网。**
@@ -417,7 +421,7 @@ navigator.onLine返回用户当前的网络状况，是一个布尔值
 
 > 为了更好的确定网络是否连接，HTML5 还定义了两个事件，用于监听网络状态的变化。
 
-```javascript
+```js
 //网络连接时会被调用
 window.addEventListener('online', function () {
   alert('online')
@@ -440,7 +444,7 @@ HTML5 规范提供了一套保护用户隐私的机制。必须先得到用户�
 
 #### 相关的方法
 
-```javascript
+```js
 //successCallback:获取成功后会调用,并返回一个position对象，里面包含了地理位置信息
 //获取失败了会调用，并返回error对象，里面包含了错误信息。
 //获取当前的地理位置信息
@@ -451,7 +455,7 @@ navigator.geolocation.watchPosition(successCallback, errorCallback)
 
 实例：
 
-```javascript
+```js
 navigator.geolocation.getCurrentPosition(
   function (position) {
     // 定位成功会调用该方法
@@ -477,11 +481,9 @@ PC 端: **chrome,火狐定位请求的页面要求要是 https 协议的, 所以
 
 百度地图官网：[http://lbsyun.baidu.com/](http://lbsyun.baidu.com/)
 
-```javascript
-1. 在开发中，找到javascript API
-2. 直接查看示例demo
+1. 在开发中，找到 javascript API
+2. 直接查看示例 demo
 3. 复制相应的代码，替换掉秘钥就行，秘钥只需创建一个新的应用就可以了。
-```
 
 ### web 存储
 
@@ -489,7 +491,7 @@ PC 端: **chrome,火狐定位请求的页面要求要是 https 协议的, 所以
 
 web 存储初体验
 
-```javascript
+```js
 //存储在内存中，会被释放
 var str = 'hello world'
 console.log(str)
@@ -507,7 +509,7 @@ cookie 是以字符串形式存在的，这个字符串有固定的格式：key=
 
 在获取 cookie 内容时，一般需要通过正则或者字符串的方法进行处理，转换成对象，最终得到数据。
 
-```javascript
+```js
 document.cookie = 'name=zhangsan'
 document.cookie = 'age=18'
 document.cookie = 'sex=23'
@@ -519,7 +521,7 @@ console.log(result)
 
 使用原生 js 操作 cookie 太过麻烦，尤其是 cookie 的获取和删除操作，使用 jquery.cookie 插件，能够简化我们的操作。
 
-```javascript
+```js
 //设置cookie
 $.cookie('name', 'zs')
 //获取cookie
@@ -548,7 +550,7 @@ window.localStorage 的特点
 
 window.sessionStorage 与 window.localStorage 的方法
 
-```javascript
+```js
 setItem(key, value) //设置存储内容
 getItem(key) //读取存储内容
 removeItem(key) //删除键值为key的存储内容
@@ -561,19 +563,17 @@ clear() //清空所有存储内容
 
 全屏切换 API：
 
-```javascript
+```js
 video.requestFullScreen()
 ```
 
 方法：load()、play()、pause()
 属性：
 
-```javascript
 currentTime:当前时间
 duration：总长时间
 timeupdate:播放进度更改时触发
 volume：控制音量
-```
 
 参考文档
 http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp
@@ -600,7 +600,7 @@ File 对象中包含了文件的最后修改时间、文件名、文件类型等
 
 FileReader 是一个 HTML5 新增的对象，用于读取文件。
 
-```javascript
+```js
 //创建一个fileReader对象
 var fr = new FileReader;
 //读取文件的两个方法
@@ -612,12 +612,11 @@ fr.onload = function(){}
 fr.result
 ```
 
-参考资料：
-https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc
+参考资料：[https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc)
 
 案例：
 
-```javascript
+```js
 var file = document.getElementById('file')
 var box = document.getElementById('box')
 
@@ -691,16 +690,18 @@ ondrop		应用于目标元素，当在目标元素上松开鼠标时调用(浏�
 
 ##### 1.引入 lib-flexible
 
-```HTML
- <head>
-    <title>lib-flexible demo</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+```html
+<head>
+  <title>lib-flexible demo</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+  />
 
-    <link href="css/flexible.css" rel="stylesheet">
-    <script src="js/flexible.js"></script>
-    </head>
-
+  <link href="css/flexible.css" rel="stylesheet" />
+  <script src="js/flexible.js"></script>
+</head>
 ```
 
 ##### 2 计算 rem 值
@@ -710,8 +711,6 @@ ondrop		应用于目标元素，当在目标元素上松开鼠标时调用(浏�
 rem 来做宽高定型有个最大的问题是，font-size 如何计算的问题，如何算得的 font-size 可以在不同分辨率下显示效果一致呢？
 
 不用担心，lib-flexible 已经帮你算好了，在你调整窗口大小的时候自动计算调整 rem 的基准，你只要做的是，按照设计图算出能适配不同分辨率的移动端的 rem 值。
-
-![自动计算调整 rem 的基准](_v_images/_自动计算调整rem的_1514871378_20430.jpg)
 
 ###### 计算 rem 值，计算公式很简单：
 
@@ -895,15 +894,14 @@ rem 来做宽高定型有个最大的问题是，font-size 如何计算的问题
 - ff：event.layerX 和 event.layerY
 - 解决办法：
 
-```js
-    <script type="text/javascript">
-    function mouseDownHandler(event) {
-    var e = event ? event : window.event;
-    var x = e.offsetX || e.layerX;
-    var y = e.offsetX || e.layerY;
-    }
-    </script>
-
+```html
+<script type="text/javascript">
+  function mouseDownHandler(event) {
+    var e = event ? event : window.event
+    var x = e.offsetX || e.layerX
+    var y = e.offsetX || e.layerY
+  }
+</script>
 ```
 
 ##### 4. event.srcElement
@@ -1092,7 +1090,7 @@ window.top.document.getElementById('testFrame').src = 'xx.html'
 window.top.frameName.location = 'xx.html'
 ```
 
-注意:HTML5 不支持 <frame> 标签。
+注意:HTML5 不支持 `<frame>` 标签。
 
 ##### 25.取得元素的属性
 

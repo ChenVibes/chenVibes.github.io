@@ -105,15 +105,11 @@ const buttonClassChange = () => {
 
 “`CSS-in-JS`” 是指一种模式，其中 `CSS` 由 `JavaScript` 生成而不是在外部文件中定义；注意此功能并不是` React`的一部分，而是由第三方库提供
 
-
-
+```js
 <center>
-  <img src='https://styled-components.com/logo.png'/>
+  <img src="https://styled-components.com/logo.png" />
 </center>
-
-
-
-
+```
 
 [styled-component](https://styled-components.com/docs)是社区最流行的` CSS-in-JS` 库
 
@@ -198,7 +194,7 @@ const MyButton = styled.button``
 const AppWrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: ${(props) => (props.show ? 'black' : 'red')};
+  background-color: ${props => (props.show ? 'black' : 'red')};
 `
 
 function App(props) {
@@ -225,9 +221,9 @@ export default App
 
 ```jsx
 const Wrapper = styled.div.attrs({
-  pleft: (props) => props.pleft || '5px',
+  pleft: props => props.pleft || '5px'
 })`
-  padding-left: ${(props) => props.pleft};
+  padding-left: ${props => props.pleft};
 `
 ```
 
