@@ -11,7 +11,6 @@ tagline: 一个专注于编程开发技术的个人知识库博客。
 description: Mr Chen,博客,记录,分享
 article: false
 index: false
-tagline: '无他，惟手熟尔。'
 projects:
   - icon: jiansuo
     name: 查看索引
