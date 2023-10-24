@@ -1,0 +1,30 @@
+{
+  "name": "mo7-blog",
+  "version": "1.4.0",
+  "description": "墨七的个人博客",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "vuepress build src",
+    "dev": "vuepress dev src --clean-cache",
+    "preview": "go run ./_shell/main.go ",
+    "update": "pnpm dlx vp-update",
+    "sync": "./_shell/GitSync.sh",
+    "deploy": "./_shell/Deploy.sh"
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.63",
+    "@vuepress/plugin-register-components": "2.0.0-beta.58",
+    "aplayer": "^1.10.1",
+    "axios": "^1.4.0",
+    "vue": "^3.3.4",
+    "vuepress": "2.0.0-beta.63",
+    "vuepress-theme-hope": "2.0.0-beta.226"
+  },
+  "dependencies": {
+    "@types/store": "^2.0.2",
+    "store": "^2.0.12",
+    "vue-router": "^4.2.2",
+    "vuepress-plugin-search-pro": "2.0.0-beta.226"
+  }
+}
