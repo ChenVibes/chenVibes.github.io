@@ -85,7 +85,7 @@ export default hopeTheme({
       codetabs: true,
       container: true,
       demo: true,
-      imageSize: true,
+      imgSize: true,
       figure: true,
       mark: true,
       tabs: true,

@@ -6,5 +6,5 @@ export default defineClientConfig({
       const AvueModule = await import('@smallwei/avue')
       app.use(AvueModule)
     }
-  },
+  }
 })

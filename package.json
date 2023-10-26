@@ -11,18 +11,18 @@
     "deploy": "bash deploy.sh"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.58",
-    "@vuepress/plugin-docsearch": "2.0.0-beta.58",
-    "@vuepress/plugin-register-components": "2.0.0-beta.58",
-    "vue": "3.2.45",
-    "vuepress": "2.0.0-beta.58",
-    "vuepress-theme-hope": "2.0.0-beta.141"
+    "@vuepress/client": "2.0.0-beta.63",
+    "@vuepress/plugin-docsearch": "2.0.0-beta.63",
+    "@vuepress/plugin-register-components": "2.0.0-beta.63",
+    "vuepress": "2.0.0-beta.63",
+    "vuepress-theme-hope": "2.0.0-beta.226"
   },
   "dependencies": {
     "@smallwei/avue": "^3.2.6",
     "atropos": "^1.0.2",
     "axios": "^1.5.1",
     "busuanzi.pure.js": "1.0.3",
-    "element-plus": "^2.4.1"
+    "element-plus": "^2.4.1",
+    "vue": "3.2.45"
   }
 }
