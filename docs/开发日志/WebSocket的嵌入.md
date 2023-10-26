@@ -1,7 +1,6 @@
 ---
 title: WebSocket的嵌入
-tag:
-  - 项目总结
+tag: 项目总结
 date: 2021-01-12
 category:
   - 开发日志

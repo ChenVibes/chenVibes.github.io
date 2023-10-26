@@ -1,7 +1,6 @@
 ---
 title: window.btoa 和 window.atob方法实现编码与解码
-tag:
-  - 项目总结
+tag: 项目总结
 date: 2019-04-08
 category:
   - 开发日志

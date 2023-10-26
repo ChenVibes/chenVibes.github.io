@@ -1,7 +1,6 @@
 ---
 title: mysql
-tag:
-  - mysql
+tag: mysql
 category: 数据库
 ---
 

@@ -1,10 +1,10 @@
 ---
-    icon: pen-to-square
+    title: vue与react全面对比
+    tag: 随笔
     date: 2019-06-15
     category: 
       - 转载
-    tag:
-      - 随笔
+
 ---
 
 ## vue 与 react 全面对比
