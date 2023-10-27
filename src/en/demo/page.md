@@ -59,14 +59,15 @@ The theme contains a custom badge:
 
 This page should contain:
 
-- [BreadCrumb](https://theme-hope.vuejs.press/guide/layout/breadcrumb.html)
-- [Title and information](https://theme-hope.vuejs.press/guide/feature/page-info.html)
-- [TOC (Table of Contents)](https://theme-hope.vuejs.press/guide/layout/page.html#header-list)
-- [Meta information including update time and contributors](https://theme-hope.vuejs.press/guide/feature/meta.html)
-- [Comments](https://theme-hope.vuejs.press/guide/feature/comment.html)
-- [Navbar](https://theme-hope.vuejs.press/guide/layout/navbar.html)
-- [Sidebar](https://theme-hope.vuejs.press/guide/layout/sidebar.html)
-- [Footer](https://theme-hope.vuejs.press/guide/layout/footer.html)
+![BreadCrumb](https://theme-hope.vuejs.press/guide/layout/breadcrumb.html)
+![Title and information](https://theme-hope.vuejs.press/guide/feature/page-info.html)
+![TOC (Table of Contents)](https://theme-hope.vuejs.press/guide/layout/page.html#header-list)
+![Meta information including update time and contributors](https://theme-hope.vuejs.press/guide/feature/meta.html)
+![Comments](https://theme-hope.vuejs.press/guide/feature/comment.html)
+![Navbar](https://theme-hope.vuejs.press/guide/layout/navbar.html)
+![Sidebar](https://theme-hope.vuejs.press/guide/layout/sidebar.html)
+![Footer](https://theme-hope.vuejs.press/guide/layout/footer.html)
+
 - Back to top button
 
 You can customize them in theme options and page frontmatter.

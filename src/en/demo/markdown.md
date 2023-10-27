@@ -84,7 +84,7 @@ A custom details container
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/container.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/container.html)
 
 #### Tabs
 
@@ -104,7 +104,7 @@ Orange
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/tabs.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/tabs.html)
 
 #### Code Tabs
 
@@ -130,13 +130,13 @@ npm i -D vuepress-theme-hope
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/code-tabs.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/code-tabs.html)
 
 #### Superscript and Subscript
 
 19^th^ H~2~O
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/sup-sub.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/sup-sub.html)
 
 #### Align
 
@@ -152,13 +152,13 @@ I am right align
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/align.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/align.html)
 
 #### Attrs
 
 A **word**{#word} having id.
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/attrs.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/attrs.html)
 
 #### Footnote
 
@@ -166,26 +166,26 @@ This text has footnote[^first].
 
 [^first]: This is footnote content
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/footnote.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/footnote.html)
 
 #### Mark
 
 You can mark ==important words== .
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/mark.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/mark.html)
 
 #### Tasklist
 
-- [x] Plan A
-- [ ] Plan B
+![x] Plan A
+![ ] Plan B
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/tasklist.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/tasklist.html)
 
 #### Image Enhancement
 
 Support setting color scheme and size
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/image.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/image.html)
 
 #### Chart
 
@@ -221,7 +221,7 @@ Support setting color scheme and size
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/chart.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/chart.html)
 
 #### Echarts
 
@@ -247,7 +247,7 @@ Support setting color scheme and size
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/echarts.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/echarts.html)
 
 #### Flowchart
 
@@ -260,7 +260,7 @@ cond(yes)->process->e
 cond(no)->e
 ```
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/flowchart.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/flowchart.html)
 
 #### Mermaid
 
@@ -281,7 +281,7 @@ flowchart TB
     two --> c2
 ```
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/mermaid.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/mermaid.html)
 
 #### Tex
 
@@ -290,13 +290,13 @@ $$
 = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^i r \cdots (r-i+1) (\log y)^{r-i}} {\omega^i} \right\}
 $$
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/tex.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/tex.html)
 
 #### Include files
 
 <!-- @include: ./README.md{11-17} -->
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/include.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/include.html)
 
 #### Code Demo
 
@@ -321,13 +321,13 @@ span {
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/demo.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/demo.html)
 
 #### Stylize
 
 Donate Mr.Hope a cup of coffee. _Recommended_
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/stylize.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/stylize.html)
 
 #### Playground
 
@@ -345,7 +345,7 @@ speak(msg);
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/playground.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/playground.html)
 
 #### Vue Playground
 
@@ -368,7 +368,7 @@ const msg = ref('Hello World!');
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/vue-playground.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/vue-playground.html)
 
 #### Presentation
 
@@ -403,6 +403,6 @@ $$
 
 @slideend
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/presentation.html)
+![View Detail](https://theme-hope.vuejs.press/guide/markdown/presentation.html)
 
 [md-enhance]: https://md-enhance.vuejs.press/

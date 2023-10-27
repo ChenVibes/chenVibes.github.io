@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "vuepress build src",
+    "build": "vuepress build src --clean-cache",
     "dev": "vuepress dev src --clean-cache",
     "preview": "go run ./_shell/main.go ",
     "update": "pnpm dlx vp-update",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@types/store": "^2.0.2",
+    "nodejs-jieba": "^0.0.2",
     "store": "^2.0.12",
-    "vue-router": "^4.2.2",
-    "vuepress-plugin-search-pro": "2.0.0-beta.226"
+    "vue-router": "^4.2.2"
   }
 }

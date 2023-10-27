@@ -13,6 +13,6 @@ permalink: /favorite/movies
 
 :::
 
-- [阿甘正传](./阿甘正传.md)
+![阿甘正传](./阿甘正传.md)
 
 ---

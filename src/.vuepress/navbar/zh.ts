@@ -1,17 +1,41 @@
 import { navbar } from 'vuepress-theme-hope';
 
 export const zhNavbar = navbar([
-  '/posts',
   {
-    text: '索引',
-    icon: 'jiansuo',
-    children: [
-      { text: '全部', icon: 'list', link: '/article' },
-      { text: '分类', icon: 'category', link: '/category' },
-      { text: '标签', icon: 'tag', link: '/tag' },
-      { text: '时间轴', icon: 'time', link: '/timeline' },
-    ],
+    text: '首页',
+    link: '/',
+    icon: 'home',
   },
+  {
+    text: '前端开发',
+    link: '/前端开发/',
+    icon: 'html',
+  },
+  {
+    text: '后端开发',
+    icon: 'be',
+    link: '/后端开发/',
+  },
+  {
+    text: '基础知识',
+    icon: 'study',
+    link: '/基础知识/',
+  },
+  {
+    text: '开发日志',
+    icon: 'biji',
+    link: '/开发日志/',
+  },
+  {
+    text: '书签收藏',
+    icon: 'shuqian',
+    link: '/书签收藏',
+  },
+  // {
+  //   text: '杂七杂八',
+  //   icon: 'note',
+  //   link: '/杂七杂八/',
+  // },
 
   {
     text: '收藏',
@@ -19,5 +43,4 @@ export const zhNavbar = navbar([
     link: '/favorite',
     children: ['/favorite/links', '/favorite/movies', '/favorite/music', '/favorite/photos'],
   },
-  '/about',
 ]);

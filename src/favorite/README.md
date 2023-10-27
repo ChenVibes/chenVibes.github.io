@@ -13,9 +13,9 @@ permalink: /favorite
 
 :::
 
-- [影视](./movies/)
-- [音乐](./music/)
-- [照片](./photos/)
-- [链接](./links/)
+![影视](./movies/)
+![音乐](./music/)
+![照片](./photos/)
+![链接](./links/)
 
 ---
