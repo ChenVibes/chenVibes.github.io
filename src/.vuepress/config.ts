@@ -5,9 +5,7 @@ import { getDirname, path } from '@vuepress/utils';
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   dest: 'dist',
-  host: '0.0.0.0',
-  port: 3000,
-  // base: '/',
+  base: '/vuepress-blog/',
   temp: '.vscode/.vp-temp',
   cache: '.vscode/.vp-cache',
   lang: 'zh-CN',
