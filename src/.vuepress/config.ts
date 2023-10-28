@@ -7,7 +7,7 @@ export default defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
   port: 3000,
-  base: '/',
+  // base: '/',
   temp: '.vscode/.vp-temp',
   cache: '.vscode/.vp-cache',
   lang: 'zh-CN',
