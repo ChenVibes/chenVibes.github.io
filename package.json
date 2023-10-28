@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "vuepress build src --clean-cache",
+    "build": "vuepress build src",
     "dev": "vuepress dev src --clean-cache",
     "preview": "go run ./_shell/main.go ",
     "update": "pnpm dlx vp-update",

@@ -18,7 +18,7 @@ NowPath=$(pwd)
 OutPutPath="${NowPath}/dist"
 
 # 远程仓库目录地址
-DeployPath="git@github.com:mo7Web/Mo7BlogPackage.git"
+DeployPath="git@gitee.com:magicBegin/vuepress-blog.git"
 
 # Deploy 完成之后的输出
 DeployEndText="
