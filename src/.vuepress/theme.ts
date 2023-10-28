@@ -1,6 +1,6 @@
 import { hopeTheme } from 'vuepress-theme-hope';
-import { enNavbar, zhNavbar } from './navbar/index.js';
-import { enSidebar, zhSidebar } from './sidebar/index.js';
+import { zhNavbar } from './navbar/index.js';
+import { zhSidebar } from './sidebar/index.js';
 
 const footerICP_HTML = `
 <a class="footer-icp" href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank">
@@ -37,7 +37,9 @@ export default hopeTheme({
   blog: {
     avatar: '/favicon.png',
     roundAvatar: true,
-    description: `前端攻城狮,目前在上海工作。<br>
+    name: 'Mr.Chen',
+    timeline: '美好的事情即将发生',
+    description: `一个专注于编程开发技术的个人知识库博客。<br>
     <hr>
     ✍️自2018年1月1日写了:<br>
     <a href='https://wakatime.com/@b94342d7-a3b1-41c3-8455-342d836a7152'><img src='https://wakatime.com/badge/user/b94342d7-a3b1-41c3-8455-342d836a7152.svg'>的代码</a><br>
@@ -79,34 +81,8 @@ export default hopeTheme({
     end: ['Search', 'Links', 'Language', 'Outlook'],
   },
 
-  locales: {
-    '/': {
-      navbar: zhNavbar,
-      sidebar: zhSidebar,
-      blog: {
-        name: 'Mr.Chen',
-        description: '一个专注于编程开发技术的个人知识库博客',
-        intro: '/about/me.html',
-        timeline: '美好的事情即将发生',
-      },
-    },
-    '/en/': {
-      navbar: enNavbar,
-      sidebar: enSidebar,
-      blog: {
-        name: 'Mr.Chen',
-        description: 'A personal knowledge base blog focused on programming and development techniques.',
-        intro: '/en/intro.html',
-        timeline: 'Something wonderful is about to  happen.',
-      },
-    },
-  },
-
-  encrypt: {
-    config: {
-      '/en/demo/encrypt.html': ['1234'],
-    },
-  },
+  navbar: zhNavbar,
+  sidebar: zhSidebar,
 
   plugins: {
     blog: true,

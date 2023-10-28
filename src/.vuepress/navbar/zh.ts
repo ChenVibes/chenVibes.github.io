@@ -36,11 +36,4 @@ export const zhNavbar = navbar([
   //   icon: 'note',
   //   link: '/杂七杂八/',
   // },
-
-  {
-    text: '收藏',
-    icon: 'start',
-    link: '/favorite',
-    children: ['/favorite/links', '/favorite/movies', '/favorite/music', '/favorite/photos'],
-  },
 ]);

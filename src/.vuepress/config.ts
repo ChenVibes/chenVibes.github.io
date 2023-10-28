@@ -10,19 +10,9 @@ export default defineUserConfig({
   base: '/',
   temp: '.vscode/.vp-temp',
   cache: '.vscode/.vp-cache',
-
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-      title: "Mr Chen's Blog",
-      description: '一个专注于编程开发技术的个人知识库博客',
-    },
-    '/en/': {
-      lang: 'en-US',
-      title: "Mr Chen's Blog",
-      description: 'A personal knowledge base blog focused on programming and development techniques',
-    },
-  },
+  lang: 'zh-CN',
+  title: "Mr Chen's Blog",
+  description: '一个专注于编程开发技术的个人知识库博客',
 
   plugins: [
     registerComponentsPlugin({
