@@ -1,5 +1,0 @@
-
-User-agent:*
-Disallow:
-
-Sitemap: http://magicbegin.gitee.io/vuepress-blog/sitemap.xml
