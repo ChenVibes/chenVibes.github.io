@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://zfhblog.top/sitemap.xml
+Sitemap: https://zfhblog.top/Users/chenzhen/Desktop/code/blog/vuepress-blog/dist/sitemap.xml

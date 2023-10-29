@@ -9,7 +9,7 @@ export default defineUserConfig({
   dest: 'public',
   host: '0.0.0.0',
   port: 3000,
-  base: '/',
+  base: path.resolve(__dirname, '../../dist') as any,
   lang: 'zh-CN',
   // temp: '../../.temp',
   // cache: '../../.cache',
