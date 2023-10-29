@@ -98,7 +98,7 @@ Vue 中使用组件的步骤：
     </div>
 
     <script type="text/javascript">
-      Vue.config.productionTip = false
+      Vue.config.productionTip = false;
       const hello = Vue.extend({
         name: 'hello',
         template: `<div>hello!
@@ -107,12 +107,12 @@ Vue 中使用组件的步骤：
         `,
         methods: {
           alertHello() {
-            alert('hello')
+            alert('hello');
           },
         },
-      })
+      });
       // 全局注册
-      Vue.component('hello', hello)
+      Vue.component('hello', hello);
       new Vue({
         el: '#root',
         //  components:{
@@ -122,17 +122,17 @@ Vue 中使用组件的步骤：
         data() {
           return {
             msg: 'frank你好！',
-          }
+          };
         },
-      })
+      });
       new Vue({
         el: '#root2',
         data() {
           return {
             msg2: 'alex你好！',
-          }
+          };
         },
-      })
+      });
     </script>
   </body>
 </html>
@@ -179,7 +179,7 @@ Vue 中使用组件的步骤：
   </body>
 
   <script type="text/javascript">
-    Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+    Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
 
     //定义student组件
     const student = Vue.extend({
@@ -194,9 +194,9 @@ Vue 中使用组件的步骤：
         return {
           name: 'frank',
           age: 18,
-        }
+        };
       },
-    })
+    });
 
     //定义school组件
     const school = Vue.extend({
@@ -212,13 +212,13 @@ Vue 中使用组件的步骤：
         return {
           name: 'SNUT',
           address: 'HAN ZHONG',
-        }
+        };
       },
       //注册组件（局部）
       components: {
         student,
       },
-    })
+    });
 
     //定义hello组件
     const hello = Vue.extend({
@@ -226,9 +226,9 @@ Vue 中使用组件的步骤：
       data() {
         return {
           msg: '欢迎来到SNUT学习！',
-        }
+        };
       },
-    })
+    });
 
     //定义app组件
     const app = Vue.extend({
@@ -242,7 +242,7 @@ Vue 中使用组件的步骤：
         school,
         hello,
       },
-    })
+    });
 
     //创建vm
     new Vue({
@@ -250,7 +250,7 @@ Vue 中使用组件的步骤：
       el: '#root',
       //注册组件（局部）
       components: { app },
-    })
+    });
   </script>
 </html>
 ```
@@ -268,11 +268,11 @@ Vue 中使用组件的步骤：
 Vue.extend = function (extendOptions) {
   // ......
   var Sub = function VueComponent(options) {
-    this._init(options)
-  }
+    this._init(options);
+  };
   // ......
-  return Sub
-}
+  return Sub;
+};
 ```
 
 4.关于` this` 指向：
@@ -496,8 +496,8 @@ props 是只读的，Vue 底层会监测你对 props 的修改，如果进行了
 
 5. oninput 事件类似于 onchange 事件。不同之处在于 oninput 事件在元素值发生变化是立即触发， onchange 在元素失去焦点时触发。另外一点不同是 onchange 事件也可以作用于 `<keygen>` 和 `<select>` 元素。
 
-- [oninput 事件](https://www.runoob.com/jsref/event-oninput.html)
-- [onchange 事件](https://www.runoob.com/jsref/event-onchange.html)
+![oninput 事件](https://www.runoob.com/jsref/event-oninput.html)
+![onchange 事件](https://www.runoob.com/jsref/event-onchange.html)
 
 ## webStorage
 
@@ -550,13 +550,13 @@ props 是只读的，Vue 底层会监测你对 props 的修改，如果进行了
 export default {
   methods: {
     getData(data) {
-      console.log(data)
+      console.log(data);
     },
   },
   mounted() {
-    this.$refs.child.$on('getData', this.getData)
+    this.$refs.child.$on('getData', this.getData);
   },
-}
+};
 </script>
 ```
 
@@ -588,10 +588,10 @@ export default {
 new Vue({
   // ......
   beforeCreate() {
-    Vue.prototype.$bus = this //安装全局事件总线，$bus 就是当前应用的 vm
+    Vue.prototype.$bus = this; //安装全局事件总线，$bus 就是当前应用的 vm
   },
   // ......
-})
+});
 ```
 
 3.  使用事件总线：
@@ -607,17 +607,17 @@ export default {
   // ......
   methods: {
     getData(data) {
-      console.log(data)
+      console.log(data);
     },
   },
   mounted() {
     // 给bus绑定自定义事件
-    this.$bus.$on('getData', this.getData)
+    this.$bus.$on('getData', this.getData);
   },
   beforeDestroy() {
-    this.$bus.$off('getData')
+    this.$bus.$off('getData');
   },
-}
+};
 ```
 
 ## 消息订阅与发布（pubsub）
@@ -647,17 +647,17 @@ export default {
   methods: {
     sub(msgName, data) {
       // 如果不想接收msgName(消息的名字),可以使用"_"占位
-      console.log(msgName, data)
+      console.log(msgName, data);
     },
   },
   mounted() {
-    this.pid = pubsub.subscribe('getData', this.sub) //订阅消息
+    this.pid = pubsub.subscribe('getData', this.sub); //订阅消息
   },
   //   取消订阅
   beforeDestroy() {
-    pubsub.unsubscribe(this.pid)
+    pubsub.unsubscribe(this.pid);
   },
-}
+};
 ```
 
 ```js
@@ -665,10 +665,10 @@ export default {
 export default {
   methods: {
     pub() {
-      pubsub.publish('getData', '数据')
+      pubsub.publish('getData', '数据');
     },
   },
-}
+};
 ```
 
 ## nextTick
@@ -679,11 +679,11 @@ export default {
 
 ```js
 // 修改数据
-this.msg = 'Hello'
+this.msg = 'Hello';
 // DOM 还没有更新
 this.$nextTick(function () {
   // DOM 更新了
-})
+});
 ```
 
 ## Vue 封装的过度与动画
@@ -776,7 +776,7 @@ this.$nextTick(function () {
 
 ```js
 devServer: {
-  proxy: 'http://localhost:5000'
+  proxy: 'http://localhost:5000';
 }
 ```
 
@@ -808,7 +808,7 @@ module.exports = {
       },
     },
   },
-}
+};
 /*
    changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000
    changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:8080
@@ -935,9 +935,9 @@ module.exports = {
     data() {
       return {
         msg: 'frank chang is handsome man',
-      }
+      };
     },
-  }
+  };
 </script>
 ```
 
@@ -945,9 +945,7 @@ module.exports = {
 
 ```html
 <!--  `v-slot` 直接用在组件上 -->
-<current-user v-slot:default="slotProps">
-  {{ slotProps.userName }}
-</current-user>
+<current-user v-slot:default="slotProps"> {{ slotProps.userName }} </current-user>
 
 <!-- 就像假定未指明的内容对应默认插槽一样，不带参数的 v-slot 被假定对应默认插槽 -->
 <current-user v-slot="slotProps"> {{ slotProps.userName }} </current-user>
@@ -955,9 +953,7 @@ module.exports = {
 <!-- 默认插槽的缩写语法(上面👆的写法)不能和具名插槽混用，无效会导致警告 -->
 <!-- 所以只要出现多个插槽，请始终为所有的插槽使用完整的基于 `<template>` 的语法👇 -->
 <current-user>
-  <template v-slot:default="slotProps">
-    {{ slotProps.user.firstName }}
-  </template>
+  <template v-slot:default="slotProps"> {{ slotProps.user.firstName }} </template>
 
   <template v-slot:other="otherSlotProps"> ... </template>
 </current-user>
@@ -1006,9 +1002,9 @@ module.exports = {
       return {
         user: { name: 'frank', age: 18 },
         msg: 'frank is a man',
-      }
+      };
     },
-  }
+  };
 </script>
 ```
 
@@ -1019,9 +1015,7 @@ module.exports = {
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld
-      v-slot="{ user={name:'not a found' age:'null'}, msg='not a found' }"
-    >
+    <HelloWorld v-slot="{ user={name:'not a found' age:'null'}, msg='not a found' }">
       <h2>{{ user.name}},{{user.age }}</h2>
       <h3>{{ msg }}</h3>
     </HelloWorld>
@@ -1040,9 +1034,9 @@ module.exports = {
       return {
         user: { name: 'frank', age: 18 },
         msg: 'frank is a man',
-      }
+      };
     },
-  }
+  };
 </script>
 ```
 
@@ -1083,5 +1077,5 @@ module.exports = {
 如果需要设置全局变量，可以通过在 `main.js` 中，在 Vue 原型上添加属性实现全局变量
 
 ```js
-Vue.prototype.$appName = 'My App'
+Vue.prototype.$appName = 'My App';
 ```

@@ -6,7 +6,7 @@ dir:
   link: true
 ---
 
->  为什么学习TS????
+> 为什么学习 TS????
 
 ## 程序更容易理解
 
@@ -39,6 +39,6 @@ dir:
 
 ## 学习资源
 
-- [可能国内最好的系统学习 TS 的教程](https://yayujs.com/)
-- [TypeScript 入门教程](https://ts.xcatliu.com/introduction/what-is-typescript.html)
-- [TypeScript 官方文档](https://www.typescriptlang.org/docs/)
+![可能国内最好的系统学习 TS 的教程](https://yayujs.com/)
+![TypeScript 入门教程](https://ts.xcatliu.com/introduction/what-is-typescript.html)
+![TypeScript 官方文档](https://www.typescriptlang.org/docs/)

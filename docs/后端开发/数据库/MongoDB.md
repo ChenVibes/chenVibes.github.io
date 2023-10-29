@@ -18,8 +18,8 @@ MongoDB 是一个跨平台，面向文档的数据库，高性能，高可用性
 
 - 数据库:数据库是一个集合的物理容器,一个单一的 MongoDB 服务器通常有多个数据库。
 - 集合:集合是一组 MongoDB 的文件。简单理解就是一个数组
-- 文档 : 文档是一组键值对。(可以认为是 json 格式,但其实是 bson, bson 基于 json 格式) [bson 和 json 的区别](http://blog.csdn.net/z69183787/article/details/26709505)
-- [看图] {name : '哈哈'}
+- 文档 : 文档是一组键值对。(可以认为是 json 格式,但其实是 bson, bson 基于 json 格式)
+  ![bson 和 json 的区别](http://blog.csdn.net/z69183787/article/details/26709505)
 
 ### 三、为什么选择 MongoDB?
 
@@ -28,9 +28,9 @@ MongoDB 是一个跨平台，面向文档的数据库，高性能，高可用性
 
 ### 四、官网链接:
 
-- [英文官网 - https://www.mongodb.com/](https://www.mongodb.com/)
-- [中文官网 - https://www.mongodb.com/cn](https://www.mongodb.com/cn)
-- [菜鸟教程 - http://www.runoob.com/mongodb/mongodb-tutorial.html](http://www.runoob.com/mongodb/mongodb-tutorial.html)
+![英文官网 - https://www.mongodb.com/](https://www.mongodb.com/)
+![中文官网 - https://www.mongodb.com/cn](https://www.mongodb.com/cn)
+![菜鸟教程 - http://www.runoob.com/mongodb/mongodb-tutorial.html](http://www.runoob.com/mongodb/mongodb-tutorial.html)
 
 ### 五、安装:
 
@@ -43,31 +43,31 @@ MongoDB 是一个跨平台，面向文档的数据库，高性能，高可用性
 
 1. ##### 安装: [home brew](https://brew.sh/)
 
-   ```js
+   ```bash
    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    ```
 
 2. 测试 brew 安装是否成功:
 
-   ```
+   ```bash
    brew -v
    ```
 
 3. 更新 brew
 
-   ```js
+   ```bash
    brew update
    ```
 
 4. 安装 MongoDB
 
-   ```js
+   ```bash
    brew install mongodb --with-openssl
    ```
 
 5. 检查:
 
-   ```js
+   ```bash
    mongo --version
 
    //显示如下代表成功:
@@ -85,24 +85,24 @@ MongoDB 是一个跨平台，面向文档的数据库，高性能，高可用性
 
 - 1.手动创建目录 `c:\data\db\`
 
-```js
-   - 如果使用这个路径 `c:\data\db\\`,就可以直接使用第二步,
+```bash
+  #  - 如果使用这个路径 `c:\data\db\\`,就可以直接使用第二步,
 
-   -  else
-   - 在启动的时候，可以通过 --dbpath 指定数据服务存储数据的目录  // 目录可以通知点击地址栏获取
-   - mongod --dbpath D:\mongo-data
+  #  -  else
+  #  - 在启动的时候，可以通过 --dbpath 指定数据服务存储数据的目录  // 目录可以通知点击地址栏获取
+  mongod --dbpath D:\mongo-data
 
-   -  如果不加--dbpath, mongod 会自动使用 `执行命令所属磁盘根目录`下面的/data/db 目录作为自己的数据存储路径，
+  #  -  如果不加--dbpath, mongod 会自动使用 `执行命令所属磁盘根目录`下面的/data/db 目录作为自己的数据存储路径，
 ```
 
 - 2.创建环境变量，右键我的电脑-->属性-->高级系统设置-->环境变量-->新建-->把 mongodb 的 bin 目录复制，然后点击确定
 
 - 3.在命令行输入 **mongod** 启动服务 (注意 : 不是 mongodb 也不是 mongo)
 
-```js
-   > mongod                 // mac 下 要使用 sudo mongod
-   // 如果出现瞎买这句话才算 OK
-   > ....  waiting for connections on port 27017
+```bash
+  #  > mongod   mac 下 要使用 sudo mongod
+  #  // 如果出现下面这句话才算 OK
+  #  > ....  waiting for connections on port 27017
 ```
 
 - 4.**[ 切记 ] **停止服务：按 ctr + c，不要直接通过关闭 cmd 窗口的方式来关闭
@@ -124,37 +124,37 @@ mongo --host 127.0.0.1 --port 27017
 
 ### 七、 开启、连接 mongodb 服务器: ( Mac 版)
 
-> [win-mongodb 使用](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
->
-> [mac-mongodb 使用](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/?_ga=2.176735077.1185746849.1509691062-1923881747.1503743759#run-mongodb)
+![win-mongodb 使用](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+
+![mac-mongodb 使用](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/?_ga=2.176735077.1185746849.1509691062-1923881747.1503743759#run-mongodb)
 
 ##### (一)、启动数据库 服务器:
 
 - 1. 创建 `/data/db` 目录 ;
 
-  ```js
-  //代码执行
+```bash
+  # 代码执行
   sudo mkdir -p /data/db   //sudo 提高权限    目录在 Finder/左侧设备/XXX/Machintosh/data/db
-  ```
+```
 
 - 2. 开启数据库服务器:
 
-  ```js
-  // 开启
+```shell
+  #  开启
   sudo mongod
 
   else ....
-  ------------ 指定路径分割线 -----------
-  // 指定路径开启
-  1. 创建一个目录: mongodb-data
-  2. sudo mongod --dbpath [把文件夹直接拖进来]
+  # ------------ 指定路径分割线 -----------
+  # // 指定路径开启
+  # 1. 创建一个目录: mongodb-data
+  sudo mongod --dbpath # [把文件夹直接拖进来]
 
-  //开启成功:--- 正确分割线-----------
-   : waiting for connections on port 27017
-  --------------错误分割线-----------
-  //千万要注意: 一定要正常退出,,不要直接 X 掉终端,,没用的,,下次开开启开不了,用也用不了
-  // 如果报错已经在 use : addr already use, 说明就是
-  // 查看当前进程
+  # //开启成功:--- 正确分割线-----------
+  #  : waiting for connections on port 27017
+  # --------------错误分割线-----------
+  # //千万要注意: 一定要正常退出,,不要直接 X 掉终端,,没用的,,下次开开启开不了,用也用不了
+  # // 如果报错已经在 use : addr already use, 说明就是
+  # // 查看当前进程
   ps -aef | grep mongo
   //显示
   501 10576 6955 0 5:44下午 ttys002   0:00.0 grep mongo
@@ -162,7 +162,7 @@ mongo --host 127.0.0.1 --port 27017
   sudo kill 6955
   // 杀到后,找到 MacintoshHD 的 data/db 里面全部删掉,再次重启:
   sudo mongod 即可
-  ```
+```
 
 - 3. **[ 切记 ]**停止服务：
 
@@ -300,9 +300,9 @@ show collections
 - 满足一个条件的多个数据修改,还要在后面添加 ,`{multi:true}`
 
 ```js
-db.aaa.update({ age: 18 }, { $set: { name: 'xiaomage' } }, { multi: true })
+db.aaa.update({ age: 18 }, { $set: { name: 'xiaomage' } }, { multi: true });
 
-WriteResult({ nMatched: 2, nUpserted: 0, nModified: 2 }) //更新成功
+WriteResult({ nMatched: 2, nUpserted: 0, nModified: 2 }); //更新成功
 ```
 
 #### 4.4 删除
@@ -325,9 +325,9 @@ WriteResult({ nMatched: 2, nUpserted: 0, nModified: 2 }) //更新成功
 
 1. Quick Start 参考文档:
 
-   - [MongoDB - Quick Start](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/) —>找: Connect to MongoDB
-   - [npmj- Quick Start](https://www.npmjs.com/package/mongodb#connecting-to-mongodb) —> 找: Connecting to MongoDB
-   - [菜鸟教程](http://www.runoob.com/mongodb/mongodb-remove.html)
+   ![MongoDB - Quick Start](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/) —>找: Connect to MongoDB
+   ![npmj- Quick Start](https://www.npmjs.com/package/mongodb#connecting-to-mongodb) —> 找: Connecting to MongoDB
+   ![菜鸟教程](http://www.runoob.com/mongodb/mongodb-remove.html)
 
 2. 安装:
 
@@ -349,26 +349,26 @@ WriteResult({ nMatched: 2, nUpserted: 0, nModified: 2 }) //更新成功
 
    ```js
    //1. 加载 mongodb
-   var mongodb = require('mongodb')
+   var mongodb = require('mongodb');
 
    //2. 获取一个连接数据库的对象 MongoClient
-   var MongoClient = mongodb.MongoClient
+   var MongoClient = mongodb.MongoClient;
 
    //3. 连接字符换   连接到数据库进程 数据db01里
    // var url = 'http://127.0.0.1....'
-   var url = 'mongodb://127.0.0.1:27017'
+   var url = 'mongodb://127.0.0.1:27017';
 
    //4. 开始连接
    /// [注意]一定要注意,终端开启数据库服务器 sudo mongod
    MongoClient.connect(url, function (err, client) {
      if (err) {
-       throw err
+       throw err;
      }
-     console.log('连接上了数据库')
+     console.log('连接上了数据库');
 
      //5. 一定要关闭
-     client.close()
-   })
+     client.close();
+   });
    ```
 
    ​
@@ -386,22 +386,19 @@ WriteResult({ nMatched: 2, nUpserted: 0, nModified: 2 }) //更新成功
 // [注意1] 插入数据是异步的  所以要有个回调函数
 // [注意2] insert() 在 3.2版本之后,已经慢慢被废弃,插入单条的话
 //    使用 insetOne()
-db.collection('heros').insertOne(
-  { name: '星哥', age: 18 },
-  function (err, doc) {
-    if (err) {
-      throw err
-    }
-    console.log(doc)
-    //{ result: { ok: 1, n: 1 },
-    // ops: [ { name: '星哥', age: 18, _id: 59fd23fd2ae663070b66a4f7 } ],
-    // insertedCount: 1,
-    // insertedIds: [ 59fd23fd2ae663070b66a4f7 ] }
-
-    //[注意] 取值之后,一定要记得关闭数据库
-    db.close()
+db.collection('heros').insertOne({ name: '星哥', age: 18 }, function (err, doc) {
+  if (err) {
+    throw err;
   }
-)
+  console.log(doc);
+  //{ result: { ok: 1, n: 1 },
+  // ops: [ { name: '星哥', age: 18, _id: 59fd23fd2ae663070b66a4f7 } ],
+  // insertedCount: 1,
+  // insertedIds: [ 59fd23fd2ae663070b66a4f7 ] }
+
+  //[注意] 取值之后,一定要记得关闭数据库
+  db.close();
+});
 ```
 
 ​
@@ -423,13 +420,13 @@ db.collection('heros').insertOne(
        [
          { name: '虎哥', age: 80 },
          { name: '达达', age: 18 },
-         { name: '香香', age: 19 }
+         { name: '香香', age: 19 },
        ],
        function (err, doc) {
          if (err) {
-           throw err
+           throw err;
          }
-         console.log(doc)
+         console.log(doc);
          // { result: { ok: 1, n: 3 },
          // ops:
          //  [ { name: '虎哥', age: 80, _id: 59fd24e2b28af807465884cc },
@@ -441,9 +438,9 @@ db.collection('heros').insertOne(
          //    59fd24e2b28af807465884cd,
          //    59fd24e2b28af807465884ce ] }
          //[注意] 取值之后,一定要记得关闭数据库
-         client.close()
-       }
-     )
+         client.close();
+       },
+     );
    ```
 
    ​
@@ -491,15 +488,15 @@ db.collection('heros').insertOne(
      .collection(集合名称)
      .findOne({ age: 16 }, function (err, doc) {
        if (err) {
-         throw err
+         throw err;
        }
-       console.log(doc)
+       console.log(doc);
        // 打印的是一个对象
        //{ _id: 59fd259fc83c80e709dff4dc, name: '老宫', age: 16 }
 
        // 异步里关闭数据库
-       db.close()
-     })
+       db.close();
+     });
    ```
 
    ​
@@ -524,15 +521,15 @@ db.collection('heros').insertOne(
      .collection('heros')
      .updateOne({ age: 16 }, { $set: { name: '丹丹' } }, function (err, doc) {
        if (err) {
-         throw err
+         throw err;
        }
 
-       console.log(doc)
+       console.log(doc);
 
-       console.log('ok')
+       console.log('ok');
 
-       client.close()
-     })
+       client.close();
+     });
    ```
 
    ​
@@ -553,14 +550,14 @@ db.collection('heros').insertOne(
      .collection('heros')
      .deleteOne({ age: 16 }, function (err, doc) {
        if (err) {
-         throw err
+         throw err;
        }
 
-       console.log('删除成功')
+       console.log('删除成功');
 
        //6. 关闭数据库
-       client.close()
-     })
+       client.close();
+     });
    ```
 
 ### 十一、权限管理

@@ -1,6 +1,7 @@
 ---
 title: window.btoa 和 window.atob方法实现编码与解码
-tag: 项目总结
+tag:
+  - 项目总结
 date: 2019-04-08
 category:
   - 开发日志
@@ -8,10 +9,10 @@ category:
 
 文章目录
 
-- [window.atob() 与 window.btoa()](#articleHeader0)
-- [Unicode 字符串](#articleHeader1)
-- [decodeURIComponent() 与 encodeURIComponent()](#articleHeader2)
-- [escape() 与 unescape() 方法](#articleHeader3)
+- window.atob() 与 window.btoa()
+- Unicode 字符串
+- decodeURIComponent() 与 encodeURIComponent()
+- escape() 与 unescape() 方法
 
 ### window.atob() 与 window.btoa()
 
@@ -34,13 +35,18 @@ var decodedData = window.atob(encodedData); // 解码
 
 在各浏览器中,使用  `window.btoa`  对 Unicode 字符串进行编码都会触发一个字符越界的异常.
 
-先把 Unicode 字符串转换为 UTF-8 编码,可以解决这个问题, 代码来自[Johan Sundstr?m](http://ecmanaut.blogspot.com/2006/07/encoding-decoding-utf8-in-javascript.html 'http://ecmanaut.blogspot.com/2006/07/encoding-decoding-utf8-in-javascript.html'):
+先把 Unicode 字符串转换为 UTF-8 编码,可以解决这个问题, 代码来自[Johan Sundstr?m](http://ecmanaut.blogspot.com/2006/07/encoding-decoding-utf8-in-javascript.html):
 
-function utf8_to_b64( str ) { return window.btoa(unescape(encodeURIComponent( str )));
-} function b64_to_utf8( str ) { return decodeURIComponent(escape(window.atob( str )));
+```js
+function utf8_to_b64(str) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+function b64_to_utf8(str) {
+  return decodeURIComponent(escape(window.atob(str)));
 } // Usage:
 utf8_to_b64('? à la mode'); // "4pyTIMOgIGxhIG1vZGU="
 b64_to_utf8('4pyTIMOgIGxhIG1vZGU='); // "? à la mode" //译者注:在 js 引擎内部,encodeURIComponent(str)相当于 escape(unicodeToUTF8(str)) //所以可以推导出 unicodeToUTF8(str)等同于 unescape(encodeURIComponent(str))
+```
 
 ### decodeURIComponent() 与 encodeURIComponent()
 
@@ -50,8 +56,12 @@ decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进�
 
 下面给个例子：
 
-<script type="text/javascript">  var test1="http://www.w3school.com.cn/My first/" document.write(encodeURIComponent(test1)\+ "<br />")
-document.write(decodeURIComponent(test1)) </script>
+```html
+<script type="text/javascript">
+    var test1="http://www.w3school.com.cn/My first/" document.write(encodeURIComponent(test1)\+ "<br />")
+  document.write(decodeURIComponent(test1))
+</script>
+```
 
 输出的结果：
 
@@ -60,11 +70,15 @@ http://www.w3school.com.cn/My first/
 
 下个例子， encodeURIComponent() 对 URI 进行编码：
 
-<script type="text/javascript"> document.write(encodeURIComponent("http://www.w3school.com.cn"))
-document.write("<br />")
-document.write(encodeURIComponent("http://www.w3school.com.cn/p 1/"))
-document.write("<br />")
-document.write(encodeURIComponent(",/?:@&=+$#")) </script>
+```html
+<script type="text/javascript">
+  document.write(encodeURIComponent('http://www.w3school.com.cn'));
+  document.write('<br />');
+  document.write(encodeURIComponent('http://www.w3school.com.cn/p 1/'));
+  document.write('<br />');
+  document.write(encodeURIComponent(',/?:@&=+$#'));
+</script>
+```
 
 输出结果：
 

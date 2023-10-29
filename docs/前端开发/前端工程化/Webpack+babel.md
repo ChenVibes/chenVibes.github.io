@@ -72,10 +72,10 @@ category: 前端开发
   entry 入口的配置说明：
   https://doc.webpack-china.org/concepts/entry-points
 */
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
 // 导入 自动生成页面、自动引入js、css文件 插件
-const htmlWebpackPlugin = require('html-webpack-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // 入口文件
   entry: path.join(__dirname, 'src/js/index.js'),
@@ -83,9 +83,9 @@ module.exports = {
   // 输出文件
   output: {
     path: path.join(__dirname, './dist'), // 输出文件的路径
-    filename: 'bundle.js' // 输出文件的名称
-  }
-}
+    filename: 'bundle.js', // 输出文件的名称
+  },
+};
 ```
 
 ##### webpack-dev-server
@@ -158,7 +158,7 @@ plugins: [
 
 ```js
 /* webpack.config.js */
-const htmlWebpackPlugin = require('html-webpack-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 // ...
 plugins: [
@@ -166,9 +166,9 @@ plugins: [
     // 模板页面路径
     template: path.join(__dirname, './index.html'),
     // 在内存中生成页面路径，默认值为：index.html
-    filename: 'index.html'
-  })
-]
+    filename: 'index.html',
+  }),
+];
 ```
 
 ##### Loaders（加载器）
@@ -193,7 +193,7 @@ plugins: [
 /* index.js */
 
 // 导入 css 文件
-import './css/app.css'
+import './css/app.css';
 
 /* webpack.config.js */
 
@@ -203,8 +203,8 @@ module: {
   rules: [
     // test 用来配置匹配文件规则（正则）
     // use  是一个数组，按照从后往前的顺序执行加载
-    { test: /\.css$/, use: ['style-loader', 'css-loader'] }
-  ]
+    { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+  ];
 }
 ```
 
@@ -225,9 +225,9 @@ module: {
   rules: [
     {
       test: /\.(scss|sass)$/,
-      use: ['style-loader', 'css-loader', 'sass-loader']
-    }
-  ]
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+    },
+  ];
 }
 ```
 
@@ -246,8 +246,8 @@ module: {
     { test: /\.(jpg|png|gif|jpeg)$/, use: 'url-loader' },
 
     // 打包 字体文件
-    { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' }
-  ]
+    { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' },
+  ];
 }
 ```
 
@@ -271,12 +271,12 @@ module: {
         {
           loader: 'url-loader',
           options: {
-            limit: 8192
-          }
-        }
-      ]
-    }
-  ]
+            limit: 8192,
+          },
+        },
+      ],
+    },
+  ];
 }
 ```
 
@@ -291,9 +291,10 @@ module: {
 
 #### babel(js 文件处理)
 
-- [babel](https://babeljs.io/)
-- [es2015-loose](http://2ality.com/2015/12/babel6-loose-mode.html)
-- [babel 全家桶](https://github.com/brunoyang/blog/issues/20)
+![babel](https://babeljs.io/)
+![es2015-loose](http://2ality.com/2015/12/babel6-loose-mode.html)
+![babel 全家桶](https://github.com/brunoyang/blog/issues/20)
+
 - 安装：npm i -D babel-core babel-loader
 - 安装：npm i -D babel-preset-env
 
@@ -307,8 +308,8 @@ module: {
 module: {
   rules: [
     // exclude 排除，不需要编译的目录，提高编译速度
-    { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }
-  ]
+    { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+  ];
 }
 ```
 
@@ -421,6 +422,6 @@ module.exports = {
 // 判断浏览器是否兼容 padStart 这个 API
 if (!String.prototype.padStart) {
   // 如果不兼容, 就自己模拟 padStart的功能实现一份
-  String.prototype.padStart = function padStart(targetLength, padString) {}
+  String.prototype.padStart = function padStart(targetLength, padString) {};
 }
 ```

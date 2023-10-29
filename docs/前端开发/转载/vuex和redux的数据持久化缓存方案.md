@@ -1,10 +1,10 @@
 ---
-    title: vuex和redux的数据持久化缓存方案
-    tag: 转载
-    date: 2019-06-15
+    icon: pen-to-square
+    date: 2019-12-19
     category: 
-      - 前端开发
-
+      - 转载
+    tag:
+      - 随笔
 ---
 
 # vuex

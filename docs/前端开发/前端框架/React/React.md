@@ -12,8 +12,8 @@ category:
 
 - 用来构建 UI 的 JavaScript 库
 - React 不是一个 MVC 框架，仅仅是视图（V）层的库
-- [React 官网](https://facebook.github.io/react/)
-- [React 中文文档](https://doc.react-china.org/)
+  ![React 官网](https://facebook.github.io/react/)
+  ![React 中文文档](https://doc.react-china.org/)
 
 #### 2.特点
 
@@ -21,10 +21,7 @@ category:
 - 2 性能高的让人称赞：通过 `diff算法` 和 `虚拟DOM` 实现视图的高效更新
 - 3 HTML 仅仅是个开始
 
-```html
-> JSX --TO--> EveryThing - JSX --> HTML - JSX --> native
-ios或android中的组件（XML） - JSX --> VR - JSX --> 物联网
-```
+> JSX --TO--> EveryThing - JSX --> HTML - JSX --> native ios 或 android 中的组件（XML） - JSX --> VR - JSX --> 物联网
 
 #### 3.为什么要用 React
 
@@ -44,8 +41,8 @@ ios或android中的组件（XML） - JSX --> VR - JSX --> 物联网
 
 > React 将 DOM 抽象为虚拟 DOM，虚拟 DOM 其实就是用一个对象来描述 DOM，通过对比前后两个对象的差异，最终只把变化的部分重新渲染，提高渲染的效率
 
-- [如何实现一个 Virtual DOM 算法](https://github.com/livoras/blog/issues/13)
-- [理解 Virtual DOM](https://www.zhihu.com/question/31809713)
+![如何实现一个 Virtual DOM 算法](https://github.com/livoras/blog/issues/13)
+![理解 Virtual DOM](https://www.zhihu.com/question/31809713)
 
 ##### VituralDOM 的处理方式
 
@@ -55,21 +52,18 @@ ios或android中的组件（XML） - JSX --> VR - JSX --> 物联网
 
 ##### Diff 算法
 
-- [Reconciliation diff](https://facebook.github.io/react/docs/reconciliation.html)
-- [diff 算法 - 中文文档](https://doc.react-china.org/docs/reconciliation.html)
-- [不可思议的 react diff](https://zhuanlan.zhihu.com/p/20346379)
-- [React diff 算法](https://github.com/zmmbreeze/blog/issues/9)
+![Reconciliation diff](https://facebook.github.io/react/docs/reconciliation.html)
+![diff 算法 - 中文文档](https://doc.react-china.org/docs/reconciliation.html)
+![不可思议的 react diff](https://zhuanlan.zhihu.com/p/20346379)
+![React diff 算法](https://github.com/zmmbreeze/blog/issues/9)
 
 > 当你使用 React 的时候，在某个时间点 render() 函数创建了一棵 React 元素树，
 > 在下一个 state 或者 props 更新的时候，render() 函数将创建一棵新的 React 元素树，
 > React 将对比这两棵树的不同之处，计算出如何高效的更新 UI（只更新变化的地方）
 
-```html
-了解：
-有一些解决将一棵树转换为另一棵树的最小操作数算法问题的通用方案。然而，树中元素个数为n，最先进的算法
-的时间复杂度为O(n3) 。
-如果直接使用这个算法，在React中展示1000个元素则需要进行10亿次的比较。这操作太过昂贵，相反，React基于两点假设，实现了一个O(n)算法，提升性能：
-```
+了解： 有一些解决将一棵树转换为另一棵树的最小操作数算法问题的通用方案。然而，树中元素个数为 n，最先进的算法
+的时间复杂度为 O(n3) 。
+如果直接使用这个算法，在 React 中展示 1000 个元素则需要进行 10 亿次的比较。这操作太过昂贵，相反，React 基于两点假设，实现了一个 O(n)算法，提升性能：
 
 - React 中有两种假定：
   - 1 **两个不同类型的元素会产生不同的树**
@@ -79,18 +73,18 @@ ios或android中的组件（XML） - JSX --> VR - JSX --> 物联网
 
 - 如果两棵树的根元素类型不同，React 会销毁旧树，创建新树
 
-```js
-// 旧树
+```jsx
+//  旧树
 <div>
   <Counter />
 </div>
 
-// 新树
+//  新树
 <span>
   <Counter />
 </span>
 
-执行过程：destory Counter -> insert Counter
+// 执行过程：destory Counter -> insert Counter
 ```
 
 ### Diff 算法的说明 - 2
@@ -98,81 +92,81 @@ ios或android中的组件（XML） - JSX --> VR - JSX --> 物联网
 - 对于类型相同的 React DOM 元素，React 会对比两者的属性是否相同，只更新不同的属性
 - 当处理完这个 DOM 节点，React 就会递归处理子节点。
 
-```js
-// 旧
+```jsx
+//  旧
 <div className="before" title="stuff" />
-// 新
+//  新
 <div className="after" title="stuff" />
-只更新：className 属性
+// 只更新：className 属性
 
-// 旧
+//  旧
 <div style={{color: 'red', fontWeight: 'bold'}} />
-// 新
+//  新
 <div style={{color: 'green', fontWeight: 'bold'}} />
-只更新：color属性
+// 只更新：color属性
 ```
 
 ### Diff 算法的说明 - 3
 
 - 1 当在子节点的后面添加一个节点，这时候两棵树的转化工作执行的很好
 
-```js
-// 旧
+```html
+<!-- 旧 -->
 <ul>
   <li>first</li>
   <li>second</li>
 </ul>
 
-// 新
+<!-- 新 -->
 <ul>
   <li>first</li>
   <li>second</li>
   <li>third</li>
 </ul>
 
-执行过程：
-React会匹配新旧两个<li>first</li>，匹配两个<li>second</li>，然后添加 <li>third</li> tree
+<!-- 执行过程：
+ React会匹配新旧两个<li>first</li>，匹配两个<li>second</li>，然后添加 <li>third</li> tree -->
 ```
 
 - 2 但是如果你在开始位置插入一个元素，那么问题就来了：
 
-```js
-// 旧
+```html
+<!--  旧 -->
 <ul>
   <li>Duke</li>
   <li>Villanova</li>
 </ul>
 
-// 新
+<!--  新 -->
 <ul>
   <li>Connecticut</li>
   <li>Duke</li>
   <li>Villanova</li>
 </ul>
 
-执行过程：
-React将改变每一个子节点，而非保持 <li>Duke</li> 和 <li>Villanova</li> 不变
+<!-- 执行过程：
+React将改变每一个子节点，而非保持 <li>Duke</li> 和 <li>Villanova</li> 不变 -->
 ```
 
 ### key 属性
 
 > 为了解决以上问题，React 提供了一个 key 属性。当子节点带有 key 属性，React 会通过 key 来匹配原始树和后来的树。
 
-```js
-// 旧
+```html
+<!-- 旧 -->
 <ul>
   <li key="2015">Duke</li>
   <li key="2016">Villanova</li>
 </ul>
 
-// 新
+<!-- 新 -->
 <ul>
   <li key="2014">Connecticut</li>
   <li key="2015">Duke</li>
   <li key="2016">Villanova</li>
 </ul>
-执行过程：
-现在 React 知道带有key '2014' 的元素是新的，对于 '2015' 和 '2016' 仅仅移动位置即可
+<!-- 执行过程：
+现在 React 知道带有key '2014' 的元素是新的，对于 '2015' 和 '2016' 仅仅移动位置即可 -->
 ```
 
 - 说明：key 属性在 React 内部使用，但不会传递给你的组件
@@ -194,22 +188,22 @@ React将改变每一个子节点，而非保持 <li>Duke</li> 和 <li>Villanova<
 - `react`：react 是 React 库的入口点
 - `react-dom`：提供了针对 DOM 的方法，比如：把创建的虚拟 DOM，渲染到页面上
 
-```js
+```jsx
 // 1. 导入 react
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // 2. 创建 虚拟DOM
 const divVD = React.createElement(
   'div',
   {
-    title: 'hello react'
+    title: 'hello react',
   },
-  'Hello React！！！'
-)
+  'Hello React！！！',
+);
 
 // 3. 渲染
-ReactDOM.render(divVD, document.getElementById('app'))
+ReactDOM.render(divVD, document.getElementById('app'));
 ```
 
 ### API 说明
@@ -217,7 +211,7 @@ ReactDOM.render(divVD, document.getElementById('app'))
 - createElement()：知道即可
 - render()
 
-```js
+```jsx
 // https://facebook.github.io/react/docs/react-api.html
 // 作用：根据指定的参数，创建react对象
 //
@@ -230,21 +224,21 @@ ReactDOM.render(divVD, document.getElementById('app'))
 // 第三个参数：当前元素的子元素
 //  类型：string 或者 createElement() 的返回值
 // 返回值：react对象
-React.createElement(type, [props], [...children])
+React.createElement(type, [props], [...children]);
 
 // https://facebook.github.io/react/docs/react-dom.html
 // 作用：渲染react元素
 // 第一个参数：指定要渲染的react对象
 // 第二个参数：指定渲染到页面中的容器（DOM对象）
 // 第三个参数：回调函数
-ReactDOM.render(element, container)
+ReactDOM.render(element, container);
 ```
 
 ### createElement()的问题
 
 - 说明：`createElement()`方式，代码编写不友好，太复杂
 
-```js
+```jsx
 var dv = React.createElement(
   'div',
   { className: 'shopping-list' },
@@ -253,11 +247,11 @@ var dv = React.createElement(
     'ul',
     null,
     React.createElement('li', null, 'Instagram'),
-    React.createElement('li', null, 'WhatsApp')
-  )
-)
+    React.createElement('li', null, 'WhatsApp'),
+  ),
+);
 // 渲染
-ReactDOM.render(dv, document.getElementById('app'))
+ReactDOM.render(dv, document.getElementById('app'));
 ```
 
 ### JSX 的基本使用
@@ -314,10 +308,8 @@ ReactDOM.render(dv, document.getElementById('app'))
 - 2 通过 class 创建（有状态组件）
 
 ```html
-函数式组件 和 class 组件的使用场景说明： 1
-如果一个组件仅仅是为了展示数据，那么此时就可以使用 函数组件 2
-如果一个组件中有一定业务逻辑，需要操作数据，那么就需要使用 class
-创建组件，因此，此时需要使用 state
+函数式组件 和 class 组件的使用场景说明： 1 如果一个组件仅仅是为了展示数据，那么此时就可以使用 函数组件 2
+如果一个组件中有一定业务逻辑，需要操作数据，那么就需要使用 class 创建组件，因此，此时需要使用 state
 ```
 
 #### JavaScript 函数创建
@@ -338,10 +330,10 @@ function Welcome(props) {
         <li>WhatsApp</li>
       </ul>
     </div>
-  )
+  );
 }
 
-ReactDOM.render(<Welcome name="jack" />, document.getElementById('app'))
+ReactDOM.render(<Welcome name="jack" />, document.getElementById('app'));
 ```
 
 #### class 创建
@@ -352,7 +344,7 @@ ReactDOM.render(<Welcome name="jack" />, document.getElementById('app'))
 ```js
 class ShoppingList extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -364,7 +356,7 @@ class ShoppingList extends React.Component {
           <li>WhatsApp</li>
         </ul>
       </div>
-    )
+    );
   }
 }
 ```
@@ -397,7 +389,7 @@ ReactDOM.reander(<Hello username="zs" age={20}></Hello>, ......)
 
 // 1. 引入React模块
 // 由于 JSX 编译后会调用 React.createElement 方法，所以在你的 JSX 代码中必须首先声明 React 变量。
-import React from 'react'
+import React from 'react';
 
 // 2. 使用function构造函数创建组件
 function Hello2(props) {
@@ -407,15 +399,15 @@ function Hello2(props) {
       <h1>这是大大的H1标签，我大，我骄傲！！！</h1>
       <h6>这是小小的h6标签，我小，我傲娇！！！</h6>
     </div>
-  )
+  );
 }
 
 // 3. 导出组件
-export default Hello2
+export default Hello2;
 
 // app.js
 // 使用组件：
-import Hello2 from './components/Hello2'
+import Hello2 from './components/Hello2';
 ```
 
 ## props 和 state
@@ -433,16 +425,16 @@ import Hello2 from './components/Hello2'
 // 返回值：react元素
 function Welcome(props) {
   // 返回的 react元素中必须只有一个根元素
-  return <div>hello, {props.name}</div>
+  return <div>hello, {props.name}</div>;
 }
 
 class Welcome extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
-    return <h1>Hello, {this.props.name}</h1>
+    return <h1>Hello, {this.props.name}</h1>;
   }
 }
 ```
@@ -461,12 +453,12 @@ class Welcome extends React.Component {
 class Hello extends React.Component {
   constructor() {
     this.state = {
-      gender: 'male'
-    }
+      gender: 'male',
+    };
   }
 
   render() {
-    return <div>性别：{this.state.gender}</div>
+    return <div>性别：{this.state.gender}</div>;
   }
 }
 ```
@@ -475,24 +467,20 @@ class Hello extends React.Component {
 
 ```js
 // JSX
-const element = <h1 className="greeting">Hello, world!</h1>
+const element = <h1 className="greeting">Hello, world!</h1>;
 
 // JSX -> createElement
-const element = React.createElement(
-  'h1',
-  { className: 'greeting' },
-  'Hello, world!'
-)
+const element = React.createElement('h1', { className: 'greeting' }, 'Hello, world!');
 
 // React elements: 使用对象的形式描述页面结构
 // Note: 这是简化后的对象结构
 const element = {
   type: 'h1',
   props: {
-    className: 'greeting'
+    className: 'greeting',
   },
-  children: ['Hello, world']
-}
+  children: ['Hello, world'],
+};
 ```
 
 ## 评论列表案例
@@ -537,12 +525,12 @@ import '../css/comment.css'
 
 ## 相关文章
 
-- [React 数据流和组件间的沟通总结](http://www.cnblogs.com/tim100/p/6050514.html)
-- [单向数据流和双向绑定各有什么优缺点？](https://segmentfault.com/q/1010000005876655/a-1020000005876751)
-- [怎么更好的理解虚拟 DOM?](https://www.zhihu.com/question/29504639?sort=created)
-- [React 中文文档](https://discountry.github.io/react/)
-- [React 源码剖析系列 － 不可思议的 react diff](http://blog.csdn.net/yczz/article/details/49886061)
-- [深入浅出 React（四）：虚拟 DOM Diff 算法解析](http://www.infoq.com/cn/articles/react-dom-diff?from=timeline&isappinstalled=0)
+![React 数据流和组件间的沟通总结](http://www.cnblogs.com/tim100/p/6050514.html)
+![单向数据流和双向绑定各有什么优缺点？](https://segmentfault.com/q/1010000005876655/a-1020000005876751)
+![怎么更好的理解虚拟 DOM?](https://www.zhihu.com/question/29504639?sort=created)
+![React 中文文档](https://discountry.github.io/react/)
+![React 源码剖析系列 － 不可思议的 react diff](http://blog.csdn.net/yczz/article/details/49886061)
+![深入浅出 React（四）：虚拟 DOM Diff 算法解析](http://www.infoq.com/cn/articles/react-dom-diff?from=timeline&isappinstalled=0)
 
 ## ES6 中 class 关键字的使用
 
@@ -550,20 +538,20 @@ import '../css/comment.css'
 - 1 它是用来定义类的，是 ES6 中实现面向对象编程的新方式
 - 2 使用`static`关键字定义静态属性
 - 3 使用`constructor`构造函数，创建实例属性
-- [class 关键字](http://es6.ruanyifeng.com/#docs/class)
+  ![class 关键字](http://es6.ruanyifeng.com/#docs/class)
 
 ```js
 class Person {
   constructor(age) {
     // 实例属性
-    this.age = age
+    this.age = age;
   }
 }
 
 // 静态属性
-Person.staticName = '静态属性'
+Person.staticName = '静态属性';
 
-const p = new Person(19)
+const p = new Person(19);
 ```
 
 - 在 class 中定义方法
@@ -586,10 +574,10 @@ static wangwang () {
 class American extends Person {
   constructor() {
     // 必须调用super(), super表示父类的构造函数
-    super()
+    super();
 
-    this.skin = 'white'
-    this.eyeColor = 'white'
+    this.skin = 'white';
+    this.eyeColor = 'white';
   }
 }
 ```
@@ -604,10 +592,10 @@ class American extends Person {
 
 - 通过这个函数，能够让开发人员的代码，参与到组件的生命周期中。也就是说，通过钩子函数，就可以控制组件的行为
 
-- [react component](https://doc.react-china.org/docs/react-component.html)
-- [React Native 中组件的生命周期](http://www.race604.com/react-native-component-lifecycle/)
-- [React 生命周期的管理艺术](https://zhuanlan.zhihu.com/p/20312691?refer=purerender)
-- [智能组件和木偶组件](http://www.jianshu.com/p/9e427e04135e)
+![react component](https://doc.react-china.org/docs/react-component.html)
+![React Native 中组件的生命周期](http://www.race604.com/react-native-component-lifecycle/)
+![React 生命周期的管理艺术](https://zhuanlan.zhihu.com/p/20312691?refer=purerender)
+![智能组件和木偶组件](http://www.jianshu.com/p/9e427e04135e)
 
 ### 组件生命周期函数总览
 
@@ -640,25 +628,25 @@ class American extends Person {
 
 - 作用：1 获取 props 2 初始化 state
 - 说明：通过 `constructor()` 的参数`props`获取
-- [设置 state 和 props](https://doc.react-china.org/docs/react-without-es6.html)
+  ![设置 state 和 props](https://doc.react-china.org/docs/react-without-es6.html)
 
 ```js
 class Greeting extends React.Component {
   constructor(props) {
     // 获取 props
-    super(props)
+    super(props);
     // 初始化 state
     this.state = {
-      count: props.initCount
-    }
+      count: props.initCount,
+    };
   }
 }
 
 // 初始化 props
 // 语法：通过静态属性 defaultProps 来初始化props
 Greeting.defaultProps = {
-  initCount: 0
-}
+  initCount: 0,
+};
 ```
 
 #### componentWillMount()
@@ -797,50 +785,50 @@ componentDidUpdate(prevProps, prevState) {
 - **`React.createClass({})` 方式，创建有状态组件，该方式已经被废弃！！！**
 - 通过导入 `require('create-react-class')`，可以在不适用 ES6 的情况下，创建有状态组件
 - getDefaultProps() 和 getInitialState() 方法：是 `createReactClass()` 方式创建组件中的两个函数
-- [React without ES6](https://reactjs.org/docs/react-without-es6.html#declaring-default-props)
-- [React 不适用 ES6](https://doc.react-china.org/docs/react-without-es6.html)
+  ![React without ES6](https://reactjs.org/docs/react-without-es6.html#declaring-default-props)
+  ![React 不适用 ES6](https://doc.react-china.org/docs/react-without-es6.html)
 
 ```js
-var createReactClass = require('create-react-class')
+var createReactClass = require('create-react-class');
 var Greeting = createReactClass({
   // 初始化 props
   getDefaultProps: function () {
-    console.log('getDefaultProps')
+    console.log('getDefaultProps');
     return {
-      title: 'Basic counter!!!'
-    }
+      title: 'Basic counter!!!',
+    };
   },
 
   // 初始化 state
   getInitialState: function () {
-    console.log('getInitialState')
+    console.log('getInitialState');
     return {
-      count: 0
-    }
+      count: 0,
+    };
   },
 
   render: function () {
-    console.log('render')
+    console.log('render');
     return (
       <div>
         <h1>{this.props.title}</h1>
         <div>{this.state.count}</div>
         <input type="button" value="+" onClick={this.handleIncrement} />
       </div>
-    )
+    );
   },
 
   handleIncrement: function () {
-    var newCount = this.state.count + 1
-    this.setState({ count: newCount })
+    var newCount = this.state.count + 1;
+    this.setState({ count: newCount });
   },
 
   propTypes: {
-    title: React.PropTypes.string
-  }
-})
+    title: React.PropTypes.string,
+  },
+});
 
-ReactDOM.render(React.createElement(Greeting), document.getElementById('app'))
+ReactDOM.render(React.createElement(Greeting), document.getElementById('app'));
 ```
 
 ## state 和 setState
@@ -852,7 +840,7 @@ ReactDOM.render(React.createElement(Greeting), document.getElementById('app'))
 ```js
 // 修改state（不推荐使用）
 // https://facebook.github.io/react/docs/state-and-lifecycle.html#do-not-modify-state-directly
-this.state.test = '这样方式，不会重新渲染组件'
+this.state.test = '这样方式，不会重新渲染组件';
 ```
 
 ```js
@@ -908,12 +896,7 @@ componentWillMount() {
 - 例如：`onClick` 用来绑定单击事件
 
 ```js
-<input
-  type="button"
-  value="触发单击事件"
-  onClick={this.handleCountAdd}
-  onMouseEnter={this.handleMouseEnter}
-/>
+<input type="button" value="触发单击事件" onClick={this.handleCountAdd} onMouseEnter={this.handleMouseEnter} />
 ```
 
 ### JS 原生方式 - 知道即可
@@ -1000,8 +983,8 @@ handleBtnClick(arg1, arg2) {
 
 ## 受控组件
 
-- [表单和受控组件](https://doc.react-china.org/docs/forms.html)
-- [非受控组件](https://doc.react-china.org/docs/uncontrolled-components.html)
+![表单和受控组件](https://doc.react-china.org/docs/forms.html)
+![非受控组件](https://doc.react-china.org/docs/uncontrolled-components.html)
 
 > 在 HTML 当中，像`input`,`textarea`和`select`这类表单元素会维持自身状态，并根据用户输入进行更新。
 > 在 React 中，可变的状态通常保存在组件的`state`中，并且只能用 `setState()` 方法进行更新.  
@@ -1018,33 +1001,33 @@ handleBtnClick(arg1, arg2) {
 
 ```js
 // 模拟实现文本框数据的双向绑定
-;<input type="text" value={this.state.msg} onChange={this.handleTextChange} />
+<input type="text" value={this.state.msg} onChange={this.handleTextChange} />;
 
 // 当文本框内容改变的时候，触发这个事件，重新给state赋值
-handleTextChange = event => {
-  console.log(event.target.value)
+handleTextChange = (event) => {
+  console.log(event.target.value);
 
   this.setState({
-    msg: event.target.value
-  })
-}
+    msg: event.target.value,
+  });
+};
 ```
 
 ## 评论列表案例
 
 ```js
-;[
+[
   { name: '小明', content: '沙发！！！' },
   { name: '小红', content: '小明，居然是你' },
-  { name: '小刚', content: '小明，放学你别走！！！' }
-]
+  { name: '小刚', content: '小明，放学你别走！！！' },
+];
 ```
 
 ## props 校验
 
 - 作用：通过类型检查，提高程序的稳定性
 - 命令：`npm i -S prop-types`
-- [类型校验文档](https://doc.react-china.org/docs/typechecking-with-proptypes.html)
+  ![类型校验文档](https://doc.react-china.org/docs/typechecking-with-proptypes.html)
 - 使用：给类提供一个静态属性 `propTypes`（对象），来约束`props`
 
 ```js
@@ -1065,17 +1048,16 @@ static propTypes = {
 - 数据流动方向：自上而下，也就是只能由父组件传递到子组件
 - 数据都是由父组件提供的，子组件想要使用数据，都是从父组件中获取的
 - 如果多个组件都要使用某个数据，最好将这部分共享的状态提升至他们最近的父组件当中进行管理
-- [单向数据流](https://discountry.github.io/react/docs/state-and-lifecycle.html)
-- [状态提升](https://discountry.github.io/react/docs/lifting-state-up.html)
+  ![单向数据流](https://discountry.github.io/react/docs/state-and-lifecycle.html)
+  ![状态提升](https://discountry.github.io/react/docs/lifting-state-up.html)
 
 ```html
-react中的单向数据流动： 1
-数据应该是从上往下流动的，也就是由父组件将数据传递给子组件 2
+react中的单向数据流动： 1 数据应该是从上往下流动的，也就是由父组件将数据传递给子组件 2
 数据应该是由父组件提供，子组件要使用数据的时候，直接从子组件中获取
-在我们的评论列表案例中：数据是由CommentList组件（父组件）提供的 子组件
-CommentItem 负责渲染评论列表，数据是由 父组件提供的 子组件 CommentForm
-负责获取用户输入的评论内容，最终也是把用户名和评论内容传递给了父组件，由父组件负责处理这些数据（
-把数据交给 CommentItem 由这个组件负责渲染 ）
+在我们的评论列表案例中：数据是由CommentList组件（父组件）提供的 子组件 CommentItem 负责渲染评论列表，数据是由
+父组件提供的 子组件 CommentForm
+负责获取用户输入的评论内容，最终也是把用户名和评论内容传递给了父组件，由父组件负责处理这些数据（ 把数据交给 CommentItem
+由这个组件负责渲染 ）
 ```
 
 ### 组件通讯
@@ -1088,7 +1070,7 @@ CommentItem 负责渲染评论列表，数据是由 父组件提供的 子组件
 - Vue 中的状态管理： Vuex
 - 简单来说，就是统一管理了项目中所有的数据，让数据变的可控
 
-- [组件通讯](https://segmentfault.com/a/1190000006831820)
+![组件通讯](https://segmentfault.com/a/1190000006831820)
 
 ### Context 特性
 
@@ -1101,38 +1083,38 @@ CommentItem 负责渲染评论列表，数据是由 父组件提供的 子组件
 class Grandfather extends React.Component {
   // 类型限制（必须），静态属性名称固定
   static childContextTypes = {
-    color: PropTypes.string.isRequired
-  }
+    color: PropTypes.string.isRequired,
+  };
 
   // 传递给孙子组件的数据
   getChildContext() {
     return {
-      color: 'red'
-    }
+      color: 'red',
+    };
   }
 
   render() {
-    return <Father></Father>
+    return <Father></Father>;
   }
 }
 
 class Child extends React.Component {
   // 类型限制，静态属性名字固定
   static contextTypes = {
-    color: PropTypes.string
-  }
+    color: PropTypes.string,
+  };
 
   render() {
     return (
       // 从上下文对象中获取爷爷组件传递过来的数据
       <h1 style={{ color: this.context.color }}>爷爷告诉文字是红色的</h1>
-    )
+    );
   }
 }
 
 class Father extends React.Component {
   render() {
-    return <Child></Child>
+    return <Child></Child>;
   }
 }
 ```
@@ -1148,7 +1130,8 @@ class Father extends React.Component {
 
 ## ant-design - UI 组件库
 
-- [antd](https://ant.design/index-cn)
+![antd](https://ant.design/index-cn)
+
 - 说明：借助 Ant Design 组件库快速搭建页面
 - 安装：`npm i -S antd`
 
@@ -1159,17 +1142,17 @@ class Father extends React.Component {
 
 ```js
 // 基础：导入 react 和 react-dom
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // 1. 导入 antd 组件
-import { DatePicker } from 'antd'
+import { DatePicker } from 'antd';
 
 // 2. 导入 样式
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.css';
 
 // 3. 使用 日期选择 组件
-ReactDOM.render(<DatePicker />, document.getElementById('app'))
+ReactDOM.render(<DatePicker />, document.getElementById('app'));
 ```
 
 ### 按需加载 - 推荐使用方式
@@ -1198,8 +1181,9 @@ ReactDOM.render(<DatePicker />, document.getElementById('app'))
 
 ## react-router
 
-- [react router 官网](https://reacttraining.com/react-router/)
-- [react router github](https://github.com/ReactTraining/react-router)
+![react router 官网](https://reacttraining.com/react-router/)
+![react router github](https://github.com/ReactTraining/react-router)
+
 - 安装：`npm i -S react-router-dom`
 
 ### 基本概念说明
@@ -1216,10 +1200,10 @@ ReactDOM.render(<DatePicker />, document.getElementById('app'))
 
 ```js
 // 1 导入组件
-import { HashRouter as Router, Link, Route } from 'react-router-dom'
+import { HashRouter as Router, Link, Route } from 'react-router-dom';
 
 // 2 使用 <Router>
-;<Router>
+<Router>
   // 3 设置 Link
   <Menu.Item key="1">
     <Link to="/">首页</Link>
@@ -1234,7 +1218,7 @@ import { HashRouter as Router, Link, Route } from 'react-router-dom'
   <Route exact path="/" component={HomeContainer}></Route>
   <Route path="/movie" component={MovieContainer}></Route>
   <Route path="/about" component={AboutContainer}></Route>
-</Router>
+</Router>;
 ```
 
 ### 注意点
@@ -1250,20 +1234,21 @@ import { HashRouter as Router, Link, Route } from 'react-router-dom'
 
 ```js
 // 配置路由参数
-;<Route path="/movie/:movieType"></Route>
+<Route path="/movie/:movieType"></Route>;
 
 // 获取路由参数
-const type = this.props.match.params.movieType
+const type = this.props.match.params.movieType;
 ```
 
 ### 路由跳转
 
-- [react router - history](https://reacttraining.com/react-router/web/api/history)
+![react router - history](https://reacttraining.com/react-router/web/api/history)
+
 - `history.push()` 方法用于在 JS 中实现页面跳转
 - `history.go(-1)` 用来实现页面的前进（1）和后退(-1)
 
 ```js
-this.props.history.push('/movie/movieDetail/' + movieId)
+this.props.history.push('/movie/movieDetail/' + movieId);
 ```
 
 ## fetch
@@ -1273,9 +1258,9 @@ this.props.history.push('/movie/movieDetail/' + movieId)
 
 ### fetch 基本使用
 
-- [fetch Response](https://developer.mozilla.org/zh-CN/docs/Web/API/Response)
-- [fetch 介绍](http://www.jianshu.com/p/ccf99a12faf1)
-- [Javascript 中的神器——Promise](http://www.jianshu.com/p/063f7e490e9a)
+![fetch Response](https://developer.mozilla.org/zh-CN/docs/Web/API/Response)
+![fetch 介绍](http://www.jianshu.com/p/ccf99a12faf1)
+![Javascript 中的神器——Promise](http://www.jianshu.com/p/063f7e490e9a)
 
 ```js
 /*
@@ -1286,15 +1271,15 @@ this.props.history.push('/movie/movieDetail/' + movieId)
 */
 fetch('/api/movie/' + this.state.movieType)
   // response.json() 读取response对象，并返回一个被解析为JSON格式的promise对象
-  .then(response => response.json())
+  .then((response) => response.json())
   // 通过 data 获取到数据
-  .then(data => {
-    console.log(data)
+  .then((data) => {
+    console.log(data);
     this.setState({
       movieList: data.subjects,
-      loaing: false
-    })
-  })
+      loaing: false,
+    });
+  });
 ```
 
 ## 跨域获取数据的三种常用方式
@@ -1308,16 +1293,16 @@ fetch('/api/movie/' + this.state.movieType)
 - 安装：`npm i -S fetch-jsonp`
 - 利用`JSONP`实现跨域获取数据，只能获取 GET 请求
 - `fetch-jsonp`
-- [fetch-jsonp](https://github.com/camsong/fetch-jsonp)
+  ![fetch-jsonp](https://github.com/camsong/fetch-jsonp)
 - 限制：1 只能发送 GET 请求 2 需要服务端支持 JSONP 请求
 
 ```js
 /* movielist.js */
 fetchJsonp('https://api.douban.com/v2/movie/in_theaters')
-  .then(rep => rep.json())
-  .then(data => {
-    console.log(data)
-  })
+  .then((rep) => rep.json())
+  .then((data) => {
+    console.log(data);
+  });
 ```
 
 ### 代理
@@ -1363,24 +1348,21 @@ fetch('/api/movie/in_theaters')
 ### CORS - 服务器端配合
 
 - 示例：NodeJS 设置跨域
-- [跨域资源共享 CORS 详解 - 阮一峰](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+  ![跨域资源共享 CORS 详解 - 阮一峰](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 
 ```js
 // 通过Express的中间件来处理所有请求
 app.use('*', function (req, res, next) {
   // 设置请求头为允许跨域
-  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Origin', '*');
 
   // 设置服务器支持的所有头信息字段
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Content-Type,Content-Length, Authorization,Accept,X-Requested-With'
-  )
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization,Accept,X-Requested-With');
   // 设置服务器支持的所有跨域请求的方法
-  res.header('Access-Control-Allow-Methods', 'POST,GET')
+  res.header('Access-Control-Allow-Methods', 'POST,GET');
   // next()方法表示进入下一个路由
-  next()
-})
+  next();
+});
 ```
 
 ## 相关文章
@@ -1393,18 +1375,17 @@ app.use('*', function (req, res, next) {
 - /v2/movie/top250
 - 思路：通过 props 获取到电影类型（接口），与默认的前缀拼接成完整的 API 接口地址
 
-- [豆瓣电影 API 地址](https://developers.douban.com/wiki/?title=api_v2)
-- [正在热映 - in_theaters](https://api.douban.com/v2/movie/in_theaters)
-- [即将上映 - coming_soon](https://api.douban.com/v2/movie/coming_soon)
-- [top250 - top250](https://api.douban.com/v2/movie/top250)
-- [电影详细信息 - subject](https://api.douban.com/v2/movie/subject/26309788)
+![豆瓣电影 API 地址](https://developers.douban.com/wiki/?title=api_v2)
+![正在热映 - in_theaters](https://api.douban.com/v2/movie/in_theaters)
+![即将上映 - coming_soon](https://api.douban.com/v2/movie/coming_soon)
+![top250 - top250](https://api.douban.com/v2/movie/top250)
+![电影详细信息 - subject](https://api.douban.com/v2/movie/subject/26309788)
 
-- [Request - Simplified HTTP client](https://github.com/request/request)
-- [CSS3 transform 属性](http://www.w3school.com.cn/cssref/pr_transform.asp)
+![Request - Simplified HTTP client](https://github.com/request/request)
+![CSS3 transform 属性](http://www.w3school.com.cn/cssref/pr_transform.asp)
 
 ```html
-分页功能分析： 已知条件：1 每一页有6条数据 2 当前页是第几页
-接口分页需要的数据：1 start（起始索引号） 2 count（每页有多少条数据 6）
-因此，想要实现分页效果需要根据 每页大小 和 页码，计算出start即可。 第一页：0 1 2
-3 4 5 第二页：6 7 8 9 10 11 第三页：12 13 14 15 16 17 start = (page - 1) * count
+分页功能分析： 已知条件：1 每一页有6条数据 2 当前页是第几页 接口分页需要的数据：1 start（起始索引号） 2
+count（每页有多少条数据 6） 因此，想要实现分页效果需要根据 每页大小 和 页码，计算出start即可。 第一页：0 1 2 3 4 5
+第二页：6 7 8 9 10 11 第三页：12 13 14 15 16 17 start = (page - 1) * count
 ```

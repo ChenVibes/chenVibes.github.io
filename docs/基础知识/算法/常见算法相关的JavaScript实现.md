@@ -1,5 +1,10 @@
 ---
 title: 常见算法相关的JavaScript实现
+tag:
+  - 算法
+date: 2022-02-26
+category:
+  - 基础知识
 ---
 
 ## 常见算法相关的 JavaScript 实现
@@ -10,15 +15,15 @@ title: 常见算法相关的JavaScript实现
 
 ```js
 function hammingWeight(n) {
-  let num = 0
+  let num = 0;
 
   while (n !== 0) {
-    n &= n - 1
+    n &= n - 1;
 
-    num++
+    num++;
   }
 
-  return num
+  return num;
 }
 ```
 
@@ -38,27 +43,27 @@ function hammingWeight(n) {
 
 ```js
 function binarySearch(nums, target) {
-  let low = 0
+  let low = 0;
 
-  let high = nums.length - 1
+  let high = nums.length - 1;
 
   while (low <= high) {
-    let mid = parseInt((low + high) / 2)
+    let mid = parseInt((low + high) / 2);
 
     if (nums[mid] === target) {
-      return mid
+      return mid;
     }
 
     if (nums[mid] > target) {
-      high = mid - 1
+      high = mid - 1;
     }
 
     if (nums[mid] < target) {
-      low = mid + 1
+      low = mid + 1;
     }
   }
 
-  return -1
+  return -1;
 }
 ```
 
@@ -66,23 +71,23 @@ function binarySearch(nums, target) {
 
 ```js
 function binarySearch(nums, target) {
-  let low = 0
+  let low = 0;
 
-  let high = nums.length - 1
+  let high = nums.length - 1;
 
   const binaryWalker = (nums, low, high, target) => {
-    if (low > high) return -1
+    if (low > high) return -1;
 
-    const mid = parseInt((low + high) / 2)
+    const mid = parseInt((low + high) / 2);
 
-    if (nums[mid] === target) return mid
+    if (nums[mid] === target) return mid;
 
-    if (nums[mid] > target) return binaryWalker(nums, low, mid - 1, target)
+    if (nums[mid] > target) return binaryWalker(nums, low, mid - 1, target);
 
-    if (nums[mid] < target) return binaryWalker(nums, mid + 1, high, target)
-  }
+    if (nums[mid] < target) return binaryWalker(nums, mid + 1, high, target);
+  };
 
-  return binaryWalker(nums, low, high, target)
+  return binaryWalker(nums, low, high, target);
 }
 ```
 
@@ -92,23 +97,23 @@ function binarySearch(nums, target) {
 
 ```js
 function quickSort(arr) {
-  if (arr.length <= 1) return arr
+  if (arr.length <= 1) return arr;
 
-  let left = []
+  let left = [];
 
-  let right = []
+  let right = [];
 
-  let pivot = arr[0]
+  let pivot = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
     if (arr[i] >= pivot) {
-      right.push(arr[i])
+      right.push(arr[i]);
     } else {
-      left.push(arr[i])
+      left.push(arr[i]);
     }
   }
 
-  return [...quickSort(left), pivot, ...quickSort(right)]
+  return [...quickSort(left), pivot, ...quickSort(right)];
 }
 ```
 
@@ -116,19 +121,19 @@ function quickSort(arr) {
 
 ```js
 function bubbleSort(arr) {
-  let i = arr.length - 1
+  let i = arr.length - 1;
 
   while (i >= 0) {
     for (let j = 0; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
-        ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
     }
 
-    i--
+    i--;
   }
 
-  return arr
+  return arr;
 }
 ```
 
@@ -141,11 +146,11 @@ function bubbleSort(arr) {
 ```js
 function preOrderTraverse(root) {
   if (root) {
-    console.log(root)
+    console.log(root);
 
-    preOrderTraverse(root.left)
+    preOrderTraverse(root.left);
 
-    preOrderTraverse(root.right)
+    preOrderTraverse(root.right);
   }
 }
 ```
@@ -154,20 +159,20 @@ function preOrderTraverse(root) {
 
 ```js
 function preOrderTraverse(root) {
-  let stack = []
+  let stack = [];
 
   if (root) {
-    stack.push(root)
+    stack.push(root);
   }
 
   while (stack.length) {
-    let temp = stack.pop()
+    let temp = stack.pop();
 
-    console.log(temp)
+    console.log(temp);
 
-    if (temp.right) stack.push(temp.right)
+    if (temp.right) stack.push(temp.right);
 
-    if (temp.left) stack.pus(temp.left)
+    if (temp.left) stack.pus(temp.left);
   }
 }
 ```
@@ -179,11 +184,11 @@ function preOrderTraverse(root) {
 ```js
 function midOrderTraverse(root) {
   if (root) {
-    midOrderTraverse(root.left)
+    midOrderTraverse(root.left);
 
-    console.log(root)
+    console.log(root);
 
-    midOrderTraverse(root.right)
+    midOrderTraverse(root.right);
   }
 }
 ```
@@ -192,22 +197,22 @@ function midOrderTraverse(root) {
 
 ```js
 function midOrderTraverse(root) {
-  let stack = []
+  let stack = [];
 
   while (true) {
     while (root) {
-      stack.push(root)
+      stack.push(root);
 
-      root = root.left
+      root = root.left;
     }
 
-    if (!stack.length) break
+    if (!stack.length) break;
 
-    let temp = stack.pop()
+    let temp = stack.pop();
 
-    console.log(temp)
+    console.log(temp);
 
-    root = temp.right
+    root = temp.right;
   }
 }
 ```
@@ -219,11 +224,11 @@ function midOrderTraverse(root) {
 ```js
 function postOrderTraverse(root) {
   if (root) {
-    postOrderTraverse(root.left)
+    postOrderTraverse(root.left);
 
-    postOrderTraverse(root.right)
+    postOrderTraverse(root.right);
 
-    console.log(root)
+    console.log(root);
   }
 }
 ```
@@ -232,23 +237,23 @@ function postOrderTraverse(root) {
 
 ```js
 function postOrderTraverse(root) {
-  let stack = []
+  let stack = [];
 
-  let rest = []
+  let rest = [];
 
-  if (root) stack.push(root)
+  if (root) stack.push(root);
 
   while (stack.length) {
-    let temp = stack.pop()
+    let temp = stack.pop();
 
-    rest.push(temp)
+    rest.push(temp);
 
-    if (temp.left) stack.push(temp.left)
+    if (temp.left) stack.push(temp.left);
 
-    if (temp.right) stack.push(temp.right)
+    if (temp.right) stack.push(temp.right);
   }
 
-  return rest.reverse()
+  return rest.reverse();
 }
 ```
 
@@ -256,20 +261,20 @@ function postOrderTraverse(root) {
 
 ```js
 function levelTraverse(root) {
-  if (!root) return
+  if (!root) return;
 
-  let stack = []
+  let stack = [];
 
-  stack.push(root)
+  stack.push(root);
 
   while (stack.length) {
-    let temp = stack.shift()
+    let temp = stack.shift();
 
-    console.log(temp)
+    console.log(temp);
 
-    if (temp.left) stack.push(temp.left)
+    if (temp.left) stack.push(temp.left);
 
-    if (temp.right) stack.push(temp.right)
+    if (temp.right) stack.push(temp.right);
   }
 }
 ```

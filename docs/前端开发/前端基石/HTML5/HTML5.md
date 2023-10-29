@@ -6,7 +6,7 @@ category: 前端基石
 
 ## 修订进度
 
-- [ ] 2021.9.30 `meta`的具体功能
+![ ] 2021.9.30 `meta`的具体功能
 
 ## html5 骨架
 
@@ -80,8 +80,7 @@ category: 前端基石
 2. 使用`meta`标签**设置**网页关键词和描述，`name`属性非常关键,用来设置`meta`的具体功能
 
 ```html
-<meta name="keywords" content="前端,JavaScript,Vue,React" />
-<meta name="description" content="一个前端学习博客" />
+<meta name="keywords" content="前端,JavaScript,Vue,React" /> <meta name="description" content="一个前端学习博客" />
 ```
 
 3. 其他 meta:[HTML meta 标签 看这篇就够了](https://juejin.cn/post/6844904099184377870)
@@ -361,10 +360,7 @@ category: 前端基石
 ```html
 <main>
   <h1>My blog test</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec
-    nulla vitae mollis.
-  </p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.</p>
   <p>etc.</p>
 </main>
 ```
@@ -376,10 +372,7 @@ category: 前端基石
 ```html
 <section>
   <h2>Section title</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec
-    nulla vitae mollis.
-  </p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.</p>
 </section>
 ```
 
@@ -409,9 +402,8 @@ category: 前端基石
 
 ```html
 <blockquote cite="https://en.wikiquote.org/wiki/Marie_Curie">
-  Here is a long quotation here is a long quotation here is a long quotation
-  here is a long quotation here is a long quotation here is a long quotation
-  here is a long quotation here is a long quotation here is a long quotation.
+  Here is a long quotation here is a long quotation here is a long quotation here is a long quotation here is a long
+  quotation here is a long quotation here is a long quotation here is a long quotation here is a long quotation.
 </blockquote>
 ```
 
@@ -549,12 +541,7 @@ The <abbr title="People's Republic of China">PRC</abbr> was founded in 1949.
 - 单选按钮如果加上了`checked`属性，表示默认被选中
 
 ```html
-男<input type="radio" name="sex" value="男" /> 女<input
-  type="radio"
-  name="sex"
-  value="女"
-  checked
-/>
+男<input type="radio" name="sex" value="男" /> 女<input type="radio" name="sex" value="女" checked />
 ```
 
 ### label 标签
@@ -574,8 +561,7 @@ The <abbr title="People's Republic of China">PRC</abbr> was founded in 1949.
 - 多选按钮如果加上了 `checked`属性，表示默认被选中
 
 ```html
-<input type="checkbox" name="province" value="sx" />陕西
-<input type="checkbox" name="province" value="sc" />四川
+<input type="checkbox" name="province" value="sx" />陕西 <input type="checkbox" name="province" value="sc" />四川
 <input type="checkbox" name="province" value="hb" checked />湖北
 ```
 

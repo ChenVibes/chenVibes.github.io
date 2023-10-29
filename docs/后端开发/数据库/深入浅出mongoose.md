@@ -15,29 +15,29 @@ category: 数据库
 第一种:
 
 ```js
-'use strict'
+'use strict';
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/test')
-const con = mongoose.connection
-con.on('error', console.error.bind(console, '连接数据库失败'))
+mongoose.connect('mongodb://localhost:27017/test');
+const con = mongoose.connection;
+con.on('error', console.error.bind(console, '连接数据库失败'));
 con.once('open', () => {
   //成功连接
-})
+});
 ```
 
 第二种:
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
-db = mongoose.createConnection('localhost', 'test')
-var schema = new mongoose.Schema({ name: String })
-var collectionName = 'kittens'
-var M = db.model('Kitten', schema, collectionName)
-var silence = new M({ name: 'Silence' })
-silence.save(function (err) {})
+db = mongoose.createConnection('localhost', 'test');
+var schema = new mongoose.Schema({ name: String });
+var collectionName = 'kittens';
+var M = db.model('Kitten', schema, collectionName);
+var silence = new M({ name: 'Silence' });
+silence.save(function (err) {});
 ```
 
 #### mongoose.createConnection()和 mongoose.connect()区别
@@ -56,52 +56,52 @@ silence.save(function (err) {})
 
 ```js
 var mongoose = require('mongoose'),
-  DB_URL = 'mongodb://localhost:27017/mongoosesample'
+  DB_URL = 'mongodb://localhost:27017/mongoosesample';
 
 /**
  * 连接
  */
-mongoose.connect(DB_URL)
+mongoose.connect(DB_URL);
 
 /**
  * 连接成功
  */
 mongoose.connection.on('connected', function () {
-  console.log('Mongoose connection open to ' + DB_URL)
-})
+  console.log('Mongoose connection open to ' + DB_URL);
+});
 
 /**
  * 连接异常
  */
 mongoose.connection.on('error', function (err) {
-  console.log('Mongoose connection error: ' + err)
-})
+  console.log('Mongoose connection error: ' + err);
+});
 
 /**
  * 连接断开
  */
 mongoose.connection.on('disconnected', function () {
-  console.log('Mongoose connection disconnected')
-})
+  console.log('Mongoose connection disconnected');
+});
 ```
 
 #### 指定用户连接
 
 ```js
-mongoose.connect('mongodb://用户名:密码@127.0.0.1:27017/数据库名称')
+mongoose.connect('mongodb://用户名:密码@127.0.0.1:27017/数据库名称');
 ```
 
 如果开启鉴权控制，以用户名"u1"，密码"123456"登录'db1'数据库。执行代码后，控制台输出“连接成功”
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (err) {
-    console.log('连接失败')
+    console.log('连接失败');
   } else {
-    console.log('连接成功')
+    console.log('连接成功');
   }
-})
+});
 ```
 
 #### 连接多个数据库
@@ -110,23 +110,23 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 
 ```js
 mongoose.connect('urlA,urlB,...', {
-  mongos: true
-})
+  mongos: true,
+});
 ```
 
 ### connect mongodb
 
 ```js
-var mongodb = require('mongodb')
-var server = new mongodb.Server('localhost', 27017, { auto_reconnect: true })
-var db = new mongodb.Db('mydb', server, { safe: true })
+var mongodb = require('mongodb');
+var server = new mongodb.Server('localhost', 27017, { auto_reconnect: true });
+var db = new mongodb.Db('mydb', server, { safe: true });
 db.open(function (err, db) {
   if (!err) {
-    console.log('connect')
+    console.log('connect');
   } else {
-    console.log(err)
+    console.log(err);
   }
-})
+});
 ```
 
 ## 了解 mongoose
@@ -177,39 +177,39 @@ db.open(function (err, db) {
   他们各自间是怎样的关系呢？ 下图可以清晰的说明, 以上 3 中实际上就是一个继承一个得到最后的数据.
 
 ```js
-'use strict'
+'use strict';
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/test')
-const con = mongoose.connection
-con.on('error', console.error.bind(console, '连接数据库失败'))
+mongoose.connect('mongodb://localhost:27017/test');
+const con = mongoose.connection;
+con.on('error', console.error.bind(console, '连接数据库失败'));
 con.once('open', () => {
   //定义一个schema
   let Schema = mongoose.Schema({
     category: String,
-    name: String
-  })
+    name: String,
+  });
   Schema.methods.eat = function () {
-    console.log("I've eatten one " + this.name)
-  }
+    console.log("I've eatten one " + this.name);
+  };
   //继承一个schema
-  let Model = mongoose.model('fruit', Schema)
+  let Model = mongoose.model('fruit', Schema);
   //生成一个document
   let apple = new Model({
     category: 'apple',
-    name: 'apple'
-  })
+    name: 'apple',
+  });
   //存放数据
   apple.save((err, apple) => {
-    if (err) return console.log(err)
-    apple.eat()
+    if (err) return console.log(err);
+    apple.eat();
     //查找数据
     Model.find({ name: 'apple' }, (err, data) => {
-      console.log(data)
-    })
-  })
-})
+      console.log(data);
+    });
+  });
+});
 ```
 
 到这里, 实际上, mongoose 我们已经就学会了. 剩下就是看一看官方文档的 API–CRUD 相关操作. 如果,大家觉得意犹未尽的话,可以继续看下面的深入浅出. 而且, 下面会附上实际应用中, mongoose 的写法.
@@ -224,8 +224,8 @@ con.once('open', () => {
 
 ```js
 // from mongoose author
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var blogSchema = new Schema({
   title: String,
@@ -236,17 +236,17 @@ var blogSchema = new Schema({
   hidden: Boolean,
   meta: {
     votes: Number,
-    favs: Number
-  }
-})
+    favs: Number,
+  },
+});
 ```
 
 注意 创建 Schema 对象时，声明字段类型有两种方法，一种是首字母大写的字段类型，另一种是引号包含的小写字段类型
 
 ```js
-var mySchema = new Schema({ title: String, author: String })
+var mySchema = new Schema({ title: String, author: String });
 //或者
-var mySchema = new Schema({ title: 'string', author: 'string' })
+var mySchema = new Schema({ title: 'string', author: 'string' });
 ```
 
 #### add()方法
@@ -254,8 +254,8 @@ var mySchema = new Schema({ title: 'string', author: 'string' })
 如果需要在 Schema 定义后添加其他字段，可以使用 add()方法
 
 ```js
-var MySchema = new Schema()
-MySchema.add({ name: 'string', color: 'string', price: 'number' })
+var MySchema = new Schema();
+MySchema.add({ name: 'string', color: 'string', price: 'number' });
 ```
 
 #### Schema 中初始化的相关参数
@@ -275,11 +275,11 @@ MySchema.add({ name: 'string', color: 'string', price: 'number' })
 - toObject: 用来表示在提取数据的时候, 把 documents 内容转化为 Object 内容输出. 一般而言只需要设置 getters 为 true 即可.
 
 ```js
-schema.set('toObject', { getters: true })
-var M = mongoose.model('Person', schema)
-var m = new M({ name: 'Max Headroom' })
+schema.set('toObject', { getters: true });
+var M = mongoose.model('Person', schema);
+var m = new M({ name: 'Max Headroom' });
 //实际打印出来的就是一个Object类型
-console.log(m) // { _id: 504e0cd7dd992d9be2f20b6f, name: 'Max Headroom is my name' }
+console.log(m); // { _id: 504e0cd7dd992d9be2f20b6f, name: 'Max Headroom is my name' }
 ```
 
 - toJSON： 该是和 toObject 一样的使用. 通常用来把 documents 转化为 Object. 但是, 需要显示使用 toJSON()方法,否则,不会起作用. 实际上,没什么卵用…
@@ -307,10 +307,10 @@ Schema 之所以能够定义 documents, 是因为他可以限制你输入的字�
 var animalSchema = new Schema({
   name: String,
   type: String,
-  tags: { type: [String], index: true }
-})
+  tags: { type: [String], index: true },
+});
 //在Schema.index中设置.
-animalSchema.index({ name: 1, type: -1 })
+animalSchema.index({ name: 1, type: -1 });
 
 //1 表示正序, -1 表示逆序
 ```
@@ -335,47 +335,47 @@ animalSchema.index({ name: 1, type: -1 })
 
 ```js
 // 定义一个schema
-var freshSchema = new Schema({ name: String, type: String })
+var freshSchema = new Schema({ name: String, type: String });
 
 // 添加一个fn.
 animalSchema.methods.findSimilarTypes = function (cb) {
   //这里的this指的是具体document上的this
-  return this.model('Animal').find({ type: this.type }, cb)
-}
+  return this.model('Animal').find({ type: this.type }, cb);
+};
 // 实际上,我们可以通过schema绑定上,数据库操作的所有方法.
 // 该method实际上是绑定在 实例的 doc上的
 ```
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
     var schema = new mongoose.Schema({
       num: Number,
       name: String,
-      size: String
-    })
+      size: String,
+    });
     schema.methods.findSimilarSizes = function (cb) {
-      return this.model('MyModel').find({ size: this.size }, cb)
-    }
-    var MyModel = mongoose.model('MyModel', schema)
-    var doc1 = new MyModel({ name: 'doc1', size: 'small' })
-    var doc2 = new MyModel({ name: 'doc2', size: 'small' })
-    var doc3 = new MyModel({ name: 'doc3', size: 'big' })
-    doc1.save()
-    doc2.save()
-    doc3.save()
+      return this.model('MyModel').find({ size: this.size }, cb);
+    };
+    var MyModel = mongoose.model('MyModel', schema);
+    var doc1 = new MyModel({ name: 'doc1', size: 'small' });
+    var doc2 = new MyModel({ name: 'doc2', size: 'small' });
+    var doc3 = new MyModel({ name: 'doc3', size: 'big' });
+    doc1.save();
+    doc2.save();
+    doc3.save();
     setTimeout(function () {
       doc1.findSimilarSizes(function (err, docs) {
         docs.forEach(function (item, index, arr) {
           //doc1
           //doc2
-          console.log(item.name)
-        })
-      })
-    }, 0)
+          console.log(item.name);
+        });
+      });
+    }, 0);
   }
-})
+});
 ```
 
 定义完 methods 和 property 之后, 就到了生成 Model 的阶段了.
@@ -387,8 +387,8 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 ```js
 //生成,model 类. 实际上就相当于我们的一个collection
 //注意 一定要将model()方法的第一个参数和其返回值设置为相同的值，否则会出现不可预知的结果
-var Animal = mongoose.model('Animal', animalSchema)
-var dog = new Animal({ type: 'dog' })
+var Animal = mongoose.model('Animal', animalSchema);
+var dog = new Animal({ type: 'dog' });
 ```
 
 但是, 这里有个问题. 我们在 Schema.methods.fn 上定义的方法,只能在 new Model() 得到的实例中才能访问. 那如果我们想,直接在 Model 上调用 相关的查询或者删除呢？
@@ -401,42 +401,42 @@ var dog = new Animal({ type: 'dog' })
 // 给model添加一个findByName方法
 animalSchema.statics.findByName = function (name, cb) {
   //这里的this 指的就是Model
-  return this.find({ name: new RegExp(name, 'i') }, cb)
-}
+  return this.find({ name: new RegExp(name, 'i') }, cb);
+};
 
-var Animal = mongoose.model('Animal', animalSchema)
+var Animal = mongoose.model('Animal', animalSchema);
 Animal.findByName('fido', function (err, animals) {
-  console.log(animals)
-})
+  console.log(animals);
+});
 ```
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
     var schema = new mongoose.Schema({
       num: Number,
       name: String,
-      size: String
-    })
+      size: String,
+    });
     schema.statics.findByName = function (name, cb) {
-      return this.find({ name: new RegExp(name, 'i') }, cb)
-    }
-    var MyModel = mongoose.model('MyModel', schema)
-    var doc1 = new MyModel({ name: 'doc1', size: 'small' })
-    var doc2 = new MyModel({ name: 'doc2', size: 'small' })
-    var doc3 = new MyModel({ name: 'doc3', size: 'big' })
-    doc1.save()
-    doc2.save()
-    doc3.save()
+      return this.find({ name: new RegExp(name, 'i') }, cb);
+    };
+    var MyModel = mongoose.model('MyModel', schema);
+    var doc1 = new MyModel({ name: 'doc1', size: 'small' });
+    var doc2 = new MyModel({ name: 'doc2', size: 'small' });
+    var doc3 = new MyModel({ name: 'doc3', size: 'big' });
+    doc1.save();
+    doc2.save();
+    doc3.save();
     setTimeout(function () {
       MyModel.findByName('doc1', function (err, docs) {
         //[ { _id: 5971e68f4f4216605880dca2,name: 'doc1',size: 'small',__v: 0 } ]
-        console.log(docs)
-      })
-    }, 0)
+        console.log(docs);
+      });
+    }, 0);
   }
-})
+});
 ```
 
 由上所示，实例方法和静态方法的区别在于，静态方法是通过 Schema 对象的 statics 属性给 model 添加方法，实例方法是通过 Schema 对象的 methods 是给 document 添加方法
@@ -451,14 +451,14 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 //module.exports = mongoose.model(`Article`, ArticleSchema )
 //将article的model保存为文件 article.js
 
-const Article = require('../models/article')
+const Article = require('../models/article');
 
 // statics
-Article.staticFunc()
+Article.staticFunc();
 
 //methods
-const article = new Article(arguments)
-article.methodFunc()
+const article = new Article(arguments);
+article.methodFunc();
 ```
 
 #### 实例化文档 document
@@ -466,22 +466,22 @@ article.methodFunc()
 通过对原型 Model1 使用 new 方法，实例化出文档 document 对象
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (err) {
-    console.log('连接失败')
+    console.log('连接失败');
   } else {
-    console.log('连接成功')
+    console.log('连接成功');
     var schema = new mongoose.Schema({
       num: Number,
       name: String,
-      size: String
-    })
-    var MyModel = mongoose.model('MyModel', schema)
-    var doc1 = new MyModel({ size: 'small' })
-    console.log(doc1.size) //'small'
+      size: String,
+    });
+    var MyModel = mongoose.model('MyModel', schema);
+    var doc1 = new MyModel({ size: 'small' });
+    console.log(doc1.size); //'small'
   }
-})
+});
 ```
 
 #### 查询方法
@@ -489,24 +489,24 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 通过 schema 对象的 query 属性，给 model 添加查询方法
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
-    var schema = new mongoose.Schema({ age: Number, name: String })
+    var schema = new mongoose.Schema({ age: Number, name: String });
     schema.query.byName = function (name) {
-      return this.find({ name: new RegExp(name) })
-    }
-    var temp = mongoose.model('temp', schema)
+      return this.find({ name: new RegExp(name) });
+    };
+    var temp = mongoose.model('temp', schema);
     temp
       .find()
       .byName('huo')
       .exec(function (err, docs) {
         //[ { _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 },
         // { _id: 5971f93be6f98ec60e3dc86e, name: 'huo', age: 30 } ]
-        console.log(docs)
-      })
+        console.log(docs);
+      });
   }
-})
+});
 ```
 
 ## 文档新增
@@ -518,27 +518,27 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 - 通过 new Model1()创建的文档 doc1，必须通过 save()方法，才能将创建的文档保存到数据库的集合中，集合名称为模型名称的小写复数版
 
 ```js
-save(function (err, doc) {})
+save(function (err, doc) {});
 ```
 
 - 回调函数是可选项，第一个参数为 err，第二个参数为保存的文档对象
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
     var schema = new mongoose.Schema({
       num: Number,
       name: String,
-      size: String
-    })
-    var MyModel = mongoose.model('MyModel', schema)
-    var doc1 = new MyModel({ size: 'small' })
+      size: String,
+    });
+    var MyModel = mongoose.model('MyModel', schema);
+    var doc1 = new MyModel({ size: 'small' });
     doc1.save(function (err, doc) {
-      console.log(doc) //{ __v: 0, size: 'small', _id: 5970daba61162662b45a24a1 }
-    })
+      console.log(doc); //{ __v: 0, size: 'small', _id: 5970daba61162662b45a24a1 }
+    });
   }
-})
+});
 ```
 
 ### create()
@@ -546,52 +546,48 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 使用 save()方法，需要先实例化为文档，再使用 save()方法保存文档。而 create()方法，则直接在模型 Model 上操作，并且可以同时新增多个文档
 
 ```js
-Model.create(doc(s), [callback])
+Model.create(doc(s), [callback]);
 ```
 
 新增{name:"xiaowang"}，{name:"xiaoli"}这两个文档
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
-    var schema = new mongoose.Schema({ age: Number, name: String })
-    var temp = mongoose.model('temp', schema)
-    temp.create(
-      { name: 'xiaowang' },
-      { name: 'xiaoli' },
-      function (err, doc1, doc2) {
-        //{ __v: 0, name: 'xiaowang', _id: 59720d83ad8a953f5cd04664 }
-        console.log(doc1)
-        //{ __v: 0, name: 'xiaoli', _id: 59720d83ad8a953f5cd04665 }
-        console.log(doc2)
-      }
-    )
+    var schema = new mongoose.Schema({ age: Number, name: String });
+    var temp = mongoose.model('temp', schema);
+    temp.create({ name: 'xiaowang' }, { name: 'xiaoli' }, function (err, doc1, doc2) {
+      //{ __v: 0, name: 'xiaowang', _id: 59720d83ad8a953f5cd04664 }
+      console.log(doc1);
+      //{ __v: 0, name: 'xiaoli', _id: 59720d83ad8a953f5cd04665 }
+      console.log(doc2);
+    });
   }
-})
+});
 ```
 
 ### insertMany()
 
 ```js
-Model.insertMany(doc(s), [options], [callback])
+Model.insertMany(doc(s), [options], [callback]);
 ```
 
 新增{name:"a"}，{name:"b"}这两个文档
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
-    var schema = new mongoose.Schema({ age: Number, name: String })
-    var temp = mongoose.model('temp', schema)
+    var schema = new mongoose.Schema({ age: Number, name: String });
+    var temp = mongoose.model('temp', schema);
     temp.insertMany([{ name: 'a' }, { name: 'b' }], function (err, docs) {
       //[ { __v: 0, name: 'a', _id: 59720ea1bbf5792af824b30c },
       //{ __v: 0, name: 'b', _id: 59720ea1bbf5792af824b30d } ]
-      console.log(docs)
-    })
+      console.log(docs);
+    });
   }
-})
+});
 ```
 
 ## mongoose 条件操作符
@@ -628,7 +624,7 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 - query.\$or 用于实现多条件查询，其值是一个数组。
 
 ```js
-query.or([{ color: 'red' }, { status: 'emergency' }])
+query.or([{ color: 'red' }, { status: 'emergency' }]);
 ```
 
 - query.\$regex 用于实现模糊查询。
@@ -709,7 +705,7 @@ Option | Description
 第一个参数表示查询条件，第二个参数用于控制返回的字段，第三个参数用于配置查询参数，第四个参数是回调函数，回调函数的形式为 function(err,docs){}
 
 ```js
-Model.find(conditions, [projection], [options], [callback])
+Model.find(conditions, [projection], [options], [callback]);
 ```
 
 在数据库 db1 的集合 temps 中存在如下数据
@@ -718,20 +714,20 @@ Model.find(conditions, [projection], [options], [callback])
 现在，使用find()方法找出所有数据
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
-    var schema = new mongoose.Schema({ age: Number, name: String })
-    var temp = mongoose.model('temp', schema)
+    var schema = new mongoose.Schema({ age: Number, name: String });
+    var temp = mongoose.model('temp', schema);
     temp.find(function (err, docs) {
       //[ { _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 },
       //{ _id: 5971f93be6f98ec60e3dc86d, name: 'wang', age: 18 },
       //{ _id: 5971f93be6f98ec60e3dc86e, name: 'huo', age: 30 },
       //{ _id: 5971f93be6f98ec60e3dc86f, name: 'li', age: 12 } ]
-      console.log(docs)
-    })
+      console.log(docs);
+    });
   }
-})
+});
 ```
 
 找出年龄大于 18 的数据
@@ -741,8 +737,8 @@ temp.find({ age: { $gte: 18 } }, function (err, docs) {
   //[ { _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 },
   //{ _id: 5971f93be6f98ec60e3dc86d, name: 'wang', age: 18 },
   //{ _id: 5971f93be6f98ec60e3dc86e, name: 'huo', age: 30 }]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 找出年龄大于 18 且名字里存在'huo'的数据
@@ -751,20 +747,20 @@ temp.find({ age: { $gte: 18 } }, function (err, docs) {
 temp.find({ name: /huo/, age: { $gte: 18 } }, function (err, docs) {
   //[ { _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 },
   //{ _id: 5971f93be6f98ec60e3dc86e, name: 'huo', age: 30 }]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 找出名字里存在'a'的数据，且只输出'name'字段
 
-- [注意]\_id 字段默认输出
+![注意]\_id 字段默认输出
 
 ```js
 temp.find({ name: /a/ }, 'name', function (err, docs) {
   //[ { _id: 5971f93be6f98ec60e3dc86c, name: 'huochai' },
   //{ _id: 5971f93be6f98ec60e3dc86d, name: 'wang' } ]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 如果确实不需要\_id 字段输出，可以进行如下设置
@@ -772,56 +768,56 @@ temp.find({ name: /a/ }, 'name', function (err, docs) {
 ```js
 temp.find({ name: /a/ }, { name: 1, _id: 0 }, function (err, docs) {
   //[ { name: 'huochai' }, { name: 'wang' } ]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 找出跳过前两条数据的其他所有数据
 
-- [注意]如果使用第三个参数，前两个参数如果没有值，需要设置为 null
+![注意]如果使用第三个参数，前两个参数如果没有值，需要设置为 null
 
 ```js
 temp.find(null, null, { skip: 2 }, function (err, docs) {
   //[ { _id: 5971f93be6f98ec60e3dc86e, name: 'huo', age: 30 },
   //{ _id: 5971f93be6f98ec60e3dc86f, name: 'li', age: 12 } ]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 ### findById()
 
 ```js
-Model.findById(id, [projection], [options], [callback])
+Model.findById(id, [projection], [options], [callback]);
 ```
 
 显示第 0 个元素的所有字段
 
 ```js
-var aIDArr = []
+var aIDArr = [];
 temp.find(function (err, docs) {
   docs.forEach(function (item, index, arr) {
-    aIDArr.push(item._id)
-  })
+    aIDArr.push(item._id);
+  });
   temp.findById(aIDArr[0], function (err, doc) {
     //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 }
-    console.log(doc)
-  })
-})
+    console.log(doc);
+  });
+});
 ```
 
 以上代码的另一种写法如下
 
 ```js
-var aIDArr = []
+var aIDArr = [];
 temp.find(function (err, docs) {
   docs.forEach(function (item, index, arr) {
-    aIDArr.push(item._id)
-  })
+    aIDArr.push(item._id);
+  });
   temp.findById(aIDArr[0]).exec(function (err, doc) {
     //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 }
-    console.log(doc)
-  })
-})
+    console.log(doc);
+  });
+});
 ```
 
 只输出 name 字段
@@ -829,8 +825,8 @@ temp.find(function (err, docs) {
 ```js
 temp.findById(aIDArr[0], { name: 1, _id: 0 }, function (err, doc) {
   //{  name: 'huochai'}
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 或者写成下面这种形式
@@ -847,12 +843,12 @@ temp.findById(aIDArr[0], { name: 1, _id: 0 }, function (err, doc) {
 ```js
 temp.findById(aIDArr[0], { lean: true }, function (err, doc) {
   //{ _id: 5971f93be6f98ec60e3dc86c }
-  console.log(doc)
-})
+  console.log(doc);
+});
 temp.findById(aIDArr[0], { lean: true }).exec(function (err, doc) {
   //{ _id: 5971f93be6f98ec60e3dc86c }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 #### lean
@@ -864,34 +860,34 @@ Mongoose 查询返回的对象是不能直接修改的
 const schema = new mongoose.Schema({
   title: String,
   date,
-  content: String
-})
+  content: String,
+});
 
-const Model = mongoose.model('test', schema)
-const docs = await Model.find({})
+const Model = mongoose.model('test', schema);
+const docs = await Model.find({});
 
 docs.forEach(function (doc) {
-  doc.title = '测试'
-})
+  doc.title = '测试';
+});
 
 // 执行完打印title，会发现修改不生效
-console.log(docs)
+console.log(docs);
 ```
 
 ##### 修改的三种方法
 
 ```js
 // 不看文档直接撸
-const docs = await Model.find({})
+const docs = await Model.find({});
 const newDocs = docs.map(function (obj) {
-  return Object.assign({}, obj)
-})
+  return Object.assign({}, obj);
+});
 
 // 调用toObject或toJSON方法
-const docs = (await Model.find({})).toObject()
+const docs = (await Model.find({})).toObject();
 
 // 调用lean方法
-const docs = await Model.find({}).lean()
+const docs = await Model.find({}).lean();
 ```
 
 ### findOne()
@@ -899,7 +895,7 @@ const docs = await Model.find({}).lean()
 该方法返回查找到的所有实例的第一个
 
 ```js
-Model.findOne([conditions], [projection], [options], [callback])
+Model.findOne([conditions], [projection], [options], [callback]);
 ```
 
 找出 age>20 的文档中的第一个文档
@@ -907,12 +903,12 @@ Model.findOne([conditions], [projection], [options], [callback])
 ```js
 temp.findOne({ age: { $gt: 20 } }, function (err, doc) {
   //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 temp.findOne({ age: { $gt: 20 } }).exec(function (err, doc) {
   //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 27 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 找出 age>20 的文档中的第一个文档，且只输出 name 字段
@@ -920,14 +916,12 @@ temp.findOne({ age: { $gt: 20 } }).exec(function (err, doc) {
 ```js
 temp.findOne({ age: { $gt: 20 } }, { name: 1, _id: 0 }, function (err, doc) {
   //{ name: 'huochai' }
-  console.log(doc)
-})
-temp
-  .findOne({ age: { $gt: 20 } }, { name: 1, _id: 0 })
-  .exec(function (err, doc) {
-    //{ name: 'huochai' }
-    console.log(doc)
-  })
+  console.log(doc);
+});
+temp.findOne({ age: { $gt: 20 } }, { name: 1, _id: 0 }).exec(function (err, doc) {
+  //{ name: 'huochai' }
+  console.log(doc);
+});
 ```
 
 找出 age>20 的文档中的第一个文档，且输出包含 name 字段在内的最短字段
@@ -935,15 +929,15 @@ temp
 ```js
 temp.findOne({ age: { $gt: 20 } }, 'name', { lean: true }, function (err, doc) {
   //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai' }
-  console.log(doc)
-})
+  console.log(doc);
+});
 temp
   .findOne({ age: { $gt: 20 } }, 'name')
   .lean()
   .exec(function (err, doc) {
     //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai' }
-    console.log(doc)
-  })
+    console.log(doc);
+  });
 ```
 
 ### \$where
@@ -957,13 +951,13 @@ temp
 temp.find({ $where: 'this.x == this.y' }, function (err, docs) {
   //[ { _id: 5972ed35e6f98ec60e3dc887,name: 'wang',age: 18,x: 1,y: 1 },
   //{ _id: 5972ed35e6f98ec60e3dc889, name: 'li', age: 20, x: 2, y: 2 } ]
-  console.log(docs)
-})
+  console.log(docs);
+});
 temp.find({ $where: 'obj.x == obj.y' }, function (err, docs) {
   //[ { _id: 5972ed35e6f98ec60e3dc887,name: 'wang',age: 18,x: 1,y: 1 },
   //{ _id: 5972ed35e6f98ec60e3dc889, name: 'li', age: 20, x: 2, y: 2 } ]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 #### 使用函数
@@ -972,27 +966,27 @@ temp.find({ $where: 'obj.x == obj.y' }, function (err, docs) {
 temp.find(
   {
     $where: function () {
-      return obj.x !== obj.y
-    }
+      return obj.x !== obj.y;
+    },
   },
   function (err, docs) {
     //[ { _id: 5972ed35e6f98ec60e3dc886,name: 'huochai',age: 27,x: 1,y: 2 },
     //{ _id: 5972ed35e6f98ec60e3dc888, name: 'huo', age: 30, x: 2, y: 1 } ]
-    console.log(docs)
-  }
-)
+    console.log(docs);
+  },
+);
 temp.find(
   {
     $where: function () {
-      return this.x !== this.y
-    }
+      return this.x !== this.y;
+    },
   },
   function (err, docs) {
     //[ { _id: 5972ed35e6f98ec60e3dc886,name: 'huochai',age: 27,x: 1,y: 2 },
     //{ _id: 5972ed35e6f98ec60e3dc888, name: 'huo', age: 30, x: 2, y: 1 } ]
-    console.log(docs)
-  }
-)
+    console.log(docs);
+  },
+);
 ```
 
 ## 文档更新
@@ -1010,7 +1004,7 @@ temp.find(
 ### update()
 
 ```js
-Model.update(conditions, doc, [options], [callback])
+Model.update(conditions, doc, [options], [callback]);
 ```
 
 - 第一个参数 conditions 为查询条件，
@@ -1035,17 +1029,17 @@ Model.update(conditions, doc, [options], [callback])
 现在使用 update()方法查询 age 大于 20 的数据，并将其年龄更改为 40 岁
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
-    var schema = new mongoose.Schema({ age: Number, name: String })
-    var temp = mongoose.model('temp', schema)
+    var schema = new mongoose.Schema({ age: Number, name: String });
+    var temp = mongoose.model('temp', schema);
     temp.update({ age: { $gte: 20 } }, { age: 40 }, function (err, raw) {
       //{ n: 1, nModified: 1, ok: 1 }
-      console.log(raw)
-    })
+      console.log(raw);
+    });
   }
-})
+});
 ```
 
 经过以上操作，数据库结果如下。只有第一个数据更改为 40 岁。而第三个数据没有发生变化
@@ -1055,22 +1049,17 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 如果要同时更新多个记录，需要设置 options 里的 multi 为 true。下面将名字中有'a'字符的年龄设置为 10 岁
 
 ```js
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
   if (!err) {
-    var schema = new mongoose.Schema({ age: Number, name: String })
-    var temp = mongoose.model('temp', schema)
-    temp.update(
-      { name: /a/ },
-      { age: 10 },
-      { multi: true },
-      function (err, raw) {
-        //{ n: 2, nModified: 2, ok: 1 }
-        console.log(raw)
-      }
-    )
+    var schema = new mongoose.Schema({ age: Number, name: String });
+    var temp = mongoose.model('temp', schema);
+    temp.update({ name: /a/ }, { age: 10 }, { multi: true }, function (err, raw) {
+      //{ n: 2, nModified: 2, ok: 1 }
+      console.log(raw);
+    });
   }
-})
+});
 ```
 
 <img src="https://image-static.segmentfault.com/308/843/3088436051-5a13c330d9ca1" style="cursor: pointer; display: inline;">
@@ -1080,22 +1069,17 @@ mongoose.connect('mongodb://u1:123456@localhost/db1', function (err) {
 ```js
 temp.update({ age: 100 }, { name: 'hundred' }, function (err, raw) {
   //{ n: 0, nModified: 0, ok: 1 }
-  console.log(raw)
-})
+  console.log(raw);
+});
 ```
 
 如果设置 options 里的 upsert 参数为 true，若没有符合查询条件的文档，mongo 将会综合第一第二个参数向集合插入一个新的文档
 
 ```js
-temp.update(
-  { age: 100 },
-  { name: 'hundred' },
-  { upsert: true },
-  function (err, raw) {
-    //{ n: 1, nModified: 0,upserted: [ { index: 0, _id: 5972c202d46b621fca7fc8c7 } ], ok: 1 }
-    console.log(raw)
-  }
-)
+temp.update({ age: 100 }, { name: 'hundred' }, { upsert: true }, function (err, raw) {
+  //{ n: 1, nModified: 0,upserted: [ { index: 0, _id: 5972c202d46b621fca7fc8c7 } ], ok: 1 }
+  console.log(raw);
+});
 ```
 
 <img src="https://image-static.segmentfault.com/105/684/1056845692-5a13c3675f64e" style="cursor: pointer; display: inline;">
@@ -1103,16 +1087,16 @@ temp.update(
 ```js
 temp.update({ name: /aa/ }, { age: 0 }, { upsert: true }, function (err, raw) {
   //{ n: 1, nModified: 0,upserted: [ { index: 0, _id: 5972c288d46b621fca7fdd8f } ], ok: 1 }
-  console.log(raw)
-})
+  console.log(raw);
+});
 ```
 
 <img src="https://image-static.segmentfault.com/219/806/2198065275-5a13c3889b3b5" style="cursor: pointer; display: inline;">
 
-- [注意]update()方法中的回调函数不能省略，否则数据不会被更新。如果回调函数里并没有什么有用的信息，则可以使用 exec()简化代码
+![注意]update()方法中的回调函数不能省略，否则数据不会被更新。如果回调函数里并没有什么有用的信息，则可以使用 exec()简化代码
 
 ```js
-temp.update({ name: /aa/ }, { age: 0 }, { upsert: true }).exec()
+temp.update({ name: /aa/ }, { age: 0 }, { upsert: true }).exec();
 ```
 
 ### updateMany()
@@ -1120,7 +1104,7 @@ temp.update({ name: /aa/ }, { age: 0 }, { upsert: true }).exec()
 - updateMany()与 update()方法唯一的区别就是默认更新多个文档，即使设置{multi:false}也无法只更新第一个文档
 
 ```js
-Model.updateMany(conditions, doc, [options], [callback])
+Model.updateMany(conditions, doc, [options], [callback]);
 ```
 
 将数据库中名字中带有'huo'的数据，年龄变为 50 岁
@@ -1128,8 +1112,8 @@ Model.updateMany(conditions, doc, [options], [callback])
 ```js
 temp.updateMany({ name: /huo/ }, { age: 50 }, function (err, raw) {
   //{ n: 2, nModified: 2, ok: 1 }
-  console.log(raw)
-})
+  console.log(raw);
+});
 ```
 
 <img src="https://image-static.segmentfault.com/393/948/3939483079-5a13c3d936fc8" style="cursor: pointer; display: inline;">
@@ -1142,15 +1126,15 @@ temp.updateMany({ name: /huo/ }, { age: 50 }, function (err, raw) {
 temp.find({ age: { $lt: 30 } }, function (err, docs) {
   //[ { _id: 5971f93be6f98ec60e3dc86d, name: 'wang', age: 10 },
   //{ _id: 5971f93be6f98ec60e3dc86f, name: 'li', age: 12 }]
-  console.log(docs)
+  console.log(docs);
   docs.forEach(function (item, index, arr) {
-    item.name += '30'
-    item.save()
-  })
+    item.name += '30';
+    item.save();
+  });
   //[ { _id: 5971f93be6f98ec60e3dc86d, name: 'wang30', age: 10 },
   // { _id: 5971f93be6f98ec60e3dc86f, name: 'li30', age: 12 }]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 ### updateOne()
@@ -1162,8 +1146,8 @@ temp.find({ age: { $lt: 30 } }, function (err, docs) {
 ```js
 temp.updateOne({ name: /huo/ }, { age: 60 }, function (err, raw) {
   //{ n: 1, nModified: 1, ok: 1 }
-  console.log(raw)
-})
+  console.log(raw);
+});
 ```
 
 <img src="https://image-static.segmentfault.com/393/948/3939483079-5a13c3d936fc8" style="cursor: pointer; display: inline;">
@@ -1175,26 +1159,26 @@ temp.updateOne({ name: /huo/ }, { age: 60 }, function (err, raw) {
 ```js
 temp.findOne({ name: 'huochai' }, function (err, doc) {
   //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 10 }
-  console.log(doc)
-  doc.age += 100
-  doc.save()
+  console.log(doc);
+  doc.age += 100;
+  doc.save();
   //{ _id: 5971f93be6f98ec60e3dc86c, name: 'huochai', age: 110 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 findOneAndUpdate()
 　　 fineOneAndUpdate()方法的第四个参数回调函数的形式如下 function(err,doc){}
 
 ```js
-Model.findOneAndUpdate([conditions], [update], [options], [callback])
+Model.findOneAndUpdate([conditions], [update], [options], [callback]);
 ```
 
 findByIdAndUpdate
 　　 fineByIdAndUpdate()方法的第四个参数回调函数的形式如下 function(err,doc){}
 
 ```js
-Model.findOneAndUpdate([conditions], [update], [options], [callback])
+Model.findOneAndUpdate([conditions], [update], [options], [callback]);
 ```
 
 ## 文档删除
@@ -1212,7 +1196,7 @@ remove 有两种形式，一种是文档的 remove()方法，一种是 Model 的
 - 下面介绍 Model 的 remove()方法，该方法的第一个参数 conditions 为查询条件，第二个参数回调函数的形式如下 function(err){}
 
 ```js
-model.remove(conditions, [callback])
+model.remove(conditions, [callback]);
 ```
 
 <img src="https://image-static.segmentfault.com/266/683/2666832813-5a13c5e6e4182" style="cursor: pointer; display: inline;">
@@ -1220,9 +1204,9 @@ model.remove(conditions, [callback])
 删除数据库中名称包括'30'的数据
 
 ```js
-temp.remove({ name: /30/ }, function (err) {})
+temp.remove({ name: /30/ }, function (err) {});
 //[注意]remove()方法中的回调函数不能省略，否则数据不会被删除。当然，可以使用exec()方法来简写代码
-temp.remove({ name: /30/ }).exec()
+temp.remove({ name: /30/ }).exec();
 ```
 
 结果为:
@@ -1256,7 +1240,7 @@ temp.remove({ name: /30/ }).exec()
 model 的 remove()会删除符合条件的所有数据，如果只删除符合条件的第一条数据，则可以使用 model 的 findOneAndRemove()方法
 
 ```js
-Model.findOneAndRemove(conditions, [options], [callback])
+Model.findOneAndRemove(conditions, [options], [callback]);
 ```
 
 集合 temps 现有数据如下
@@ -1268,10 +1252,10 @@ Model.findOneAndRemove(conditions, [options], [callback])
 ```js
 temp.findOneAndRemove({ age: { $lt: 20 } }, function (err, doc) {
   //{ _id: 5972d3f3e6f98ec60e3dc873, name: 'wang', age: 18 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 //与model的remove()方法相同，回调函数不能省略，否则数据不会被删除。当然，可以使用exec()方法来简写代码
-temp.findOneAndRemove({ age: { $lt: 20 } }).exec()
+temp.findOneAndRemove({ age: { $lt: 20 } }).exec();
 ```
 
 结果为:
@@ -1289,16 +1273,16 @@ temp.findOneAndRemove({ age: { $lt: 20 } }).exec()
 删除第 0 个元素
 
 ```js
-var aIDArr = []
+var aIDArr = [];
 temp.find(function (err, docs) {
   docs.forEach(function (item, index, arr) {
-    aIDArr.push(item._id)
-  })
+    aIDArr.push(item._id);
+  });
   temp.findByIdAndRemove(aIDArr[0], function (err, doc) {
     //{ _id: 5972d754e6f98ec60e3dc882, name: 'huochai', age: 27 }
-    console.log(doc)
-  })
-})
+    console.log(doc);
+  });
+});
 ```
 
 <img src="https://image-static.segmentfault.com/254/421/2544218912-5a13c761cf49e" style="cursor: pointer; display: inline;">
@@ -1306,13 +1290,13 @@ temp.find(function (err, docs) {
 类似的，该方法也不能省略回调函数，否则数据不会被删除。当然，可以使用 exec()方法来简写代码
 
 ```js
-var aIDArr = []
+var aIDArr = [];
 temp.find(function (err, docs) {
   docs.forEach(function (item, index, arr) {
-    aIDArr.push(item._id)
-  })
-  temp.findByIdAndRemove(aIDArr[0]).exec()
-})
+    aIDArr.push(item._id);
+  });
+  temp.findByIdAndRemove(aIDArr[0]).exec();
+});
 ```
 
 ## 前后钩子
@@ -1341,20 +1325,20 @@ var schema = new mongoose.Schema({
   age: Number,
   name: String,
   x: Number,
-  y: Number
-})
+  y: Number,
+});
 schema.pre('find', function (next) {
-  console.log('我是pre方法1')
-  next()
-})
+  console.log('我是pre方法1');
+  next();
+});
 schema.pre('find', function (next) {
-  console.log('我是pre方法2')
-  next()
-})
-var temp = mongoose.model('temp', schema)
+  console.log('我是pre方法2');
+  next();
+});
+var temp = mongoose.model('temp', schema);
 temp.find(function (err, docs) {
-  console.log(docs[0])
-})
+  console.log(docs[0]);
+});
 /*
     我是pre方法1
     我是pre方法2
@@ -1371,18 +1355,18 @@ var schema = new mongoose.Schema({
   age: Number,
   name: String,
   x: Number,
-  y: Number
-})
+  y: Number,
+});
 schema.post('find', function (docs) {
-  console.log('我是post方法1')
-})
+  console.log('我是post方法1');
+});
 schema.post('find', function (docs) {
-  console.log('我是post方法2')
-})
-var temp = mongoose.model('temp', schema)
+  console.log('我是post方法2');
+});
+var temp = mongoose.model('temp', schema);
 temp.find(function (err, docs) {
-  console.log(docs[0])
-})
+  console.log(docs[0]);
+});
 /*
     我是post方法1
     我是post方法2
@@ -1408,16 +1392,16 @@ var schema = new mongoose.Schema({
   age: Number,
   name: String,
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 temp.find(function (err, docs) {
   //[ { _id: 5972ed35e6f98ec60e3dc886,name: 'huochai',age: 27,x: 1,y: 2 },
   //{ _id: 5972ed35e6f98ec60e3dc887,name: 'wang',age: 18,x: 1,y: 1 },
   //{ _id: 5972ed35e6f98ec60e3dc888, name: 'huo', age: 30, x: 2, y: 1 },
   //{ _id: 5972ed35e6f98ec60e3dc889, name: 'li', age: 20, x: 2, y: 2 } ]
-  console.log(docs)
-})
+  console.log(docs);
+});
 ```
 
 ### sort()
@@ -1433,8 +1417,8 @@ temp
     //{ _id: 5972ed35e6f98ec60e3dc889, name: 'li', age: 20, x: 2, y: 2 },
     //{ _id: 5972ed35e6f98ec60e3dc886,name: 'huochai',age: 27,x: 1,y: 2 },
     //{ _id: 5972ed35e6f98ec60e3dc888, name: 'huo', age: 30, x: 2, y: 1 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 ```
 
 按 x 从小到大，age 从大到小排列
@@ -1449,8 +1433,8 @@ temp
     //{  _id: 5972ed35e6f98ec60e3dc887,name: 'wang',age: 18,x: 1,y: 1 },
     //{ _id: 5972ed35e6f98ec60e3dc888, name: 'huo', age: 30, x: 2, y: 1 },
     //{ _id: 5972ed35e6f98ec60e3dc889, name: 'li', age: 20, x: 2, y: 2 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 ```
 
 ### skip()
@@ -1465,8 +1449,8 @@ temp
     //[ { _id: 5972ed35e6f98ec60e3dc887,name: 'wang',age: 18,x: 1,y: 1 },
     //{ _id: 5972ed35e6f98ec60e3dc888, name: 'huo', age: 30, x: 2, y: 1 },
     //{ _id: 5972ed35e6f98ec60e3dc889, name: 'li', age: 20, x: 2, y: 2 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 ```
 
 ### limit()
@@ -1480,8 +1464,8 @@ temp
   .exec(function (err, docs) {
     //[ { _id: 5972ed35e6f98ec60e3dc886,name: 'huochai',age: 27,x: 1,y: 2 },
     //{ _id: 5972ed35e6f98ec60e3dc887,name: 'wang',age: 18,x: 1,y: 1 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 ```
 
 ### select()
@@ -1494,15 +1478,15 @@ temp
   .select('name age -_id')
   .exec(function (err, docs) {
     //[ { name: 'huochai', age: 27 },{ name: 'wang', age: 18 },{ name: 'huo', age: 30 },{ name: 'li', age: 20 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 temp
   .find()
   .select({ name: 1, age: 1, _id: 0 })
   .exec(function (err, docs) {
     //[ { name: 'huochai', age: 27 },{ name: 'wang', age: 18 },{ name: 'huo', age: 30 },{ name: 'li', age: 20 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 ```
 
 下面将以上方法结合起来使用，跳过第 1 个后，只显示 2 个数据，按照 age 由大到小排序，且不显示\_id 字段
@@ -1517,8 +1501,8 @@ temp
   .exec(function (err, docs) {
     //[ { name: 'huochai', age: 27, x: 1, y: 2 },
     //{ name: 'li', age: 20, x: 2, y: 2 } ]
-    console.log(docs)
-  })
+    console.log(docs);
+  });
 ```
 
 ### count()
@@ -1527,8 +1511,8 @@ temp
 
 ```js
 temp.find().count(function (err, count) {
-  console.log(count) //4
-})
+  console.log(count); //4
+});
 ```
 
 ### distinct()
@@ -1537,8 +1521,8 @@ temp.find().count(function (err, count) {
 
 ```js
 temp.find().distinct('x', function (err, distinct) {
-  console.log(distinct) //[ 1, 2 ]
-})
+  console.log(distinct); //[ 1, 2 ]
+});
 ```
 
 ## 文档验证
@@ -1550,8 +1534,8 @@ var schema = new mongoose.Schema({
   age: Number,
   name: String,
   x: Number,
-  y: Number
-})
+  y: Number,
+});
 ```
 
 如果不进行文档验证，保存文档时，就可以不按照 Schema 设置的字段进行设置，分为以下几种情况
@@ -1559,11 +1543,11 @@ var schema = new mongoose.Schema({
 1、缺少字段的文档可以保存成功
 
 ```js
-var temp = mongoose.model('temp', schema)
+var temp = mongoose.model('temp', schema);
 new temp({ age: 10 }).save(function (err, doc) {
   //{ __v: 0, age: 10, _id: 597304442b70086a1ce3cf05 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 2、包含未设置的字段的文档也可以保存成功，未设置的字段不被保存
@@ -1571,8 +1555,8 @@ new temp({ age: 10 }).save(function (err, doc) {
 ```js
 new temp({ age: 100, abc: 'abc' }).save(function (err, doc) {
   //{ __v: 0, age: 100, _id: 5973046a2bb57565b474f48b }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 3、包含字段类型与设置不同的字段的文档也可以保存成功，不同字段类型的字段被保存为设置的字段类型
@@ -1580,8 +1564,8 @@ new temp({ age: 100, abc: 'abc' }).save(function (err, doc) {
 ```js
 new temp({ age: true, name: 10 }).save(function (err, doc) {
   //{ __v: 0, age: 1, name: '10', _id: 597304f7a926033060255366 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 而通过文档验证，就可以避免以下几种情况发生
@@ -1611,13 +1595,13 @@ var schema = new mongoose.Schema({
   age: { type: Number, required: true },
   name: String,
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 new temp({ name: 'abc' }).save(function (err, doc) {
   //Path `age` is required.
-  console.log(err.errors['age'].message)
-})
+  console.log(err.errors['age'].message);
+});
 ```
 
 ### default
@@ -1629,13 +1613,13 @@ var schema = new mongoose.Schema({
   age: { type: Number, default: 18 },
   name: String,
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 new temp({ name: 'a' }).save(function (err, doc) {
   //{ __v: 0, name: 'a', _id: 59730d2e7a751d81582210c1, age: 18 }
-  console.log(doc)
-})
+  console.log(doc);
+});
 ```
 
 ### min | max
@@ -1647,13 +1631,13 @@ var schema = new mongoose.Schema({
   age: { type: Number, min: 0, max: 10 },
   name: String,
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 new temp({ age: 20 }).save(function (err, doc) {
   //Path `age` (20) is more than maximum allowed value (10).
-  console.log(err.errors['age'].message)
-})
+  console.log(err.errors['age'].message);
+});
 ```
 
 ### match
@@ -1665,13 +1649,13 @@ var schema = new mongoose.Schema({
   age: Number,
   name: { type: String, match: /a/ },
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 new temp({ name: 'bbb' }).save(function (err, doc) {
   //Path `name` is invalid (bbb).
-  console.log(err.errors['name'].message)
-})
+  console.log(err.errors['name'].message);
+});
 ```
 
 ### enum
@@ -1683,13 +1667,13 @@ var schema = new mongoose.Schema({
   age: Number,
   name: { type: String, enum: ['a', 'b', 'c'] },
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 new temp({ name: 'bbb' }).save(function (err, doc) {
   //`bbb` is not a valid enum value for path `name`.
-  console.log(err.errors['name'].message)
-})
+  console.log(err.errors['name'].message);
+});
 ```
 
 ### validate
@@ -1699,21 +1683,21 @@ validate 实际上是一个函数，函数的参数代表当前字段，返回 t
 ```js
 var validateLength = function (arg) {
   if (arg.length > 4) {
-    return true
+    return true;
   }
-  return false
-}
+  return false;
+};
 var schema = new mongoose.Schema({
   name: { type: String, validate: validateLength },
   age: Number,
   x: Number,
-  y: Number
-})
-var temp = mongoose.model('temp', schema)
+  y: Number,
+});
+var temp = mongoose.model('temp', schema);
 new temp({ name: 'abc' }).save(function (err, doc) {
   //Validator failed for path `name` with value `abc`
-  console.log(err.errors['name'].message)
-})
+  console.log(err.errors['name'].message);
+});
 ```
 
 # 练习
@@ -1725,20 +1709,20 @@ new temp({ name: 'abc' }).save(function (err, doc) {
 编辑 test.js ：
 
 ```js
-var mongoose = require('mongoose')
-var db = mongoose.connect('mongodb://127.0.0.1:27017/test')
+var mongoose = require('mongoose');
+var db = mongoose.connect('mongodb://127.0.0.1:27017/test');
 db.connection.on('error', function (error) {
-  console.log('数据库test连接失败：' + error)
-})
+  console.log('数据库test连接失败：' + error);
+});
 db.connection.on('open', function () {
-  console.log('数据库test连接成功')
-})
+  console.log('数据库test连接成功');
+});
 ```
 
 接着先打开一个 iTerm2 终端，开启 mongodb 服务：
 
 ```js
-mongod
+mongod;
 ```
 
 再打开另一个 iTerm2 终端，运行 test.js：
@@ -1759,28 +1743,28 @@ mongod
 看完文档后，再看看下面一段代码配合理解一下：
 
 ```js
-var mongoose = require('mongoose')
-var db = mongoose.connect('mongodb://127.0.0.1:27017/test')
+var mongoose = require('mongoose');
+var db = mongoose.connect('mongodb://127.0.0.1:27017/test');
 // var testModel = db.model('test1', testSchema); // 集合名称；集合的结构对象
 var TestSchema = new mongoose.Schema({
   name: { type: String },
   age: { type: Number, default: 0 },
   email: { type: String },
-  time: { type: Date, default: Date.now }
-})
-var TestModel = db.model('test1', TestSchema)
+  time: { type: Date, default: Date.now },
+});
+var TestModel = db.model('test1', TestSchema);
 var TestEntity = new TestModel({
   name: 'helloworld',
   age: 28,
-  email: 'helloworld@qq.com'
-})
+  email: 'helloworld@qq.com',
+});
 TestEntity.save(function (error, doc) {
   if (error) {
-    console.log('error :' + error)
+    console.log('error :' + error);
   } else {
-    console.log(doc)
+    console.log(doc);
   }
-})
+});
 ```
 
 ## model 数据插入
@@ -1792,9 +1776,9 @@ var testSchema = new mongoose.Schema({
   name: { type: String },
   age: { type: Number, default: 0 },
   email: { type: String },
-  time: { type: Date, default: Date.now }
-})
-var testModel = db.model('test1', testSchema) // 集合名称；集合的结构对象
+  time: { type: Date, default: Date.now },
+});
+var testModel = db.model('test1', testSchema); // 集合名称；集合的结构对象
 // Document文档（关联数组式的对象） < Collection集合 < 数据库
 // 插入保存一段数据
 testModel.create(
@@ -1808,17 +1792,17 @@ testModel.create(
     { name: 'test7', age: 68, email: 'ssss@qq.com' },
     { name: 'test8', age: 18 },
     { name: 'test9', age: 18, email: 'rrrr@qq.com' },
-    { name: 'test10', age: 18 }
+    { name: 'test10', age: 18 },
   ],
   function (error, docs) {
     if (error) {
-      console.log(error)
+      console.log(error);
     } else {
-      console.log('save ok')
-      console.log(docs)
+      console.log('save ok');
+      console.log(docs);
     }
-  }
-)
+  },
+);
 ```
 
 ## find 数据查询
@@ -1827,7 +1811,7 @@ mongoose 提供了 find、findOne、和 findById 方法用于文档查询。
 基本语法：
 
 ```js
-model.find(Conditions, fields, options, callback(err, doc))
+model.find(Conditions, fields, options, callback(err, doc));
 // Conditions: 查询条件
 // fields: 返回的字段
 // options: 游标（sort,limit）

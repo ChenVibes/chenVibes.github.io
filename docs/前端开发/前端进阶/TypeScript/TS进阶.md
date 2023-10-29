@@ -21,14 +21,14 @@ order: 3
 
 ```ts
 function createArray(length: number, value: any): Array<any> {
-  let result = []
+  let result = [];
   for (let i = 0; i < length; i++) {
-    result[i] = value
+    result[i] = value;
   }
-  return result
+  return result;
 }
 
-createArray(3, 'x') // ['x', 'x', 'x']
+createArray(3, 'x'); // ['x', 'x', 'x']
 ```
 
 上例中，我们使用了数组泛型来定义返回值的类型。
@@ -41,14 +41,14 @@ createArray(3, 'x') // ['x', 'x', 'x']
 
 ```ts
 function createArray<T>(length: number, value: T): Array<T> {
-  let result: T[] = []
+  let result: T[] = [];
   for (let i = 0; i < length; i++) {
-    result[i] = value
+    result[i] = value;
   }
-  return result
+  return result;
 }
 
-createArray<string>(3, 'x') // ['x', 'x', 'x']
+createArray<string>(3, 'x'); // ['x', 'x', 'x']
 ```
 
 上例中，我们在函数名后添加了 `<T>`，其中 `T` 用来指代任意输入的类型，在后面的输入 `value: T` 和输出 `Array<T>` 中即可使用了。
@@ -57,14 +57,14 @@ createArray<string>(3, 'x') // ['x', 'x', 'x']
 
 ```ts
 function createArray<T>(length: number, value: T): Array<T> {
-  let result: T[] = []
+  let result: T[] = [];
   for (let i = 0; i < length; i++) {
-    result[i] = value
+    result[i] = value;
   }
-  return result
+  return result;
 }
 
-createArray(3, 'x') // ['x', 'x', 'x']
+createArray(3, 'x'); // ['x', 'x', 'x']
 ```
 
 ### 多个类型参
@@ -73,10 +73,10 @@ createArray(3, 'x') // ['x', 'x', 'x']
 
 ```ts
 function swap<T, U>(tuple: [T, U]): [U, T] {
-  return [tuple[1], tuple[0]]
+  return [tuple[1], tuple[0]];
 }
 
-swap([7, 'seven']) // ['seven', 7]
+swap([7, 'seven']); // ['seven', 7]
 ```
 
 上例中，我们定义了一个 `swap` 函数，用来交换输入的元组
@@ -87,8 +87,8 @@ swap([7, 'seven']) // ['seven', 7]
 
 ```ts
 function loggingIdentity<T>(arg: T): T {
-  console.log(arg.length)
-  return arg
+  console.log(arg.length);
+  return arg;
 }
 
 // index.ts(2,19): error TS2339: Property 'length' does not exist on type 'T'.
@@ -100,12 +100,12 @@ function loggingIdentity<T>(arg: T): T {
 
 ```ts
 interface Lengthwise {
-  length: number
+  length: number;
 }
 
 function loggingIdentity<T extends Lengthwise>(arg: T): T {
-  console.log(arg.length)
-  return arg
+  console.log(arg.length);
+  return arg;
 }
 ```
 
@@ -115,15 +115,15 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T {
 
 ```ts
 interface Lengthwise {
-  length: number
+  length: number;
 }
 
 function loggingIdentity<T extends Lengthwise>(arg: T): T {
-  console.log(arg.length)
-  return arg
+  console.log(arg.length);
+  return arg;
 }
 
-loggingIdentity(7)
+loggingIdentity(7);
 
 // index.ts(10,17): error TS2345: Argument of type '7' is not assignable to parameter of type 'Lengthwise'.
 ```
@@ -133,14 +133,14 @@ loggingIdentity(7)
 ```ts
 function copyFields<T extends U, U>(target: T, source: U): T {
   for (let id in source) {
-    target[id] = (<T>source)[id]
+    target[id] = (<T>source)[id];
   }
-  return target
+  return target;
 }
 
-let x = { a: 1, b: 2, c: 3, d: 4 }
+let x = { a: 1, b: 2, c: 3, d: 4 };
 
-copyFields(x, { b: 10, d: 20 })
+copyFields(x, { b: 10, d: 20 });
 ```
 
 上例中，我们使用了两个类型参数，其中要求 `T` 继承 `U`，这样就保证了 `U` 上不会出现 `T` 中不存在的字段。
@@ -151,51 +151,51 @@ copyFields(x, { b: 10, d: 20 })
 
 ```ts
 interface SearchFunc {
-  (source: string, subString: string): boolean
+  (source: string, subString: string): boolean;
 }
 
-let mySearch: SearchFunc
+let mySearch: SearchFunc;
 mySearch = function (source: string, subString: string) {
-  return source.search(subString) !== -1
-}
+  return source.search(subString) !== -1;
+};
 ```
 
 当然也可以使用含有泛型的接口来定义函数的形状：
 
 ```ts
 interface CreateArrayFunc {
-  <T>(length: number, value: T): Array<T>
+  <T>(length: number, value: T): Array<T>;
 }
 
-let createArray: CreateArrayFunc
+let createArray: CreateArrayFunc;
 createArray = function <T>(length: number, value: T): Array<T> {
-  let result: T[] = []
+  let result: T[] = [];
   for (let i = 0; i < length; i++) {
-    result[i] = value
+    result[i] = value;
   }
-  return result
-}
+  return result;
+};
 
-createArray(3, 'x') // ['x', 'x', 'x']
+createArray(3, 'x'); // ['x', 'x', 'x']
 ```
 
 进一步，我们可以把泛型参数提前到接口名上：
 
 ```ts
 interface CreateArrayFunc<T> {
-  (length: number, value: T): Array<T>
+  (length: number, value: T): Array<T>;
 }
 
-let createArray: CreateArrayFunc<any>
+let createArray: CreateArrayFunc<any>;
 createArray = function <T>(length: number, value: T): Array<T> {
-  let result: T[] = []
+  let result: T[] = [];
   for (let i = 0; i < length; i++) {
-    result[i] = value
+    result[i] = value;
   }
-  return result
-}
+  return result;
+};
 
-createArray(3, 'x') // ['x', 'x', 'x']
+createArray(3, 'x'); // ['x', 'x', 'x']
 ```
 
 注意，此时在使用泛型接口的时候，需要定义泛型的类型。
@@ -206,15 +206,15 @@ createArray(3, 'x') // ['x', 'x', 'x']
 
 ```ts
 class GenericNumber<T> {
-  zeroValue: T
-  add: (x: T, y: T) => T
+  zeroValue: T;
+  add: (x: T, y: T) => T;
 }
 
-let myGenericNumber = new GenericNumber<number>()
-myGenericNumber.zeroValue = 0
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
 myGenericNumber.add = function (x, y) {
-  return x + y
-}
+  return x + y;
+};
 ```
 
 ### 泛型参数的默认类型
@@ -223,11 +223,11 @@ myGenericNumber.add = function (x, y) {
 
 ```ts
 function createArray<T = string>(length: number, value: T): Array<T> {
-  let result: T[] = []
+  let result: T[] = [];
   for (let i = 0; i < length; i++) {
-    result[i] = value
+    result[i] = value;
   }
-  return result
+  return result;
 }
 ```
 
@@ -236,14 +236,14 @@ function createArray<T = string>(length: number, value: T): Array<T> {
 类型别名用来给一个类型起个新名字
 
 ```typescript
-type Name = string
-type NameResolver = () => string
-type NameOrResolver = Name | NameResolver
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
 function getName(n: NameOrResolver): Name {
   if (typeof n === 'string') {
-    return n
+    return n;
   } else {
-    return n()
+    return n();
   }
 }
 ```
@@ -256,11 +256,11 @@ function getName(n: NameOrResolver): Name {
 
 // TODO: 重新梳理
 
-- [一分钟带你搞清楚 ts 中 interface 和 type 的概念和用法（较全）](https://blog.csdn.net/TIAN20121221/article/details/120085998)
+![一分钟带你搞清楚 ts 中 interface 和 type 的概念和用法（较全）](https://blog.csdn.net/TIAN20121221/article/details/120085998)
 
-  - ## [TypeScript type 和 interface 区别](https://segmentfault.com/a/1190000041878441)
+- ## [TypeScript type 和 interface 区别](https://segmentfault.com/a/1190000041878441)
 
-- [TypeScript 中 interface 和 type](https://segmentfault.com/a/1190000038825361)
+![TypeScript 中 interface 和 type](https://segmentfault.com/a/1190000038825361)
 
 #### 相同点
 
@@ -270,12 +270,12 @@ function getName(n: NameOrResolver): Name {
 
 ```typescript
 interface User {
-  name: string
-  age: number
+  name: string;
+  age: number;
 }
 
 interface SetUser {
-  (name: string, age: number): void
+  (name: string, age: number): void;
 }
 ```
 
@@ -283,11 +283,11 @@ interface SetUser {
 
 ```ts
 type User = {
-  name: string
-  age: number
-}
+  name: string;
+  age: number;
+};
 
-type SetUser = (name: string, age: number) => void
+type SetUser = (name: string, age: number) => void;
 ```
 
 都允许拓展`extends`：
@@ -298,10 +298,10 @@ type SetUser = (name: string, age: number) => void
 
 ```ts
 interface Name {
-  name: string
+  name: string;
 }
 interface User extends Name {
-  age: number
+  age: number;
 }
 ```
 
@@ -309,19 +309,19 @@ interface User extends Name {
 
 ```ts
 type Name = {
-  name: string
-}
-type User = Name & { age: number }
+  name: string;
+};
+type User = Name & { age: number };
 ```
 
 `interface extend type`
 
 ```ts
 type Name = {
-  name: string
-}
+  name: string;
+};
 interface User extends Name {
-  age: number
+  age: number;
 }
 ```
 
@@ -329,11 +329,11 @@ interface User extends Name {
 
 ```ts
 interface Name {
-  name: string
+  name: string;
 }
 type User = Name & {
-  age: number
-}
+  age: number;
+};
 ```
 
 #### 不同点
@@ -344,28 +344,28 @@ type User = Name & {
 
 ```ts
 // 基本类型别名
-type Name = string
+type Name = string;
 
 // 联合类型
 interface Dog {
-  wong()
+  wong();
 }
 interface Cat {
-  miao()
+  miao();
 }
 
-type Pet = Dog | Cat
+type Pet = Dog | Cat;
 
 // 具体定义数组每个位置的类型
-type PetList = [Dog, Pet]
+type PetList = [Dog, Pet];
 ```
 
 - `type `语句中还可以使用 `typeof` 获取实例的 类型进行赋值
 
 ```ts
 // 当你想获取一个变量的类型时，使用 typeof
-let div = document.createElement('div')
-type B = typeof div
+let div = document.createElement('div');
+type B = typeof div;
 ```
 
 `interface` 可以而 `type `不行：
@@ -374,12 +374,12 @@ type B = typeof div
 
 ```ts
 interface User {
-  name: string
-  age: number
+  name: string;
+  age: number;
 }
 
 interface User {
-  sex: string
+  sex: string;
 }
 
 /*
@@ -414,9 +414,9 @@ User 接口为 {
 ```ts
 function reverse(x: number | string): number | string | void {
   if (typeof x === 'number') {
-    return Number(x.toString().split('').reverse().join(''))
+    return Number(x.toString().split('').reverse().join(''));
   } else if (typeof x === 'string') {
-    return x.split('').reverse().join('')
+    return x.split('').reverse().join('');
   }
 }
 ```
@@ -426,14 +426,14 @@ function reverse(x: number | string): number | string | void {
 这时，我们可以使用重载定义多个 `reverse` 的函数类型：
 
 ```ts
-function reverse(x: number): number // 重载签名
-function reverse(x: string): string // 重载签名
+function reverse(x: number): number; // 重载签名
+function reverse(x: string): string; // 重载签名
 function reverse(x: number | string): number | string | void {
   // 实现签名
   if (typeof x === 'number') {
-    return Number(x.toString().split('').reverse().join(''))
+    return Number(x.toString().split('').reverse().join(''));
   } else if (typeof x === 'string') {
-    return x.split('').reverse().join('')
+    return x.split('').reverse().join('');
   }
 }
 ```
@@ -453,36 +453,36 @@ class ArrayList {
    * @returns
    */
   get(index: number) {
-    return this.element[index]
+    return this.element[index];
   }
   // 显示值
   show() {
-    this.element.forEach(i => console.log(i))
+    this.element.forEach((i) => console.log(i));
   }
 
-  remove(val: number): number
-  remove(val: Object): Object // 实现删除方法重载
+  remove(val: number): number;
+  remove(val: Object): Object; // 实现删除方法重载
 
   remove(val: number | Object) {
     this.element = this.element.filter((e, index) => {
       if (typeof val === 'number') {
-        return val !== index
+        return val !== index;
       } else {
-        return val !== e
+        return val !== e;
       }
-    })
-    return val
+    });
+    return val;
   }
 }
 let a = { name: 'zixia', age: 12 },
   b = { name: 'selfsummer', age: 88 },
-  c = { name: '自夏', age: 18 }
+  c = { name: '自夏', age: 18 };
 
-let newAr = new ArrayList([a, b, c])
+let newAr = new ArrayList([a, b, c]);
 
-newAr.remove(1)
-newAr.remove(c)
-console.log(newAr)
+newAr.remove(1);
+newAr.remove(c);
+console.log(newAr);
 ```
 
 ### 构造器重载
@@ -490,37 +490,37 @@ console.log(newAr)
 ```ts
 // 类型别名
 type TypeWowen = {
-  name: string
-  age: number
-}
+  name: string;
+  age: number;
+};
 
 class Wowen {
-  name: string
-  age: number
-  constructor(age: number, name?: string)
-  constructor(paramObj: TypeWowen)
+  name: string;
+  age: number;
+  constructor(age: number, name?: string);
+  constructor(paramObj: TypeWowen);
   constructor(paramObj: any, name = '未知') {
     if (typeof paramObj === 'object') {
-      const { name, age } = paramObj
-      this.name = name
-      this.age = age
+      const { name, age } = paramObj;
+      this.name = name;
+      this.age = age;
     } else {
-      this.age = paramObj
-      this.name = name
+      this.age = paramObj;
+      this.name = name;
     }
   }
 }
-const w1 = new Wowen({ name: 'frank', age: 123 })
-const w2 = new Wowen(123, 'frank')
+const w1 = new Wowen({ name: 'frank', age: 123 });
+const w2 = new Wowen(123, 'frank');
 // const w3 = new Wowen({ name: 'frank', age: 123 }, 123)
 
-console.log(w1)
-console.log(w2)
-console.log(w3)
+console.log(w1);
+console.log(w2);
+console.log(w3);
 ```
 
 ```typescript
-type GreetFunction = (a: string) => void
+type GreetFunction = (a: string) => void;
 function greeter(fn: GreetFunction) {
   // ...
 }
@@ -530,20 +530,20 @@ function greeter(fn: GreetFunction) {
 
 ```typescript
 type DescribableFunction = {
-  description: string
-  (someArg: number): boolean
-}
-const fn: DescribableFunction = someArg => {
-  return someArg > 0
-}
+  description: string;
+  (someArg: number): boolean;
+};
+const fn: DescribableFunction = (someArg) => {
+  return someArg > 0;
+};
 
-fn.description = '是否大于0'
+fn.description = '是否大于0';
 
 function doSomething(fn: DescribableFunction) {
-  console.log(`${fn.description},returned:${fn(6)}`)
+  console.log(`${fn.description},returned:${fn(6)}`);
 }
 
-doSomething(fn)
+doSomething(fn);
 ```
 
 注意这个语法跟函数类型表达式稍有不同，在参数列表和返回的类型之间用的是 `:` 而不是 `=>`。
@@ -554,10 +554,10 @@ doSomething(fn)
 
 ```ts
 type SomeConstructor = {
-  new (s: string): SomeObject
-}
+  new (s: string): SomeObject;
+};
 function fn(ctor: SomeConstructor) {
-  return new ctor('hello')
+  return new ctor('hello');
 }
 ```
 
@@ -579,9 +579,9 @@ function fn(ctor: SomeConstructor) {
 
 ```typescript
 type numberIndex = {
-  [index: number]: string
-}
-const testArray: numberIndex = ['1', '2', 3] // 不能将类型“number”分配给类型“string”。ts(2322) 所需类型来自此索引签名
+  [index: number]: string;
+};
+const testArray: numberIndex = ['1', '2', 3]; // 不能将类型“number”分配给类型“string”。ts(2322) 所需类型来自此索引签名
 ```
 
 ::: tip
@@ -619,20 +619,20 @@ type attentionType{
 
 ```ts
 interface Animal {
-  name: string
+  name: string;
 }
 interface Dog extends Animal {
-  breed: string
+  breed: string;
 }
 
 interface NotOkay {
-  [x: string]: Dog
-  [x: number]: Animal // Error
+  [x: string]: Dog;
+  [x: number]: Animal; // Error
 }
 
 interface Okay {
-  [x: string]: Animal
-  [x: number]: Dog // OK
+  [x: string]: Animal;
+  [x: number]: Dog; // OK
 }
 ```
 
@@ -649,23 +649,23 @@ interface Okay {
 ```ts
 const frank = {
   age: 22,
-  hobby: 'js'
-} as const
+  hobby: 'js',
+} as const;
 
 interface Isetting {
-  align: 'center' | 'left' | 'right'
-  padding: number
+  align: 'center' | 'left' | 'right';
+  padding: number;
 }
 
 function layout(setting: Isetting) {
-  console.log('Layout', setting)
+  console.log('Layout', setting);
 }
 
 const paramer = {
   align: 'left' as const,
-  padding: 0
-}
-layout(paramer)
+  padding: 0,
+};
+layout(paramer);
 ```
 
 ## keyof 操作符
@@ -673,8 +673,8 @@ layout(paramer)
 对一个对象类型使用 `keyof` 操作符，会返回该对象属性名组成的一个字符串或者数字字面量的联合。这个例子中的类型 P 就等同于 "x" | "y"：
 
 ```typescript
-type Point = { x: number; y: number }
-type P = keyof Point
+type Point = { x: number; y: number };
+type P = keyof Point;
 ```
 
 ## 类型映射
@@ -683,17 +683,17 @@ type P = keyof Point
 
 ```ts
 type Point2D = {
-  x: number
-  y: number
-}
+  x: number;
+  y: number;
+};
 
 type Point3D = {
-  [key in keyof Point2D]: number
+  [key in keyof Point2D]: number;
 } & {
-  z: number
-}
+  z: number;
+};
 
-let p2: Point3D = { x: 1, y: 2, z: 3 }
+let p2: Point3D = { x: 1, y: 2, z: 3 };
 ```
 
 ## 映射修饰符
@@ -705,15 +705,15 @@ let p2: Point3D = { x: 1, y: 2, z: 3 }
 ```typescript
 // 删除属性中的只读属性
 type CreateMutable<Type> = {
-  -readonly [Property in keyof Type]: Type[Property]
-}
+  -readonly [Property in keyof Type]: Type[Property];
+};
 
 type LockedAccount = {
-  readonly id: string
-  readonly name: string
-}
+  readonly id: string;
+  readonly name: string;
+};
 
-type UnlockedAccount = CreateMutable<LockedAccount>
+type UnlockedAccount = CreateMutable<LockedAccount>;
 
 // type UnlockedAccount = {
 //    id: string;
@@ -724,16 +724,16 @@ type UnlockedAccount = CreateMutable<LockedAccount>
 ```typescript
 // 删除属性中的可选属性
 type Concrete<Type> = {
-  [Property in keyof Type]-?: Type[Property]
-}
+  [Property in keyof Type]-?: Type[Property];
+};
 
 type MaybeUser = {
-  id: string
-  name?: string
-  age?: number
-}
+  id: string;
+  name?: string;
+  age?: number;
+};
 
-type User = Concrete<MaybeUser>
+type User = Concrete<MaybeUser>;
 // type User = {
 //    id: string;
 //    name: string;
@@ -766,37 +766,37 @@ TypeScript 可以使用三种访问修饰符（Access Modifiers），分别是 `
 
 ```ts
 interface IPoint {
-  X: number
-  Y: number
-  drawPoint: () => void
-  getDistances: (p: IPoint) => number
+  X: number;
+  Y: number;
+  drawPoint: () => void;
+  getDistances: (p: IPoint) => number;
 }
 class Point implements IPoint {
   constructor(private _x: number, private _y: number) {}
   drawPoint() {
-    console.log('x：' + this._x, 'y:' + this._y)
+    console.log('x：' + this._x, 'y:' + this._y);
   }
   getDistances(p: IPoint) {
-    return Math.sqrt((p.X - this._x) ** 2 + (p.Y - this._y) ** 2)
+    return Math.sqrt((p.X - this._x) ** 2 + (p.Y - this._y) ** 2);
   }
   get X() {
-    return this._x
+    return this._x;
   }
   set X(value: number) {
-    if (value < 0) throw new Error('x不能小于0')
-    this._x = value
+    if (value < 0) throw new Error('x不能小于0');
+    this._x = value;
   }
   get Y() {
-    return this._y
+    return this._y;
   }
   set Y(value: number) {
-    if (value < 0) throw new Error('y不能小于0')
-    this._y = value
+    if (value < 0) throw new Error('y不能小于0');
+    this._y = value;
   }
 }
 
-const p1 = new Point(0, -1)
-const p2 = new Point(0, 2)
+const p1 = new Point(0, -1);
+const p2 = new Point(0, 2);
 ```
 
 ### readonly
@@ -805,15 +805,15 @@ readonly 只读属性关键字
 
 ```ts
 class Animal {
-  readonly name
+  readonly name;
   constructor(name) {
-    this.name = name
+    this.name = name;
   }
 }
 
-let a = new Animal('Jack')
-console.log(a.name) // Jack
-a.name = 'Tom'
+let a = new Animal('Jack');
+console.log(a.name); // Jack
+a.name = 'Tom';
 
 // index.ts(10,3): TS2540: Cannot assign to 'name' because it is a read-only property.
 ```
@@ -823,7 +823,7 @@ a.name = 'Tom'
 ```ts
 class Animal {
   constructor(public readonly name) {
-    this.name = name
+    this.name = name;
   }
 }
 ```
@@ -856,18 +856,18 @@ let a = new Animal('Jack');
 ```ts
 abstract class Animal {
   constructor(public name) {
-    this.name = name
+    this.name = name;
   }
-  abstract sayHi()
+  abstract sayHi();
 }
 
 class Cat extends Animal {
   eat() {
-    console.log(`${this.name} is eating.`)
+    console.log(`${this.name} is eating.`);
   }
 }
 
-let cat = new Cat('Tom')
+let cat = new Cat('Tom');
 
 // index.ts(9,7): error TS2515: Non-abstract class 'Cat' does not implement inherited abstract member 'sayHi' from class 'Animal'.
 ```
@@ -878,20 +878,20 @@ let cat = new Cat('Tom')
 
 ```ts
 abstract class Animal {
-  public name
+  public name;
   public constructor(name) {
-    this.name = name
+    this.name = name;
   }
-  public abstract sayHi()
+  public abstract sayHi();
 }
 
 class Cat extends Animal {
   public sayHi() {
-    console.log(`Meow, My name is ${this.name}`)
+    console.log(`Meow, My name is ${this.name}`);
   }
 }
 
-let cat = new Cat('Tom')
+let cat = new Cat('Tom');
 ```
 
 ### 类实现接口
@@ -902,20 +902,20 @@ let cat = new Cat('Tom')
 
 ```ts
 interface Alarm {
-  alert(): void
+  alert(): void;
 }
 
 class Door {}
 
 class SecurityDoor extends Door implements Alarm {
   alert() {
-    console.log('SecurityDoor alert')
+    console.log('SecurityDoor alert');
   }
 }
 
 class Car implements Alarm {
   alert() {
-    console.log('Car alert')
+    console.log('Car alert');
   }
 }
 ```
@@ -924,23 +924,23 @@ class Car implements Alarm {
 
 ```ts
 interface Alarm {
-  alert(): void
+  alert(): void;
 }
 
 interface Light {
-  lightOn(): void
-  lightOff(): void
+  lightOn(): void;
+  lightOff(): void;
 }
 
 class Car implements Alarm, Light {
   alert() {
-    console.log('Car alert')
+    console.log('Car alert');
   }
   lightOn() {
-    console.log('Car light on')
+    console.log('Car light on');
   }
   lightOff() {
-    console.log('Car light off')
+    console.log('Car light off');
   }
 }
 ```

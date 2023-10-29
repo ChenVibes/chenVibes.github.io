@@ -1,6 +1,7 @@
 ---
 title: python
-tag: python
+tag:
+  - python
 date: 2018-08-27
 category:
   - 后端开发

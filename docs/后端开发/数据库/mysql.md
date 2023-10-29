@@ -1,6 +1,7 @@
 ---
 title: mysql
-tag: mysql
+tag:
+  - mysql
 category: 数据库
 ---
 
@@ -165,11 +166,11 @@ desc tb_news; //查看数据表的结构；
 
 > 基本语句:Select 查找的字段(\* 代表所有的字段) from 表名 这一行是查询语句必须要有的
 
-- [Where 查询条件]
-- [Group by 分组]
-- [Having 分组过滤条件]
-- [Order by asc|desc 排序，正序|逆序]
-- [Limit 限定查询的条数]
+![Where 查询条件]
+![Group by 分组]
+![Having 分组过滤条件]
+![Order by asc|desc 排序，正序|逆序]
+![Limit 限定查询的条数]
 
 别名，我们查询查来的字段，还可以重新名一个名字 使用关键字 as 其中 as 可以省略
 

@@ -1,6 +1,7 @@
 ---
 title: http断点续传原理:http头Range、Content-Range
-tag: 项目总结
+tag:
+  - 项目总结
 date: 2021-02-27
 category:
   - 开发日志
@@ -101,4 +102,4 @@ Content-Range: bytes (unit first byte pos) - \[last byte pos\]/\[entity legth\]
 
 ###### 参考资料
 
-- [Node.js 中实现 HTTP 206 内容分片](https://link.juejin.im?target=http%3A%2F%2Fdeveloper.51cto.com%2Fart%2F201409%2F451095.htm)
+![Node.js 中实现 HTTP 206 内容分片](https://link.juejin.im?target=http%3A%2F%2Fdeveloper.51cto.com%2Fart%2F201409%2F451095.htm)

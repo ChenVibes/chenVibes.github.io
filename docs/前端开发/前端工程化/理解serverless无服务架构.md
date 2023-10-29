@@ -9,10 +9,10 @@ category: 前端开发
 
 **阅读目录**
 
-- [一：什么是 serverless 无服务？](#_labe0)
-- [二：与传统模式架构区别？](#_labe1)
-- [三：serverless 优缺点？](#_labe2)
-- [四：使用 serverless 的应用场景有哪些？](#_labe3)
+- 一：什么是 serverless 无服务？
+- 二：与传统模式架构区别？
+- 三：serverless 优缺点？
+- 四：使用 serverless 的应用场景有哪些？
 
 一：什么是 serverless 无服务？
 
