@@ -9,7 +9,7 @@ export default defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
   port: 3000,
-  base: '/',
+  base: '/vuepress-blog/',
   lang: 'zh-CN',
   // temp: '../../.temp',
   // cache: '../../.cache',
