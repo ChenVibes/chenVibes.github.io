@@ -6,7 +6,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
-  dest: 'dist',
+  dest: 'public',
   host: '0.0.0.0',
   port: 3000,
   base: '/',
