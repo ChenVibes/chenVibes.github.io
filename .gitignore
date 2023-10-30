@@ -1,7 +1,8 @@
 node_modules
-# dist
+dist
 .DS_Store
 .temp
 .cache
 .idea
 .vscode
+docs/.vuepress/dist

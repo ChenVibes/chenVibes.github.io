@@ -1,6 +1,6 @@
 {
   "name": "czblog",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Mr.Chen 's blog",
   "license": "MIT",
   "type": "module",
@@ -8,7 +8,8 @@
     "build": "vuepress build docs",
     "clean-dev": "vuepress dev docs --clean-cache",
     "dev": "vuepress dev docs",
-    "deploy": "bash deploy.sh"
+    "deploy": "bash deploy.sh",
+    "push": "bash publish.sh"
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.63",
