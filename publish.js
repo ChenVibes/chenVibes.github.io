@@ -1,5 +1,4 @@
-// publish.js
-// #! /usr/bin/env node
+'use strict'
 const puppeteer = require('puppeteer')
 
 // 主要原理在于使用xpath获取html页面dom元素，脚本代替小手自动触发点击事件
