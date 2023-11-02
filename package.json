@@ -9,7 +9,7 @@
     "clean-dev": "vuepress dev docs --clean-cache",
     "dev": "vuepress dev docs",
     "deploy": "bash deploy.sh",
-    "push": "bash publish.sh && node publish.js"
+    "push": "bash publish.sh && node publish.cjs"
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.63",
