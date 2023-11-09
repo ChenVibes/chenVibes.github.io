@@ -10,7 +10,7 @@ category:
 <el-table class="table" :data="tableData" height="200" @cell-click="showSelect">
 <el-table-column label="js" prop="js">
 <template #default="scope">
-<el-select :ref="el=>getCellRef('js',scope.$index,el)" v-if="tableShow[scope.$index]?.jsShow" v-model="scope.row.js" @change="val=>tableCellChange('js',scope.$index,val)" placeholder="" >
+<el-select :ref="el=>getCellRef('js',scope&&scope.$index,el)" v-if="tableShow[scope&&scope.$index]&&tableShow[scope&&scope.$index].jsShow" v-model="scope.row.js" @change="val=>tableCellChange('js',scope&&scope.$index,val)" placeholder="" >
 <el-option
         v-for="item in js"
         :key="item.value"
@@ -19,8 +19,8 @@ category:
       />
 </el-select>
 <el-input
-        v-else
-      :value="getJsLabel(scope.row.js)"
+      v-else
+      :value="getJsLabel(scope&&scope.row&&scope.row.js)"
       readonly
       suffix-icon="arrow"
     />
@@ -28,7 +28,7 @@ category:
 </el-table-column>
 <el-table-column label="字母" prop="letter" >
 <template #default="scope">
-<el-select :ref="el=>getCellRef('letter',scope.$index,el)" v-if="tableShow[scope.$index]?.letterShow" v-model="scope.row.letter" @change="val=>tableCellChange('letter',scope.$index,val)" placeholder="" >
+<el-select :ref="el=>getCellRef('letter',scope&&scope.$index,el)" v-if="tableShow[scope&&scope.$index]&&tableShow[scope&&scope.$index].letterShow" v-model="scope.row.letter" @change="val=>tableCellChange('letter',scope&&scope.$index,val)" placeholder="" >
 <el-option
         v-for="item in letter"
         :key="item.id"
@@ -38,7 +38,7 @@ category:
 </el-select>
 <el-input
       v-else
-      :value="getLetterLabel(scope.row.letter)"
+      :value="getLetterLabel(scope&&scope.row&&scope.row.letter)"
       readonly
         suffix-icon="arrow"
     />
@@ -46,7 +46,7 @@ category:
 </el-table-column>
 <el-table-column label="其他" prop="other">
 <template #default="scope">
-<el-select :ref="el=>getCellRef('other',scope.$index,el)" v-if="tableShow[scope.$index]?.otherShow" v-model="scope.row.other" @change="val=>tableCellChange('other',scope.$index,val)" placeholder="" >
+<el-select :ref="el=>getCellRef('other',scope&&scope.$index,el)" v-if="tableShow[scope&&scope.$index]&&tableShow[scope&&scope.$index].otherShow" v-model="scope.row.other" @change="val=>tableCellChange('other',scope&&scope.$index,val)" placeholder="" >
 <el-option
         v-for="item in options"
         :key="item.value"
@@ -56,7 +56,7 @@ category:
 </el-select>
 <el-input
       v-else
-      :value="getOtherLabel(scope.row.other)"
+      :value="getOtherLabel(scope&&scope.row&&scope.row.other)"
       readonly
     suffix-icon="arrow" />
 </template>
