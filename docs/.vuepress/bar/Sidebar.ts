@@ -5,5 +5,5 @@ export default sidebar({
   '/数据结构算法/': 'structure',
   '/前端开发/': 'structure',
   '/基础知识/': 'structure',
-  '/后端开发/': 'structure',
+  '/后端开发/': 'structure'
 })

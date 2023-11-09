@@ -1,5 +1,5 @@
 ---
-title: http断点续传原理:http头Range、Content-Range
+title: http断点续传原理
 tag:
   - 项目总结
 date: 2021-02-27
