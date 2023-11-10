@@ -21,8 +21,8 @@ export default defineUserConfig({
       componentsDir: path.resolve(__dirname, './components')
     }),
     docsearchPlugin({
-      appId: 'HDTORBOLNJ',
-      apiKey: '5cc292fcb4b413686f662fc008a02ffa',
+      appId: 'MJ59MTRGT0',
+      apiKey: 'a0099b5ab199c43d90322e60f773367e',
       indexName: 'vuepress'
     })
   ],
