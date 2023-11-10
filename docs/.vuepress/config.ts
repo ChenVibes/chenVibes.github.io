@@ -5,7 +5,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
-export default defineUserConfig({
+const customComfig = defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
   port: 3000,
@@ -30,3 +30,24 @@ export default defineUserConfig({
   shouldPrefetch: false
   // head: [['link', { rel: 'icon', href: '/logo.jpg' }]]
 })
+
+export default {
+  ...customComfig,
+  // 禁止文件打包带hash
+  viteOptions: {
+    build: {
+      assetsInlineLimit: 10000000, // 设置一个较大的值，禁止内联文件
+      rollupOptions: {
+        output: {
+          manualChunks: undefined // 禁用手动切割
+        }
+      },
+      chunkSizeWarningLimit: 2000, // 设置一个较大的值，禁止警告
+      cssCodeSplit: false, // 禁用 CSS 切割
+      sourcemap: false, // 禁用 sourcemap
+      minify: 'terser', // 使用 Terser 进行压缩
+      brotliSize: false, // 禁用 Brotli
+      filename: true // 禁用文件名的哈希
+    }
+  }
+}
