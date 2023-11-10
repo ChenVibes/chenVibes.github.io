@@ -26,6 +26,7 @@ export default hopeTheme({
   ],
   navbar: Navbar,
   sidebar: Sidebar,
+  sidebarSorter: ['date-desc'],
   displayFooter: true,
   breadcrumb: true,
   blog: {

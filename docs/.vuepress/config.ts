@@ -11,6 +11,7 @@ export default defineUserConfig({
   port: 3000,
   base: '/vuepress-blog/',
   lang: 'zh-CN',
+  open: true,
   // temp: '../../.temp',
   // cache: '../../.cache',
   title: "Mr Chen's Blog",
