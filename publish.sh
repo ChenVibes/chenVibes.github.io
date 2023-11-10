@@ -23,7 +23,7 @@ git add .
 git commit -m "发布文章"
 
 # 推送到远程仓库
-git push  $TARGET_BRANCH
+git push origin $TARGET_BRANCH
 
 # 打印操作完成信息
 # echo "Pushed to $TARGET_BRANCH successfully"
