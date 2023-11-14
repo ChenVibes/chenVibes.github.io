@@ -3,10 +3,12 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
+node_modules
 # Other files and folders
 .settings/
-
+public
+dist
+docs
 # Executables
 *.swf
 *.air
