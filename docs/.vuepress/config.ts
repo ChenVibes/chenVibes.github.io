@@ -14,6 +14,7 @@ const customComfig = defineUserConfig({
   open: true,
   // temp: '../../.temp',
   // cache: '../../.cache',
+  head: [['meta', { name: 'referrer', content: 'no-referrer' }]], //gitee仓库外链图片加载失败
   title: "Mr Chen's Blog",
   description: '一个专注于编程开发技术的个人知识库博客',
   plugins: [
@@ -45,9 +46,10 @@ export default {
       assetsInlineLimit: 10000000, // 设置一个较大的值，禁止内联文件
       rollupOptions: {
         output: {
-          entryFileNames: `assets/[name].js`,
-          chunkFileNames: `assets/[name].js`,
-          assetFileNames: `assets/[name].[ext]`
+          filename: '[name].js',
+          entryFileNames: '[name].js', // 设置输出文件名不带hash
+          chunkFileNames: '[name].js', // 设置代码分割文件名不带hash
+          assetFileNames: '[name].[ext]' // 设置静态资源文件名不带hash
         }
       },
       chunkSizeWarningLimit: 2000, // 设置一个较大的值，禁止警告
