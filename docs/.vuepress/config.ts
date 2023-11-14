@@ -33,13 +33,21 @@ const customComfig = defineUserConfig({
 
 export default {
   ...customComfig,
+  markdown: {
+    // ......
+    extendMarkdown: md => {
+      md.use(require('markdown-it-disable-url-encode'))
+    }
+  },
   // 禁止文件打包带hash
   viteOptions: {
     build: {
       assetsInlineLimit: 10000000, // 设置一个较大的值，禁止内联文件
       rollupOptions: {
         output: {
-          manualChunks: undefined // 禁用手动切割
+          entryFileNames: `assets/[name].js`,
+          chunkFileNames: `assets/[name].js`,
+          assetFileNames: `assets/[name].[ext]`
         }
       },
       chunkSizeWarningLimit: 2000, // 设置一个较大的值，禁止警告
