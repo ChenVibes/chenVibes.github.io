@@ -10,7 +10,7 @@ export default hopeTheme({
     url: '/logo.png'
   },
   repoDisplay: false,
-  iconAssets: '//at.alicdn.com/t/c/font_3677319_oahe2s4vqga.css',
+  iconAssets: '//at.alicdn.com/t/c/font_4328948_neuaqkpxag.css',
   logo: '/logo.png',
   footer: '',
   copyright: 'Copyright © 2018-present Mr.Chen',
