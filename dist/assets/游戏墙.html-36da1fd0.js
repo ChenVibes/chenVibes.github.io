@@ -1,0 +1,1 @@
+import{_ as o}from"./plugin-vue_export-helper-c27b6911.js";import{r as t,o as c,c as r,a as _}from"./app-cebf37d9.js";const n={};function s(a,l){const e=t("SwitchPoster");return c(),r("div",null,[_(e)])}const i=o(n,[["render",s],["__file","游戏墙.html.vue"]]);export{i as default};
