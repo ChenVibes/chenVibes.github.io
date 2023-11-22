@@ -23,3 +23,6 @@ git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
 # 打印操作完成信息
 # echo "Pushed to $target_branch successfully"
 echo "打包目录已成功提交到 $target_branch 分支"
+
+# 切换到代码分支
+git checkout $source_branch
