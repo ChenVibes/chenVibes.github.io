@@ -2,6 +2,17 @@
 #!/usr/bin/env sh
 # 确保脚本抛出遇到的错误
 set -e
+
+# 定义错误处理函数
+handle_error() {
+  git branch -d stage_2
+  git checkout $source_branch
+  rm -rf dist
+}
+
+# 设置错误处理函数
+trap handle_error ERR
+
 # 检出临时分支
 git checkout -b stage_2
 # # 生成静态文件
