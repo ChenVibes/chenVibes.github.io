@@ -13,9 +13,7 @@ target_branch="develop"
 source_dir="dist" # VuePress打包后的目录
 
 # 删除除了gitignore和dist文件夹之外所有文件
-find . -type f ! -name '.gitignore' -exec rm -f {} +
-find . -type d ! -name 'dist' -prune -exec rm -rf {} +
-
+find . -type f -not /(-name '.gitignore' -or -name '.git' -or -name '.github' -or -name 'publish.sh' -or -name 'publish.cjs' /) -delete
 # 复制dist文件夹内所有文件 到当前目录
 cp -R dist/* .
 # 添加所有文件到Git暂存区
