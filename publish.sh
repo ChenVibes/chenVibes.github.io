@@ -3,7 +3,7 @@
 # 确保脚本抛出遇到的错误
 set -e
 # 检出临时分支
-git checkout temp
+git checkout -b stage_2
 # # 生成静态文件
 npm run build 
 # 设置源分支和目标分支
@@ -23,18 +23,19 @@ git add  -A -f
 # 提交到本地仓库
 git commit -m "Add package from $source_dir"
 
-# 切换到模板分支
+# 切换到模板分支 develop
 git checkout $target_branch
 
-git merge --strategy-option=theirs temp
+git merge --strategy-option=theirs stage_2
 
 
 # 推送到远程仓库
 git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
+git branch -d stage_2
 
 # 打印操作完成信息
 # echo "Pushed to $target_branch successfully"
 echo "打包目录已成功提交到 $target_branch 分支"
 
-# 切换到代码分支 执行后续自动部署
+# 切换到代码分支master 执行后续自动部署
 git checkout $source_branch
