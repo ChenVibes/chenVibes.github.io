@@ -12,7 +12,7 @@ source_dir="dist" # VuePress打包后的目录
 
 # 添加所有文件到Git暂存区
 # cd $source_dir
-git add ../$source_dir/ -A -f
+git add ./$source_dir/ -A -f
 # 提交到本地仓库
 git commit -m "Add package from $source_dir"
 # 切换到模板分支

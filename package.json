@@ -8,8 +8,8 @@
     "build": "vuepress build docs",
     "clean-dev": "vuepress dev docs --clean-cache",
     "dev": "vuepress dev docs",
-    "deploy": "bash script/deploy.sh",
-    "push": "bash script/publish.sh && node script/publish.cjs",
+    "deploy": "bash deploy.sh",
+    "push": "bash publish.sh && node publish.cjs",
     "upload": "bash upload-records.sh"
   },
   "devDependencies": {
