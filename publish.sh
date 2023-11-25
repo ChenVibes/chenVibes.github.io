@@ -13,23 +13,20 @@ source_dir="dist" # VuePress打包后的目录
 # 添加所有文件到Git暂存区
 # cd $source_dir
 git add ./$source_dir/ -A -f
-
-git checkout -b stage_2
 # 提交到本地仓库
 git commit -m "Add package from $source_dir"
 
 # 切换到模板分支
-git checkout $target_branch
+# git checkout $target_branch
 
-git merge --strategy-option=theirs stage_2
-
+# git merge --strategy-option=theirs $source_branch
 # 推送到远程仓库
-git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
+# git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
+git push --set-upstream https://gitee.com/magicBegin/vuepress-blog.git  localb:$target_branch 
 
-git branch -d stage_2
 # 打印操作完成信息
 # echo "Pushed to $target_branch successfully"
 echo "打包目录已成功提交到 $target_branch 分支"
 
 # 切换到代码分支 执行后续自动部署
-git checkout $source_branch
+# git checkout $source_branch
