@@ -26,7 +26,7 @@ target_branch="develop"
 source_dir="dist" # VuePress打包后的目录
 
 # 删除除了gitignore和dist文件夹之外所有文件
-find .   -name 'docs' -or -name 'node_modules' - -delete
+find . -type f  -name 'docs' -or -name 'node_modules' - -delete
 
 # 复制dist文件夹内所有文件 到当前目录
 cp -R dist/* .
