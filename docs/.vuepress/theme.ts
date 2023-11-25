@@ -2,13 +2,14 @@ import { hopeTheme } from 'vuepress-theme-hope'
 import Navbar from './bar/Navbar'
 import Sidebar from './bar/Sidebar'
 export default hopeTheme({
-  hostname: 'https://zfhblog.top',
+  hostname: 'https://magicbegin.gitee.io/vuepress-blog/',
   contributors: false,
   editLink: false,
   author: {
     name: 'Mr.Chen',
     url: '/logo.png'
   },
+  favicon: '/logo.png',
   repoDisplay: false,
   iconAssets: '//at.alicdn.com/t/c/font_4328948_neuaqkpxag.css',
   logo: '/logo.png',
