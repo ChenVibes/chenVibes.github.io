@@ -9,7 +9,8 @@
     "clean-dev": "vuepress dev docs --clean-cache",
     "dev": "vuepress dev docs",
     "deploy": "bash deploy.sh",
-    "push": "bash publish.sh && node publish.cjs"
+    "push": "bash publish.sh && node publish.cjs",
+    "upload": "bash upload-records.sh"
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.63",
@@ -27,5 +28,6 @@
     "busuanzi.pure.js": "1.0.3",
     "element-plus": "^2.4.1",
     "vue": "^3.3.4"
-  }
+  },
+  "packageManager": "yarn@1.22.21"
 }
