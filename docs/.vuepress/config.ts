@@ -25,9 +25,6 @@ const customComfig = defineUserConfig({
       apiKey: '514c86845d258b93267fa5cb848cc559',
       indexName: 'dev_vuepress_blog',
       placeholder: '搜索文档',
-      searchParameters: {
-        attributesToSnippet: ['lvl1:30', 'content:25']
-      },
       locales: {
         '/': {
           placeholder: '搜索文档',
