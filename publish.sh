@@ -42,3 +42,4 @@ git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
 echo "打包目录已成功提交到 $target_branch 分支"
 # 切换回原分支
 git checkout $source_branch
+yarn install
