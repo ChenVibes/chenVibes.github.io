@@ -25,7 +25,7 @@ git checkout $target_branch
 find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
 # 复制临时目录中的文件到当前目录
 cp -R temp/* .
- rm -rf docs dist assets category temp objects
+ rm -rf docs dist assets category temp objects node_modules
 # 添加所有文件到Git暂存区
 
 # 添加所有更改
