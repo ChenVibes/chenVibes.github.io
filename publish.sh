@@ -26,21 +26,21 @@ target_branch="develop"
 source_dir="dist" # VuePress打包后的目录
 
 # 删除除了gitignore和dist文件夹之外所有文件
-find .  -path "./docs/*"   -type d -delete
-find . ! -name ".gitignore" ! -name "publish.sh" ! -name "publish.cjs" -type f -delete
+find . ! -path "./.github/*" ! -path "./.git/*" ! -path "./dist/*" ! -path "./node_modules/*" ! -name ".gitignore" ! -name "publish.sh" ! -name "publish.cjs" -type f -delete
+
 # 复制dist文件夹内所有文件 到当前目录
 cp -R dist/* .
 # 添加所有文件到Git暂存区
-find .  -path "./dist/*" -path "./docs/*"  -type d -delete
+find .  -path "./dist/*" -type f -delete
 # cd $source_dir
-git add  -A -f
+git add  -A -f --exclude = ./dist,./docs,./node_modules,./package.json,
 # 提交到本地仓库
 git commit -m "Add package from $source_dir"
 
 # 切换到模板分支 develop
 git checkout $target_branch
 
-git merge -X theirs stage_2
+git merge --strategy-option=theirs stage_2
 
 # find .  -path "./docs/*" path "./dist/*"   -type f -delete
 
