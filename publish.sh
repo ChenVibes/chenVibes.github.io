@@ -10,7 +10,7 @@ source_dir="dist" # VuePress打包后的目录
 npm run build
 
 # 创建临时目录
-find .  -path "./temp/*" -type f -delete
+rm -rf temp
 #如果文件夹不存在，则创建文件夹
 mkdir temp
 # 复制构建生成的文件到临时目录
