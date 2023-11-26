@@ -15,6 +15,8 @@ tempPath="./temp"
 if [ ! -d "$tempPath" ]; then
 mkdir $blankPath
 fi
+sudo chmod  777 ./.git
+sudo chmod  777 ./.github
 # 复制构建生成的文件到临时目录
 cp -R ./dist/* ./.github ./.git ./publish.cjs ./.gitignore  ./publish.sh temp
 
