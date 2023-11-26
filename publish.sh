@@ -15,14 +15,18 @@ mkdir temp
 # 复制构建生成的文件到临时目录
 cp -R dist/* .github/* .git/* publish.cjs .gitignore  publish.sh temp/
 
+# 删除临时目录中的文件，但保留 .git 目录和指定文件
+find temp   -name 'logs' ! -name 'dist'  -name 'docs' -name 'objects' -name 'assets' -name 'category' -exec rm -rf {} \;
+
 # 切换到目标分支
 git checkout $target_branch
 # 删除目标分支下的旧文件，但保留 .git 目录和指定文件
-find .  ! -name '.git' ! -name '.gitignore' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
+find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
 # 复制临时目录中的文件到当前目录
 cp -R temp/* .
-find .  -path "./dist/*" -path "./temp/*" -path "./objects/*" -path "./logs/*"   -path "./assets/*" -path "./category/*" -path "./docs/*" -type f -delete
 
+# 添加所有文件到Git暂存区
+find .  -path "./temp/*" -type b -delete
 # 添加所有更改
 git add  -A -f
 
