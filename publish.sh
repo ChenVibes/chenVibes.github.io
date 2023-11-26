@@ -18,12 +18,11 @@ cp -R dist/* .github/* .git/* publish.cjs publish.sh temp/
 # 切换到目标分支
 git checkout $target_branch
 
-# 删除目标分支下的旧文件，但保留 .git 目录和指定文件
-find . -maxdepth 1 ! -name '.git' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
-
 # 复制临时目录中的文件到当前目录
 cp -R temp/* .
 
+# 删除目标分支下的旧文件，但保留 .git 目录和指定文件
+find . -maxdepth 1 ! -name '.git' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
 # 添加所有更改
 git add  -A -f
 
