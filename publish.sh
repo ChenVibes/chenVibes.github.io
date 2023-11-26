@@ -9,11 +9,14 @@ source_dir="dist" # VuePress打包后的目录
 # 构建 VuePress
 npm run build
 
+# 添加打包文件到Git暂存区
+git add ./$source_dir/ -A -f
+
 # 切换到目标分支
 git checkout $target_branch
 
 # 删除目标分支下的旧文件
-git rm -r .
+git rm -r . --cached ./.github,./.git,publish.cjs,publish.sh
 
 # 复制构建生成的文件到当前目录
 cp -R dist/* .
