@@ -17,12 +17,12 @@ cp -R dist/* .github/* .git/* publish.cjs publish.sh temp/
 
 # 切换到目标分支
 git checkout $target_branch
-
+# 删除目标分支下的旧文件，但保留 .git 目录和指定文件
+find .  ! -name '.git' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
 # 复制临时目录中的文件到当前目录
 cp -R temp/* .
+find .  -path "./dist/*" -path "./temp/*" -path "./objects/*" -path "./logs/*"  -path "./node_modules/*" -path "./assets/*" -path "./category/*" -path "./docs/*" -type f -delete
 
-# 删除目标分支下的旧文件，但保留 .git 目录和指定文件
-find . -maxdepth 1 ! -name '.git' ! -name 'publish.cjs' ! -name 'publish.sh' -name '.github' -exec rm -rf {} \;
 # 添加所有更改
 git add  -A -f
 
@@ -32,8 +32,7 @@ git commit -m "Update VuePress build"
 # 推送更改到远程仓库
 git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
 
-# 删除临时目录
-rm -rf temp
+
 
 echo "打包目录已成功提交到 $target_branch 分支"
 # 切换回原分支
