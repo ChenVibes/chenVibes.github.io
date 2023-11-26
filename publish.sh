@@ -39,13 +39,13 @@ git commit -m "Add package from $source_dir"
 # 切换到模板分支 develop
 git checkout $target_branch
 
-git merge --no-commit --strategy-option=theirs stage_2
+git merge --strategy-option=theirs stage_2
 
 # find .  -path "./docs/*" path "./dist/*"   -type f -delete
 
-# git add  -A -f
-# # 提交到本地仓库
-# git commit -m "Add package from $source_dir"
+git add  -A -f
+# 提交到本地仓库
+git commit -m "Add package from $source_dir"
 
 # 推送到远程仓库
 git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
