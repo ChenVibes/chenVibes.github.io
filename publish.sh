@@ -31,7 +31,7 @@ find . ! -name ".gitignore" ! -name "publish.sh" ! -name "publish.cjs" -type f -
 # 复制dist文件夹内所有文件 到当前目录
 cp -R dist/* .
 # 添加所有文件到Git暂存区
-find .  -path "./dist/*" -path "./docs/*" -path "./node_modules/*" -type f -delete
+find .  -path "./dist/*" -path "./docs/*"  -type d -delete
 # cd $source_dir
 git add  -A -f
 # 提交到本地仓库
