@@ -5,10 +5,10 @@ set -e
 
 # 定义错误处理函数
 handle_error() {
-  git branch -d stage_2
   git checkout $source_branch
   rm -rf dist
-  echo "脚本发生错误,已回退 $source_branch 分支。"
+  git branch -d stage_2
+ echo "脚本发生错误,已回退 $source_branch 分支。"
 
 }
 
@@ -26,8 +26,7 @@ target_branch="develop"
 source_dir="dist" # VuePress打包后的目录
 
 # 删除除了gitignore和dist文件夹之外所有文件
-find . -type f  -name 'docs' -or -name 'node_modules' - -delete
-
+find . ! -path "./.github/*" ! -path "./.git/*" ! -path "./dist/*" ! -name ".gitignore" ! -name "publish.sh" ! -name "publish.cjs" -type f -delete
 # 复制dist文件夹内所有文件 到当前目录
 cp -R dist/* .
 # 添加所有文件到Git暂存区
