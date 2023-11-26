@@ -10,13 +10,9 @@ source_dir="dist" # VuePress打包后的目录
 npm run build
 
 # 创建临时目录
+find .  -path "./temp/*" -type f -delete
 #如果文件夹不存在，则创建文件夹
-tempPath="./temp"
-if [ ! -d "$tempPath" ]; then
-mkdir $blankPath
-fi
-sudo chmod  777 ./.git
-sudo chmod  777 ./.github
+mkdir temp
 # 复制构建生成的文件到临时目录
 cp -R ./dist/* ./.github ./.git ./publish.cjs ./.gitignore  ./publish.sh temp
 
