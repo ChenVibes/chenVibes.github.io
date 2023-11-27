@@ -22,10 +22,10 @@ find temp   -name 'logs'  -name 'dist'  -name 'docs' -name 'objects' -name 'asse
 # 切换到目标分支
 git checkout $target_branch
 # 删除目标分支下的旧文件，但保留 .git 目录和指定文件
-find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'publish.cjs' ! -name 'publish.sh' ! -name '.github' ! -name 'node_modules' -exec rm -rf {} \;
+find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'temp' ! -name 'publish.cjs' ! -name 'publish.sh' ! -name '.github' ! -name 'node_modules' -exec rm -rf {} \;
 # 复制临时目录中的文件到当前目录
 cp -R temp/* .
- rm -rf docs dist assets category temp objects node_modules
+rm -rf docs dist assets category temp objects node_modules
 # 添加所有文件到Git暂存区
 
 # 添加所有更改
