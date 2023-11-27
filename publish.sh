@@ -17,7 +17,7 @@ mkdir temp
 cp -R ./dist/* ./.github ./.git ./publish.cjs ./.gitignore  ./publish.sh temp
 
 # 删除临时目录中的文件，但保留 .git 目录和指定文件
-find temp   -name 'logs' ! -name 'dist'  -name 'docs' -name 'objects' -name 'assets' -name 'category' -exec rm -rf {} \;
+find temp   -name 'logs'  -name 'dist'  -name 'docs' -name 'objects' -name 'assets' -name 'category' -exec rm -rf {} \;
 
 # 切换到目标分支
 git checkout $target_branch
