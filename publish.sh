@@ -25,7 +25,7 @@ git checkout $target_branch
 find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'temp' ! -name 'publish.cjs' ! -name 'publish.sh' ! -name '.github' ! -name 'node_modules' -exec rm -rf {} \;
 # 复制临时目录中的文件到当前目录
 cp -R temp/* .
-rm -rf docs dist assets category temp objects node_modules
+rm -rf docs dist assets category temp objects 
 # 添加所有文件到Git暂存区
 
 # 添加所有更改
@@ -36,8 +36,6 @@ git commit -m "Update VuePress build"
 
 # 推送更改到远程仓库
 git push -f https://gitee.com/magicBegin/vuepress-blog.git develop
-
-
 
 echo "打包目录已成功提交到 $target_branch 分支"
 # 切换回原分支
