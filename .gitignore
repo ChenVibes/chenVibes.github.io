@@ -7,3 +7,10 @@ dist
 .vscode
 docs/.vuepress/dist
 public
+node_modules
+docs 
+dist 
+assets 
+category 
+temp 
+objects 
