@@ -8,7 +8,5 @@ docs/.vuepress/dist
 public
 node_modules
 docs 
-assets 
-category 
 temp 
 objects 
