@@ -7,4 +7,7 @@ dist
 .vscode
 docs/.vuepress/dist
 public
-dist/*
+assets 
+category 
+temp 
+objects 
