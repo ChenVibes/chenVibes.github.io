@@ -70,6 +70,10 @@ export default hopeTheme({
     config: {}
   },
   plugins: {
+    // 自动生成目录页面
+    autoCatalog: {
+      index: true
+    },
     blog: {
       excerpt: false
     },
