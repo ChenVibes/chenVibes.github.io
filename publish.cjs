@@ -49,3 +49,9 @@ async function giteeUpdate() {
 }
 
 giteeUpdate()
+
+/**
+ * Build 接口
+ * https://gitee.com/magicBegin/vuepress-blog/pages/rebuild
+ * branch=develop&build_directory=%2F&force_https=true&auto_update=false
+ */
