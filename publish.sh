@@ -27,3 +27,5 @@ echo "打包目录已成功提交到 $target_branch 分支"
 
 # 切换到代码分支
 git checkout $source_branch
+
+yarn install
