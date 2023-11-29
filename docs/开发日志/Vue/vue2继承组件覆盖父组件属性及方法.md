@@ -5,6 +5,8 @@ category:
   - Vue
 ---
 
+vue 使用组件继承时 经常遇到方法无法覆盖，这里记录下次避免踩坑
+
 ```vue
 <script>
 import Component from 'a'
