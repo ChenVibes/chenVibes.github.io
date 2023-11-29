@@ -22,7 +22,7 @@ const customComfig = defineUserConfig({
     }),
     docsearchPlugin({
       appId: '94QVGQLIOV',
-      apiKey: '09b08a14b593a35646defeeeda30769b',
+      apiKey: 'db0ba1b14b0bd35be4bc17022ec1840e',
       indexName: 'dev_vuepress_blog',
       placeholder: '搜索文档',
       locales: {
