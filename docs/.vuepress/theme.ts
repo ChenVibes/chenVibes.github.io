@@ -73,11 +73,12 @@ export default hopeTheme({
     blog: {
       excerpt: false
     },
-    comment: {
-      dark: 'auto',
-      provider: 'Waline',
-      serverURL: 'https://waline.zfhblog.top'
-    },
+    // 评论服务 需云服务器
+    // comment: {
+    //   dark: 'auto',
+    //   provider: 'Waline',
+    //   serverURL: 'https://waline.zfhblog.top'
+    // },
     components: {
       components: ['Badge', 'CodePen', 'PDF']
     },
