@@ -11,7 +11,9 @@ target_branch="develop"
 source_dir="dist" # VuePress打包后的目录
 # 切换到模板分支
 git checkout $target_branch
+# 拷贝打包后的静态文件 到项目根目录
 cp -R ./$source_dir/* .
+# 删除打包后的目录
 rm -rf $source_dir
 # 添加所有文件到Git暂存区
 git add .
