@@ -13,7 +13,17 @@ const customComfig = defineUserConfig({
   open: true,
   // temp: '../../.temp',
   // cache: '../../.cache',
-  head: [['meta', { name: 'referrer', content: 'no-referrer' }]], //gitee仓库外链图片加载失败
+  head: [
+    ['meta', { name: 'referrer', content: 'no-referrer' }],
+    [
+      'script',
+      {
+        name: 'src',
+        content: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js',
+        async: true
+      }
+    ]
+  ], //gitee仓库外链图片加载失败
   title: "Mr Chen's Blog",
   description: '一个专注于编程开发技术的个人知识库博客',
   plugins: [

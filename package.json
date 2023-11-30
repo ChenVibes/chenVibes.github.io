@@ -25,7 +25,6 @@
     "@smallwei/avue": "^3.2.6",
     "atropos": "^1.0.2",
     "axios": "^1.5.1",
-    "busuanzi.pure.js": "1.0.3",
     "element-plus": "^2.4.1",
     "vue": "^3.3.4"
   },

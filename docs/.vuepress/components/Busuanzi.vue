@@ -1,7 +1,10 @@
 <template>
 	<div class="busuanzi">
-		本站总访问量
-		<span id="busuanzi_value_site_pv"></span> 次
+		<!-- http://ibruce.info/2015/04/04/busuanzi/ -->
+		<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+		<span id="busuanzi_container_site_uv">
+			本站访客数<span id="busuanzi_value_site_uv"></span>人次
+		</span>
 		<div id="runtime_span">
 			本站勉强运行 <span class="color">{{ A }}</span>天<span class="color">{{ B }}</span>小时<span class="color">{{ C }}</span>分<span class="color">{{ D }}</span>秒
 		</div>
@@ -9,17 +12,7 @@
 </template>
 
 <script>
-/* 不蒜子访问量统计 */
-import script from 'busuanzi.pure.js'
 export default {
-	// 监听,当路由发生变化的时候执行
-	watch: {
-		$route(to, from) {
-			if (to.path != from.path) {
-				script.fetch()
-			}
-		}
-	},
 	data() {
 		return {
 			A: '',
