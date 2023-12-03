@@ -8,7 +8,7 @@ const customComfig = defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
   port: 3000,
-  base: '/vuepress-blog/',
+  base: '/blog/',
   lang: 'zh-CN',
   open: true,
   // temp: '../../.temp',

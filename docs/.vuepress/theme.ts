@@ -2,7 +2,7 @@ import { hopeTheme } from 'vuepress-theme-hope'
 import Navbar from './bar/Navbar'
 import Sidebar from './bar/Sidebar'
 export default hopeTheme({
-  hostname: 'https://magicbegin.gitee.io/vuepress-blog/',
+  hostname: 'https://magicbegin.gitee.io/blog/',
   contributors: false,
   editLink: false,
   author: {

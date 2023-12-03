@@ -1,6 +1,6 @@
 'use strict'
 const puppeteer = require('puppeteer')
-
+import globalConfig from './globalConfig'
 // 主要原理在于使用xpath获取html页面dom元素，脚本代替小手自动触发点击事件
 async function giteeUpdate() {
   const browser = await puppeteer.launch({
@@ -13,12 +13,12 @@ async function giteeUpdate() {
   // 1. 获取账号input，自动输入
   let accountElements = await page.$x('//*[@id="user_login"]')
   //  🚨需要设置为自己的gitee账户🚨
-  await accountElements[0].type('magicBegin')
+  await accountElements[0].type(globalConfig.userName)
 
   // 2. 获取密码input，自动输入
   let pwdElements = await page.$x('//*[@id="user_password"]')
   // 🚨需要设置自己的gitee密码🚨
-  await pwdElements[0].type('chenzhen8888')
+  await pwdElements[0].type(globalConfig.passWord)
 
   // 3. 获取登录按钮，触发点击事件
   let loginButtons = await page.$x(
