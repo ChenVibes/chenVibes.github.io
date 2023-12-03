@@ -1,6 +1,6 @@
 'use strict'
 const puppeteer = require('puppeteer')
-import globalConfig from './globalConfig'
+const globalConfig = require('./globalConfig')
 // 主要原理在于使用xpath获取html页面dom元素，脚本代替小手自动触发点击事件
 async function giteeUpdate() {
   const browser = await puppeteer.launch({
