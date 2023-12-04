@@ -31,8 +31,8 @@ const customComfig = defineUserConfig({
       componentsDir: path.resolve(__dirname, './components')
     }),
     docsearchPlugin({
-      appId: '94QVGQLIOV',
-      apiKey: 'db0ba1b14b0bd35be4bc17022ec1840e',
+      appId: 'P0ZFP2UMYJ',
+      apiKey: 'a300593bc54cb91bd4ec0aa9cfb31e16',
       indexName: 'dev_vuepress_blog',
       placeholder: '搜索文档',
       locales: {
