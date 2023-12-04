@@ -8,13 +8,13 @@ const customComfig = defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
   port: 3000,
-  base: '/vuepress-blog/',
+  base: '/blog/',
   lang: 'zh-CN',
   open: true,
   // temp: '../../.temp',
   // cache: '../../.cache',
   head: [
-    ['meta', { name: 'referrer', content: 'no-referrer' }],
+    ['meta', { name: 'referrer', content: 'no-referrer' }], //一种引用策略，可以用来防止图片或视频被盗 no-referrer：所有请求不发送 referrer。 gitee仓库外链图片加载失败
     [
       'script',
       {
@@ -23,7 +23,7 @@ const customComfig = defineUserConfig({
         async: true
       }
     ]
-  ], //gitee仓库外链图片加载失败
+  ],
   title: "Mr Chen's Blog",
   description: '一个专注于编程开发技术的个人知识库博客',
   plugins: [
