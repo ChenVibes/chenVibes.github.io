@@ -1,11 +1,11 @@
 {
-  "index_name": "dev_vuepress_blog",
+  "index_name": "vuepress",
   "start_urls": ["https://magicbegin.gitee.io/blog/"],
   "sitemap_urls": ["https://magicbegin.gitee.io/blog/sitemap.xml"],
   "stop_urls": ["/search"],
   "selectors": {
     "lvl0": {
-      "selector": ".vp-sidebar-heading",
+      "selector": ".md-link .nav-link .vp-sidebar-link .vp-sidebar-page",
       "global": true,
       "default_value": "Documentation"
     },
