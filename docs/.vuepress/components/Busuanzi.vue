@@ -1,8 +1,10 @@
 <template>
 	<div class="busuanzi">
 		<!-- http://ibruce.info/2015/04/04/busuanzi/ -->
-		本站总访问量
-		<span id="busuanzi_value_site_pv"></span> 次
+		<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+		<span id="busuanzi_container_site_uv">
+			本站访客数<span id="busuanzi_value_site_uv"></span>人次
+		</span>
 		<div id="runtime_span">
 			本站勉强运行 <span class="color">{{ A }}</span>天<span class="color">{{ B }}</span>小时<span class="color">{{ C }}</span>分<span class="color">{{ D }}</span>秒
 		</div>
