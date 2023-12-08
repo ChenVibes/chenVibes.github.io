@@ -3,6 +3,8 @@ import theme from './theme.js'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { getDirname, path } from '@vuepress/utils'
+// 该插件会自动将指定的库 视作外部依赖而不会被打包到最终输出的bundle中
+import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 const __dirname = getDirname(import.meta.url)
 const customComfig = defineUserConfig({
   dest: 'dist',
@@ -15,6 +17,18 @@ const customComfig = defineUserConfig({
   // cache: '../../.cache',
   head: [
     ['meta', { name: 'referrer', content: 'no-referrer' }], //一种引用策略，可以用来防止图片或视频被盗 no-referrer：所有请求不发送 referrer。 gitee仓库外链图片加载失败
+    [
+      'script',
+      {
+        src: 'https://cdn.jsdelivr.net/npm/vue@3.3.11/dist/vue.global.min.js'
+      }
+    ],
+    [
+      'script',
+      {
+        src: 'https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js'
+      }
+    ],
     [
       'script',
       {
@@ -83,9 +97,51 @@ const customComfig = defineUserConfig({
   shouldPrefetch: false
   // head: [['link', { rel: 'icon', href: '/logo.jpg' }]]
 })
+// ::: vue
+// <template>
+//   <!-- Vue 代码 -->
+// </template>
+
+// <script>
+// // Vue 代码
+// </script>
+
+// <style>
+// /* 样式 */
+// </style>
+// :::
+
+// ::: react
+// ```jsx
+// // React 代码
 
 export default {
   ...customComfig,
+  plugins: [
+    ...(customComfig.plugins || []),
+    // VuePress 中解析 Vue 或 React 代码并生成动态页面
+
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'vue',
+        before: '<pre class="vue-container"><code>',
+        after: '</code></pre>'
+      }
+    ],
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'react',
+        before: '<pre class="react-container"><code>',
+        after: '</code></pre>'
+      }
+    ],
+    resolveExternalsPlugin({
+      react: 'React',
+      vue: 'Vue' // 这个名字可以直接打印window，看window上挂的是什么名字，就写什么名字
+    })
+  ],
   markdown: {
     // ......
     extendMarkdown: md => {

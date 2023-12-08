@@ -7,64 +7,99 @@ category:
   - 开发日志
 ---
 
-<el-table class="table" :data="tableData" height="200" @cell-click="showSelect">
-<el-table-column label="js" prop="js">
-<template #default="scope">
-<el-select :ref="el=>getCellRef('js',scope&&scope.$index,el)" v-if="tableShow[scope&&scope.$index]&&tableShow[scope&&scope.$index].jsShow" v-model="scope.row.js" @change="val=>tableCellChange('js',scope&&scope.$index,val)" placeholder="" >
-<el-option
-        v-for="item in js"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-</el-select>
-<el-input
-      v-else
-      :value="getJsLabel(scope&&scope.row&&scope.row.js)"
-      readonly
-      suffix-icon="arrow"
-    />
+<template>
+  <el-table
+    class="table"
+    :data="tableData"
+    height="200"
+    @cell-click="showSelect"
+  >
+    <el-table-column label="js" prop="js">
+      <template #default="scope">
+        <el-select
+          :ref="el => getCellRef('js', scope && scope.$index, el)"
+          v-if="
+            tableShow[scope && scope.$index] &&
+            tableShow[scope && scope.$index].jsShow
+          "
+          v-model="scope.row.js"
+          @change="val => tableCellChange('js', scope && scope.$index, val)"
+          placeholder=""
+        >
+          <el-option
+            v-for="item in js"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+        <el-input
+          v-else
+          :value="getJsLabel(scope && scope.row && scope.row.js)"
+          readonly
+          suffix-icon="arrow"
+        />
+      </template>
+    </el-table-column>
+    <el-table-column label="字母" prop="letter">
+      <template #default="scope">
+        <el-select
+          :ref="el => getCellRef('letter', scope && scope.$index, el)"
+          v-if="
+            tableShow[scope && scope.$index] &&
+            tableShow[scope && scope.$index].letterShow
+          "
+          v-model="scope.row.letter"
+          @change="val => tableCellChange('letter', scope && scope.$index, val)"
+          placeholder=""
+        >
+          <el-option
+            v-for="item in letter"
+            :key="item.id"
+            :label="item.label"
+            :value="item.id"
+          />
+        </el-select>
+        <el-input
+          v-else
+          :value="getLetterLabel(scope && scope.row && scope.row.letter)"
+          readonly
+          suffix-icon="arrow"
+        />
+      </template>
+    </el-table-column>
+    <el-table-column label="其他" prop="other">
+      <template #default="scope">
+        <el-select
+          :ref="el => getCellRef('other', scope && scope.$index, el)"
+          v-if="
+            tableShow[scope && scope.$index] &&
+            tableShow[scope && scope.$index].otherShow
+          "
+          v-model="scope.row.other"
+          @change="val => tableCellChange('other', scope && scope.$index, val)"
+          placeholder=""
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+        <el-input
+          v-else
+          :value="getOtherLabel(scope && scope.row && scope.row.other)"
+          readonly
+          suffix-icon="arrow"
+        />
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
-</el-table-column>
-<el-table-column label="字母" prop="letter" >
-<template #default="scope">
-<el-select :ref="el=>getCellRef('letter',scope&&scope.$index,el)" v-if="tableShow[scope&&scope.$index]&&tableShow[scope&&scope.$index].letterShow" v-model="scope.row.letter" @change="val=>tableCellChange('letter',scope&&scope.$index,val)" placeholder="" >
-<el-option
-        v-for="item in letter"
-        :key="item.id"
-        :label="item.label"
-        :value="item.id"
-      />
-</el-select>
-<el-input
-      v-else
-      :value="getLetterLabel(scope&&scope.row&&scope.row.letter)"
-      readonly
-        suffix-icon="arrow"
-    />
-</template>
-</el-table-column>
-<el-table-column label="其他" prop="other">
-<template #default="scope">
-<el-select :ref="el=>getCellRef('other',scope&&scope.$index,el)" v-if="tableShow[scope&&scope.$index]&&tableShow[scope&&scope.$index].otherShow" v-model="scope.row.other" @change="val=>tableCellChange('other',scope&&scope.$index,val)" placeholder="" >
-<el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-</el-select>
-<el-input
-      v-else
-      :value="getOtherLabel(scope&&scope.row&&scope.row.other)"
-      readonly
-    suffix-icon="arrow" />
-</template>
-</el-table-column>
-</el-table>
 
 <script setup>
-import {nextTick,  ref,reactive } from 'vue'
+import { nextTick, ref, reactive } from 'vue'
 const options = [
   {
     value: 'Option1',
@@ -107,57 +142,56 @@ const js = [
     label: 'JavaScript'
   }
 ]
-const tableData =ref([])
-const tableShow=reactive({})
-const getJsLabel=value=>{
-  let item=js.find(v=>v.value===value)||{}
+const tableData = ref([])
+const tableShow = reactive({})
+const getJsLabel = value => {
+  let item = js.find(v => v.value === value) || {}
   return item.label
 }
-const getLetterLabel=value=>{
-  let item=letter.find(v=>v.id===value)||{}
+const getLetterLabel = value => {
+  let item = letter.find(v => v.id === value) || {}
   return item.label
 }
-const getOtherLabel=value=>{
-  let item=options.find(v=>v.value===value)||{}
+const getOtherLabel = value => {
+  let item = options.find(v => v.value === value) || {}
   return item.label
 }
-const tableCellChange=(name,index,value)=>{
-tableShow[index][`${name}Show`]=false
-tableData.value[index][name]=value
+const tableCellChange = (name, index, value) => {
+  tableShow[index][`${name}Show`] = false
+  tableData.value[index][name] = value
 }
-const showSelect=(row, column, )=>{
-  const name=column.property
-  const index=row.index
-  tableShow[index][`${name}Show`]=true
-  nextTick(()=>{
-    const ref=cellrefs.value[`${name}${index}`]
-    ref&&ref.toggleMenu()
+const showSelect = (row, column) => {
+  const name = column.property
+  const index = row.index
+  tableShow[index][`${name}Show`] = true
+  nextTick(() => {
+    const ref = cellrefs.value[`${name}${index}`]
+    ref && ref.toggleMenu()
   })
 }
-const cellrefs=ref({})
-const getCellRef=(name,index,ref)=>{
-cellrefs.value[`${name}${index}`]=ref
+const cellrefs = ref({})
+const getCellRef = (name, index, ref) => {
+  cellrefs.value[`${name}${index}`] = ref
 }
 for (let i = 0; i < 300; i++) {
-  tableShow[i]={
-    jsShow:false,
-    letterShow:false,
-    otherShow:false
+  tableShow[i] = {
+    jsShow: false,
+    letterShow: false,
+    otherShow: false
   }
   tableData.value.push({
-    index:i,
+    index: i,
     js: '',
     letter: '',
     other: ''
   })
 }
 </script>
-<style >
-  
- .el-table__header{
-   margin:0;
-  }
-  .el-table__body{
-       margin:0;
-  }
+<style>
+.el-table__header {
+  margin: 0;
+}
+.el-table__body {
+  margin: 0;
+}
 </style>
