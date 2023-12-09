@@ -983,9 +983,9 @@
     "@docsearch/css" "3.5.2"
     algoliasearch "^4.19.1"
 
-"@element-plus/icons-vue@^2.0.6":
-  version "2.1.0"
-  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-2.1.0.tgz#7ad90d08a8c0d5fd3af31c4f73264ca89614397a"
+"@element-plus/icons-vue@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-2.3.1.tgz#1f635ad5fdd5c85ed936481525570e82b5a8307a"
 
 "@esbuild/android-arm64@0.17.19":
   version "0.17.19"
@@ -1076,8 +1076,8 @@
   resolved "https://registry.npmmirror.com/@esbuild/win32-x64/-/win32-x64-0.17.19.tgz#8cfaf2ff603e9aabb910e9c0558c26cf32744061"
 
 "@floating-ui/core@^1.4.2":
-  version "1.5.0"
-  resolved "https://registry.npmmirror.com/@floating-ui/core/-/core-1.5.0.tgz#5c05c60d5ae2d05101c3021c1a2a350ddc027f8c"
+  version "1.5.2"
+  resolved "https://registry.npmmirror.com/@floating-ui/core/-/core-1.5.2.tgz#53a0f7a98c550e63134d504f26804f6b83dbc071"
   dependencies:
     "@floating-ui/utils" "^0.1.3"
 
@@ -1425,14 +1425,6 @@
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
-
-"@smallwei/avue@^3.2.6":
-  version "3.2.22"
-  resolved "https://registry.npmmirror.com/@smallwei/avue/-/avue-3.2.22.tgz#eda96f700a66f3ffbef828fd645a97d619fca6f2"
-  dependencies:
-    "@element-plus/icons-vue" "^2.0.6"
-    countup.js "^1.9.3"
-    dayjs "^1.10.4"
 
 "@stackblitz/sdk@^1.9.0":
   version "1.9.0"
@@ -2630,10 +2622,6 @@ cosmiconfig@8.3.6:
     parse-json "^5.2.0"
     path-type "^4.0.0"
 
-countup.js@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.npmmirror.com/countup.js/-/countup.js-1.9.3.tgz#ce3e50cd7160441e478f07da31895edcc0f1c9dd"
-
 create-codepen@0.0.3:
   version "0.0.3"
   resolved "https://registry.npmmirror.com/create-codepen/-/create-codepen-0.0.3.tgz#d4ea29c3dc30fbd157bf723e90479ae91d45d170"
@@ -2936,7 +2924,7 @@ data-uri-to-buffer@^6.0.0:
   version "6.0.1"
   resolved "https://registry.npmmirror.com/data-uri-to-buffer/-/data-uri-to-buffer-6.0.1.tgz#540bd4c8753a25ee129035aebdedf63b078703c7"
 
-dayjs@^1.10.4, dayjs@^1.11.3, dayjs@^1.11.7, dayjs@^1.11.8:
+dayjs@^1.11.3, dayjs@^1.11.7, dayjs@^1.11.8:
   version "1.11.10"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
 
@@ -3104,12 +3092,12 @@ electron-to-chromium@^1.4.535:
   version "1.4.594"
   resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.594.tgz#f69f207fba80735a44a988df42f3f439115d0515"
 
-element-plus@^2.4.1:
-  version "2.4.2"
-  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.4.2.tgz#2a24632e0904ccd7bbbd64c269704f6b9969833c"
+element-plus@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.4.3.tgz#ff21d0207d71752eb6a47a46609bc667f222841f"
   dependencies:
     "@ctrl/tinycolor" "^3.4.1"
-    "@element-plus/icons-vue" "^2.0.6"
+    "@element-plus/icons-vue" "^2.3.1"
     "@floating-ui/dom" "^1.0.1"
     "@popperjs/core" "npm:@sxzz/popperjs-es@^2.11.7"
     "@types/lodash" "^4.14.182"

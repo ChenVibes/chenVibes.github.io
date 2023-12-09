@@ -17,6 +17,7 @@ const customComfig = defineUserConfig({
   // cache: '../../.cache',
   head: [
     ['meta', { name: 'referrer', content: 'no-referrer' }], //一种引用策略，可以用来防止图片或视频被盗 no-referrer：所有请求不发送 referrer。 gitee仓库外链图片加载失败
+
     [
       'script',
       {
@@ -37,6 +38,7 @@ const customComfig = defineUserConfig({
       }
     ]
   ],
+
   title: "Mr Chen's Blog",
   description: '一个专注于编程开发技术的个人知识库博客',
   plugins: [
@@ -139,7 +141,8 @@ export default {
     ],
     resolveExternalsPlugin({
       react: 'React',
-      vue: 'Vue' // 这个名字可以直接打印window，看window上挂的是什么名字，就写什么名字
+      vue: 'Vue' // 这个名字可以直接打印window，看window上挂的是什么名字，就写什么名字,
+      // 'element-plus': 'ElementPlus'
     })
   ],
   markdown: {
