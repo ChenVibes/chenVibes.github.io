@@ -1,0 +1,1 @@
+import{_ as n,r as o,o as t,c,a as s}from"./app-9gJpSWLU.js";const a={};function r(_,l){const e=o("Busuanzi");return t(),c("div",null,[s(e)])}const u=n(a,[["render",r],["__file","index.html.vue"]]);export{u as default};
