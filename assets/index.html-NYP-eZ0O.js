@@ -1,0 +1,1 @@
+import{_ as t,o as n,c,b as e}from"./app-LwdL4hqy.js";const o={},_=e("ul",null,[e("li",null,[e("a",{href:""},"菜鸟前端的 22 年总结")])],-1),l=[_];function s(r,a){return n(),c("div",null,l)}const d=t(o,[["render",s],["__file","index.html.vue"]]);export{d as default};
