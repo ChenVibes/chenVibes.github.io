@@ -4,9 +4,9 @@ import path from 'path'
 // import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 import { searchProPlugin } from 'vuepress-plugin-search-pro'
 // import { cut } from 'nodejs-jieba'
-import markdownIt from 'markdown-it'
-const markdownRender = markdownIt()
-console.log(['markdownIt', markdownRender])
+// import markdownIt from 'markdown-it'
+// const markdownRender = markdownIt()
+// console.log(['markdownIt', markdownRender])
 const customComfig = defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
