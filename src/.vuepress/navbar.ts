@@ -26,14 +26,24 @@ export default navbar([
     icon: 'biji',
     link: '/开发日志/'
   },
-  {
-    text: '书签收藏',
-    icon: 'shuqian',
-    link: '/书签收藏'
-  },
+
   {
     text: '杂七杂八',
     icon: 'note',
     link: '/杂七杂八/'
+  },
+  {
+    text: '收藏',
+    icon: 'a-shoucang-yishoucang',
+    activeMatch: '^/收藏/$',
+    children: [
+      '/收藏/书签.md',
+      {
+        link: 'https://magicbegin.gitee.io/moo-music/#/',
+        text: '音乐',
+        icon: 'yinle'
+      },
+      { link: '/timeline', text: '时间轴', icon: 'shijianzhou' }
+    ]
   }
 ])
