@@ -1,8 +1,9 @@
 import { defineAsyncComponent, App } from 'vue'
 export default (app: App) => {
+  const demo = import.meta.glob('./demo/vue/*')
   const components = import.meta.glob('./components/*')
-  console.log(['components', components])
-  for (const item of Object.entries(components)) {
+  const component = { ...demo, ...components }
+  for (const item of Object.entries(component)) {
     const [key, value]: [string, any] = item
     let componentNameArr = key.replace('./', '').split('/')
     let componentName = componentNameArr[componentNameArr.length - 1]

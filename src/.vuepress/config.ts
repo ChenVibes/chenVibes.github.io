@@ -1,10 +1,12 @@
 import { defineUserConfig } from 'vuepress'
 import theme from './theme.js'
 import path from 'path'
-import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
+// import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 import { searchProPlugin } from 'vuepress-plugin-search-pro'
 // import { cut } from 'nodejs-jieba'
-
+import markdownIt from 'markdown-it'
+const markdownRender = markdownIt()
+console.log(['markdownIt', markdownRender])
 const customComfig = defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
@@ -22,18 +24,6 @@ const customComfig = defineUserConfig({
       {
         href: ' https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.min.css',
         rel: 'stylesheet'
-      }
-    ],
-    [
-      'script',
-      {
-        src: 'https://cdn.jsdelivr.net/npm/vue@3.3.11/dist/vue.global.min.js'
-      }
-    ],
-    [
-      'script',
-      {
-        src: 'https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js'
       }
     ],
     [
@@ -71,13 +61,13 @@ const customComfig = defineUserConfig({
 export default {
   ...customComfig,
   plugins: [
-    ...(customComfig.plugins || []),
+    ...(customComfig.plugins || [])
 
-    resolveExternalsPlugin({
-      react: 'React',
-      vue: 'Vue' // 这个名字可以直接打印window，看window上挂的是什么名字，就写什么名字,
-      // 'element-plus': 'ElementPlus'
-    })
+    // resolveExternalsPlugin({
+    //   react: 'React',
+    //   vue: 'Vue' // 这个名字可以直接打印window，看window上挂的是什么名字，就写什么名字,
+    //   'element-plus': 'ElementPlus'
+    // })
   ],
   markdown: {
     // ......
@@ -87,6 +77,18 @@ export default {
   },
   // 禁止文件打包带hash
   viteOptions: {
+    chainWebpack: (config, isServer) => {
+      config.module
+        .rule('jsx')
+        .test(/\.jsx$/)
+        .use('babel-loader')
+        .loader('babel-loader')
+        .options({
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ['@babel/plugin-transform-react-jsx']
+        })
+        .end()
+    },
     resolve: {
       alias: {
         // 键必须以斜线开始和结束

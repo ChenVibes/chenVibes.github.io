@@ -3,6 +3,7 @@ title: mac安装pod流程
 tag: 前端工程化
 date: 2021-02-23
 category: 前端开发
+star: true
 ---
 
 ## Homebrew 的安装方法

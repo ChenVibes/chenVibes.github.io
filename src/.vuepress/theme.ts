@@ -83,6 +83,7 @@ export default hopeTheme({
       //是否生成摘要
       excerpt: false
     },
+    photoSwipe: true, //图片预览
     // install @waline/client before enabling it
     // WARNING: This is a test server for demo only.
     // You should create and use your own comment service in production.
