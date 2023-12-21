@@ -99,7 +99,8 @@ export default hopeTheme({
     mdEnhance: {
       align: true,
       attrs: true,
-
+      // 启用提示容器
+      hint: false, //修复控制台警告
       // install chart.js before enabling it
       // chart: true,
 
