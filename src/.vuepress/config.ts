@@ -3,7 +3,7 @@ import theme from './theme.js'
 import path from 'path'
 // import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 import { searchProPlugin } from 'vuepress-plugin-search-pro'
-// import { cut } from 'nodejs-jieba'
+import { cut } from 'nodejs-jieba'
 // import markdownIt from 'markdown-it'
 // const markdownRender = markdownIt()
 // console.log(['markdownIt', markdownRender])
@@ -43,11 +43,41 @@ const customComfig = defineUserConfig({
   ],
   plugins: [
     searchProPlugin({
+      autoSuggestions: false, //关闭 自动搜索建议
+      queryHistoryCount: 0, //查询的历史记录 设置为 0禁用
+      resultHistoryCount: 0, //搜索的历史记录 设置为 0禁用
+      // 索引全部内容
+      indexContent: true,
+      indexOptions: {
+        // 使用 nodejs-jieba 进行分词
+        tokenize: (text, fieldName) =>
+          fieldName === 'id' ? [text] : cut(text, true)
+      },
+      searchDelay: 400,
+      sortStrategy: 'total',
       customFields: [
         {
           name: 'author',
           getter: page => page.frontmatter.author,
           formatter: '作者：$content'
+        },
+        {
+          getter: page => page.frontmatter.category,
+          formatter: {
+            '/': '分类：$content'
+          }
+        },
+        {
+          getter: page => page.frontmatter.tag,
+          formatter: {
+            '/': '标签：$content'
+          }
+        },
+        {
+          getter: page => page.frontmatter.title,
+          formatter: {
+            '/': '标题：$content'
+          }
         }
       ]
     })
