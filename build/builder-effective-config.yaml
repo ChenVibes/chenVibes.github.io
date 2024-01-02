@@ -1,0 +1,25 @@
+directories:
+  output: build
+  buildResources: build
+productName: 梦想
+appId: com.example.platfrom
+copyright: Copyright © 2018-present Mr.Chen
+mac:
+  icon: build/icons/512x512.png
+  artifactName: ${productName}_${version}.${ext}
+  target: dmg
+win:
+  artifactName: ${productName}_${version}.${ext}
+  icon: build/icon.ico
+  requestedExecutionLevel: highestAvailable
+  target: exe
+linux:
+  target:
+    - target: deb
+      arch:
+        - x64
+  icon: build/icon.ico
+  maintainer: 主要贡献者
+  description: 基于4.1.4配置
+files: []
+electronVersion: 28.1.0

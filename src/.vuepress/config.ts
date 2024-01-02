@@ -92,7 +92,6 @@ export default {
   ...customComfig,
   plugins: [
     ...(customComfig.plugins || [])
-
     // resolveExternalsPlugin({
     //   react: 'React',
     //   vue: 'Vue' // 这个名字可以直接打印window，看window上挂的是什么名字，就写什么名字,

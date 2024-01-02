@@ -8,17 +8,4 @@ category:
   - Vue2
 ---
 
-<center>
-  <img  style='width:200px;height:100px' src='https://zfh-nanjing-bucket.oss-cn-nanjing.aliyuncs.com/blog-images/VListLogo.PNG'/>
-</center>
-::: tips 官方文档
-[v-list](https://vlist.zfhblog.top)
-:::
-
-## 分析
-
-// TODO
-
-## 实现
-
-## 作为 vue 插件，发布 npm
+<!-- <DemoVirtualScrollList/> -->

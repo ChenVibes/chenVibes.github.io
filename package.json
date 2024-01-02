@@ -4,16 +4,58 @@
   "description": "Mr.Chen 's blog",
   "license": "MIT",
   "type": "module",
+  "build": {
+    "productName": "梦想",
+    "appId": "com.example.platfrom",
+    "copyright": "Copyright © 2018-present Mr.Chen",
+    "directories": {
+      "output": "build"
+    },
+    "mac": {
+      "icon": "build/icons/512x512.png",
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": "dmg"
+    },
+    "win": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "icon": "build/icon.ico",
+      "requestedExecutionLevel": "highestAvailable",
+      "target": "exe"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "maintainer": "主要贡献者",
+      "description": "基于4.1.4配置"
+    }
+  },
   "scripts": {
+    "dev:electron": "electron .",
     "build": "vuepress build src",
     "clean-dev": "vuepress dev src --clean-cache",
     "dev": "vuepress dev src",
     "update-package": "pnpm dlx vp-update",
     "push": "bash publish.sh && node publish.cjs",
-    "upload": "bash upload-records.sh"
+    "upload": "bash upload-records.sh",
+    "electron:generate-icons": "electron-icon-builder --input=./resources/icon.png --output=build --flatten",
+    "build:win": "cross-env mode=production && ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/ ELECTRON_BUILDER_BINARIES_MIRROR=http://npm.taobao.org/mirrors/electron-builder-binaries/ electron-builder --win --x64",
+    "build:mac": "cross-env mode=production && ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/ ELECTRON_BUILDER_BINARIES_MIRROR=http://npm.taobao.org/mirrors/electron-builder-binaries/ electron-builder --mac"
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-rc.0",
+    "cross-env": "^7.0.3",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "electron-icon-builder": "^2.0.1",
+    "electron-winstaller": "^5.2.1",
+    "lodash": "^4.17.21",
     "markdown-it": "^14.0.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-disable-url-encode": "^1.0.1",
