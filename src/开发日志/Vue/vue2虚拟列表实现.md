@@ -8,4 +8,4 @@ category:
   - Vue2
 ---
 
-<!-- <DemoVirtualScrollList/> -->
+<DemoVirtualScrollList/>

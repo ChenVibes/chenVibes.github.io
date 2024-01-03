@@ -5,5 +5,6 @@ electron 报错
 > at getElectronPath
 
 ```bash
-node ./node_modules/electron/install.js
+ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/ && node ./node_modules/electron/install.js
+
 ```

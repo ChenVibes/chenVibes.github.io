@@ -41,6 +41,7 @@ export default defineComponent({
     let isHorizontal = props.direction === 'horizontal'
     let directionKey = isHorizontal ? 'scrollLeft' : 'scrollTop'
     let range = ref({})
+    let root = null
     onActivated(() => {
       // set back offset when awake from keep-alive
       scrollToOffset(virtual.offset)
@@ -94,7 +95,11 @@ export default defineComponent({
     const getSizes = () => {
       return virtual.sizes.size
     }
-
+    const getRootRef = el => {
+      if (el) {
+        root = el
+      }
+    }
     // return current scroll offset
     const getOffset = () => {
       if (props.pageMode) {
@@ -102,7 +107,6 @@ export default defineComponent({
           document.documentElement[directionKey] || document.body[directionKey]
         )
       } else {
-        const { root } = ctx.$refs
         return root ? Math.ceil(root[directionKey]) : 0
       }
     }
@@ -113,7 +117,6 @@ export default defineComponent({
       if (props.pageMode) {
         return document.documentElement[key] || document.body[key]
       } else {
-        const { root } = ctx.$refs
         return root ? Math.ceil(root[key]) : 0
       }
     }
@@ -124,7 +127,6 @@ export default defineComponent({
       if (props.pageMode) {
         return document.documentElement[key] || document.body[key]
       } else {
-        const { root } = ctx.$refs
         return root ? Math.ceil(root[key]) : 0
       }
     }
@@ -135,7 +137,6 @@ export default defineComponent({
         document.body[directionKey] = offset
         document.documentElement[directionKey] = offset
       } else {
-        const { root } = ctx.$refs
         if (root) {
           root[directionKey] = offset
         }
@@ -155,7 +156,7 @@ export default defineComponent({
 
     // set current scroll position to bottom
     const scrollToBottom = () => {
-      const { shepherd } = ctx.$refs
+      const { shepherd } = ctx.$refs || {}
       if (shepherd) {
         const offset = shepherd[isHorizontal ? 'offsetLeft' : 'offsetTop']
         scrollToOffset(offset)
@@ -174,7 +175,6 @@ export default defineComponent({
     // when using page mode we need update slot header size manually
     // taking root offset relative to the browser as slot header size
     const updatePageModeFront = () => {
-      const { root } = ctx.$refs
       if (root) {
         const rect = root.getBoundingClientRect()
         const { defaultView } = root.ownerDocument
@@ -278,7 +278,7 @@ export default defineComponent({
     // get the real render slots based on range data
     // in-place patch strategy will try to reuse components as possible
     // so those components that are reused will not trigger lifecycle mounted
-    const getRenderSlots = h => {
+    const getRenderSlots = () => {
       const slots = []
       const { start, end } = range.value
       const {
@@ -305,18 +305,16 @@ export default defineComponent({
           if (typeof uniqueKey === 'string' || typeof uniqueKey === 'number') {
             slots.push(
               h(Item, {
-                props: {
-                  index,
-                  tag: itemTag,
-                  event: EVENT_TYPE.ITEM,
-                  horizontal: isHorizontal,
-                  uniqueKey: uniqueKey,
-                  source: dataSource,
-                  extraProps: extraProps,
-                  component: dataComponent,
-                  slotComponent: slotComponent,
-                  scopedSlots: itemScopedSlots
-                },
+                index,
+                tag: itemTag,
+                event: EVENT_TYPE.ITEM,
+                horizontal: isHorizontal,
+                uniqueKey: uniqueKey,
+                source: dataSource,
+                extraProps: extraProps,
+                component: dataComponent,
+                slotComponent: slotComponent,
+                scopedSlots: itemScopedSlots,
                 style: itemStyle,
                 class: `${itemClass}${
                   props.itemClassAdd ? ' ' + props.itemClassAdd(index) : ''
@@ -374,18 +372,17 @@ export default defineComponent({
       const { padFront, padBehind } = range ? range.value || {} : {}
       const {
         pageMode,
-        rootTag,
-        wrapTag,
+        rootTag = 'div',
+        wrapTag = 'div',
         wrapClass,
         wrapStyle,
-        headerTag,
+        headerTag = 'div',
         headerClass,
         headerStyle,
-        footerTag,
+        footerTag = 'div',
         footerClass,
         footerStyle
       } = props
-      console.log(['props', rootTag])
       const paddingStyle = {
         padding: isHorizontal
           ? `0px ${padBehind}px 0px ${padFront}px`
@@ -398,10 +395,8 @@ export default defineComponent({
       return h(
         rootTag,
         {
-          ref: 'root',
-          on: {
-            scroll: !pageMode && onScroll
-          }
+          ref: getRootRef,
+          onScroll: !pageMode && onScroll
         },
         [
           // header slot
@@ -411,11 +406,9 @@ export default defineComponent({
                 {
                   class: headerClass,
                   style: headerStyle,
-                  props: {
-                    tag: headerTag,
-                    event: EVENT_TYPE.SLOT,
-                    uniqueKey: SLOT_TYPE.HEADER
-                  }
+                  tag: headerTag,
+                  event: EVENT_TYPE.SLOT,
+                  uniqueKey: SLOT_TYPE.HEADER
                 },
                 header
               )
@@ -426,12 +419,10 @@ export default defineComponent({
             wrapTag,
             {
               class: wrapClass,
-              attrs: {
-                role: 'group'
-              },
+              role: 'group',
               style: wrapperStyle
             },
-            getRenderSlots(h)
+            getRenderSlots()
           ),
 
           // footer slot
@@ -441,11 +432,9 @@ export default defineComponent({
                 {
                   class: footerClass,
                   style: footerStyle,
-                  props: {
-                    tag: footerTag,
-                    event: EVENT_TYPE.SLOT,
-                    uniqueKey: SLOT_TYPE.FOOTER
-                  }
+                  tag: footerTag,
+                  event: EVENT_TYPE.SLOT,
+                  uniqueKey: SLOT_TYPE.FOOTER
                 },
                 footer
               )

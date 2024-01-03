@@ -106,18 +106,6 @@ export default {
   },
   // 禁止文件打包带hash
   viteOptions: {
-    chainWebpack: (config, isServer) => {
-      config.module
-        .rule('jsx')
-        .test(/\.jsx$/)
-        .use('babel-loader')
-        .loader('babel-loader')
-        .options({
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-transform-react-jsx']
-        })
-        .end()
-    },
     resolve: {
       alias: {
         // 键必须以斜线开始和结束

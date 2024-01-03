@@ -10,12 +10,12 @@ import DemoVirtualScrollListItem from './DemoVirtualScrollListItem.vue'
 let formInline = ref({ region: '' })
 let region = ref([])
 let virtualProps = {}
-let virtualScrollStyle = ref({
+let virtualScrollStyle = {
 	minWidth: `120px`,
 	height: `360px`,
 	maxHeight: `360px`,
 	overflowY: 'auto'
-})
+}
 onMounted(() => {
 	initData()
 })

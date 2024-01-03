@@ -42,69 +42,66 @@ const Wrapper = defineComponent({
 })
 
 // wrapping for item
-export const Item = defineComponent({
-  name: 'virtual-list-item',
-  mixins: [Wrapper],
-
-  props: ItemProps,
-  setup(props, ctx) {
-    return () => {
-      const {
-        tag,
-        component,
-        extraProps = {},
-        index,
-        source,
-        scopedSlots = {},
-        uniqueKey,
-        slotComponent
-      } = props
-      const newProps = {
-        ...extraProps,
-        source,
-        index
-      }
-
-      return h(
-        tag,
-        {
-          key: uniqueKey,
-          attrs: {
-            role: 'listitem'
-          }
-        },
-        [
-          slotComponent
-            ? slotComponent({ item: source, index: index, scope: newProps })
-            : h(component, {
-                newProps,
-                scopedSlots: scopedSlots
-              })
-        ]
-      )
+export const Item = {
+  props: [
+    'tag',
+    'component',
+    'extraProps',
+    'index',
+    'source',
+    'scopedSlots',
+    'uniqueKey',
+    'slotComponent'
+  ],
+  render() {
+    const {
+      tag = 'div',
+      component,
+      extraProps = {},
+      index,
+      source,
+      scopedSlots = {},
+      uniqueKey,
+      slotComponent
+    } = this
+    const newProps = {
+      ...extraProps,
+      source,
+      index
     }
+
+    return h(
+      tag,
+      {
+        key: uniqueKey,
+        role: 'listitem'
+      },
+      [
+        slotComponent
+          ? slotComponent({ item: source, index: index, scope: newProps })
+          : h(component, {
+              ...newProps,
+              scopedSlots: scopedSlots
+            })
+      ]
+    )
   }
-})
+}
 
 // wrapping for slot
-export const Slot = defineComponent({
+export const Slot = {
   mixins: [Wrapper],
   name: 'virtual-list-slot',
   props: SlotProps,
-  setup(props, ctx) {
-    return () => {
-      const { tag, uniqueKey } = props
-      const { $slots } = ctx
-      return h(
-        tag,
-        {
-          key: uniqueKey,
-          attrs: {
-            role: uniqueKey
-          }
-        },
-        $slots.default
-      )
-    }
+  render() {
+    const { tag = 'div', uniqueKey, $slots } = this
+    return h(
+      tag,
+      {
+        key: uniqueKey,
+        role: uniqueKey
+      },
+      $slots.default
+    )
   }
-})
+}
