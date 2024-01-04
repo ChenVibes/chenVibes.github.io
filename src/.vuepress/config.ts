@@ -1,7 +1,7 @@
 import { defineUserConfig } from 'vuepress'
 import theme from './theme.js'
 import path from 'path'
-import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
+// import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 import { searchProPlugin } from 'vuepress-plugin-search-pro'
 import { cut } from 'nodejs-jieba'
 // import markdownIt from 'markdown-it'
@@ -24,13 +24,6 @@ const customComfig = defineUserConfig({
       {
         href: ' https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.min.css',
         rel: 'stylesheet'
-      }
-    ],
-    [
-      'script',
-      {
-        src: 'https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js',
-        async: true
       }
     ],
     [
@@ -98,10 +91,10 @@ const customComfig = defineUserConfig({
 export default {
   ...customComfig,
   plugins: [
-    ...(customComfig.plugins || []),
-    resolveExternalsPlugin({
-      moment: 'moment'
-    })
+    ...(customComfig.plugins || [])
+    // resolveExternalsPlugin({
+    //   moment: 'moment'
+    // })
   ],
   markdown: {
     // ......

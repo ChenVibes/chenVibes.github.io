@@ -93,4 +93,13 @@ const randomString = length => {
 </script>
 ```
 
+```json
+{
+  "jsLib": [],
+  "codepenLayout": "top",
+  "codepen": false,
+  "jsfiddle": false
+}
+```
+
 :::
