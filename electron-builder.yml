@@ -1,4 +1,0 @@
-# electron-builder.yml
-electronBuilder:
-  nodeIntegration: false
-  contextIsolation: true
