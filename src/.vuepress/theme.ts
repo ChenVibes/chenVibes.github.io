@@ -13,7 +13,7 @@ export default hopeTheme({
 
   favicon: '/logo.png',
   repoDisplay: false,
-  iconAssets: '//at.alicdn.com/t/c/font_4328948_yc5obqc90km.css',
+  iconAssets: '//at.alicdn.com/t/c/font_4328948_djioadquxsh.css',
   logo: '/logo.png',
   footer: '',
   copyright: 'Copyright © 2018-present Mr.Chen',
