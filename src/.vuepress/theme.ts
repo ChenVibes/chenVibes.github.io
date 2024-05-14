@@ -3,7 +3,7 @@ import navbar from './navbar.js'
 import sidebar from './sidebar.js'
 
 export default hopeTheme({
-  hostname: 'https://magicbegin.gitee.io/blog/',
+  hostname: 'https://chenvibes.github.io/',
   contributors: false,
   editLink: false,
   author: {

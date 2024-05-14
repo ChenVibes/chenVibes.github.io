@@ -6,7 +6,6 @@ dist
 .idea
 .vscode
 docs/.vuepress/dist
-public
 assets 
 category 
 temp 

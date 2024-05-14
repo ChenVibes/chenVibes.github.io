@@ -11,7 +11,7 @@ const customComfig = defineUserConfig({
   dest: 'dist',
   host: '0.0.0.0',
   port: 5000,
-  base: '/blog/',
+  base: '/',
   lang: 'zh-CN',
   title: "Mr Chen's Blog",
   description: '一个专注于编程开发技术的个人知识库博客',
