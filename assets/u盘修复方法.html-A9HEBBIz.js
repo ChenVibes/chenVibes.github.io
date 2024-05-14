@@ -1,0 +1,2 @@
+import{_ as s}from"./plugin-vue_export-helper-x3n3nnut.js";import{o as n,c as l,b as e}from"./app-TnKl6VKN.js";const t={},o=e("p",null,"修复 u 盘强行拔出后 部分文件夹访问报错",-1),a=e("blockquote",null,[e("p",null,"i: 盘符")],-1),c=e("div",{class:"language-bash line-numbers-mode","data-ext":"sh"},[e("pre",{class:"language-bash"},[e("code",null,`chkdsk  /f i:
+`)]),e("div",{class:"line-numbers","aria-hidden":"true"},[e("div",{class:"line-number"})])],-1),_=[o,a,c];function i(r,u){return n(),l("div",null,_)}const m=s(t,[["render",i],["__file","u盘修复方法.html.vue"]]);export{m as default};
