@@ -116,9 +116,9 @@ export default {
       rollupOptions: {
         output: {
           filename: '[name].js',
-          entryFileNames: '[name].js', // 设置输出文件名不带hash
-          chunkFileNames: '[name].js', // 设置代码分割文件名不带hash
-          assetFileNames: '[name].[ext]' // 设置静态资源文件名不带hash
+          entryFileName: '[name].js', // 设置输出文件名不带hash
+          chunkFileName: '[name].js', // 设置代码分割文件名不带hash
+          assetFileName: '[name].[ext]' // 设置静态资源文件名不带hash
         }
       },
       chunkSizeWarningLimit: 2000, // 设置一个较大的值，禁止警告
