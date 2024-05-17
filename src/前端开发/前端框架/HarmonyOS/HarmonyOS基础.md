@@ -906,7 +906,9 @@ for (let i of list) {
 
 安装 typescript：
 
+```ts
 npm install -g typescript
+```
 
 安装完成后我们可以使用  **tsc**  命令来执行 TypeScript 的相关代码，以下是查看版本号：
 
@@ -951,7 +953,7 @@ build() {
  Divider()
  Button('Click me')
  .onClick(()=>{
- **this**.myText='ArkUI'
+ this.myText='ArkUI'
  })
  .height(50)
  .width(100)
@@ -966,12 +968,12 @@ build() {
 ```ts
 //@Entry 装饰的自定义组件将作为 UI 页面的入口。在单个 UI 页面中，最多可以使用@Entry 装饰一个自定义组件。
 @Entry
-/\*\*
 
-- @Component 是一种装饰器，代表自定义组件，用@Component 装饰的 struct Hello 代表一个自定义的结构体，名字是 Hello，是可重用的 UI 单元，可以与其他组件组合。
-   \*/
-  @Component
-  **struct **Hello {
+/**
+@Component 是一种装饰器，代表自定义组件，用@Component 装饰的 struct Hello 代表一个自定义的结构体，名字是 Hello，是可重用的 UI 单元，可以与其他组件组合。
+*/
+@Component
+struct Hello {
    //@State 是一种装饰器，被它装饰的变量 myText 值发生改变时，会触发该变量所对应的自定义组件 Hello 的 UI 界面进行自动刷新。
    @State myText: string = 'World'
 
@@ -980,14 +982,14 @@ build() {
  //Column 是内置组件，表示设置一列
  Column(){
  //设置文本及内容
- Text(`Hello ${**this**.myText}`)
+ Text(`Hello ${this.myText}`)
  .fontSize(50)//设置文本大小
  Divider() //Divider 提供分隔器组件，分隔不同内容块/内容元素。
  //设置按钮
  Button('Click me')
  //设置按钮点击事件，点击按钮时将 myText 由 World 改变成 ArkUI
  .onClick(()=>{
- **this**.myText='ArkUI'
+ this.myText='ArkUI'
  })
  .height(50) //设置按钮高度
  .width(100) //设置按钮宽度
@@ -2437,56 +2439,38 @@ build() {
 
 1. **装饰器使用规则说明**
 
-**@State 变量装饰器**
+| @State 变量装饰器  | 说明                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 装饰器参数         | 无                                                                                                                                                                                                                                                                                                                                                            |
+| 同步类型           | 不与父组件中任何类型的变量同步。                                                                                                                                                                                                                                                                                                                              |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum 类型，以及这些类型的数组。<br/>类型必须被指定。<br/>不支持 any，不支持简单类型和复杂类型的联合类型，不允许使用 undefined 和 null。<br/>说明：建议不要装饰 Date 类型，应用可能会产生异常行为。不支持 Length、ResourceStr、ResourceColor 类型，Length、ResourceStr、ResourceColor 为简单类型和复杂类型的联合类型。 |
+| 被装饰变量的初始值 | 必须本地初始化。                                                                                                                                                                                                                                                                                                                                              |
 
-**说明**
-
-装饰器参数
-
-无
-
-同步类型
-
-不与父组件中任何类型的变量同步。
-
-允许装饰的变量类型
-
-Object、class、string、number、boolean、enum 类型，以及这些类型的数组。
-
-类型必须被指定。
-
-不支持 any，不支持简单类型和复杂类型的联合类型，不允许使用 undefined 和 null。
-
-说明：建议不要装饰 Date 类型，应用可能会产生异常行为。不支持 Length、ResourceStr、ResourceColor 类型，Length、ResourceStr、ResourceColor 为简单类型和复杂类型的联合类型。
-
-被装饰变量的初始值
-
-必须本地初始化。
-
-1. **使用场景**
-2. **装饰简单类型的变量**
+> 使用场景:装饰简单类型的变量
 
 以下示例为@State 装饰的简单类型，count 被@State 装饰成为状态变量，count 的改变引起 Button 组件的刷新：
 
 - 当状态变量 count 改变时，查询到只有 Button 组件关联了它；
 - 执行 Button 组件的更新方法，实现按需刷新。
 
-@Entry  
-@Component  
-struct MyComponent {  
+```ts
+@Entry
+@Component
+struct MyComponent {
  @State count: number = 0;
 
-build() {  
- Button(`click times: ${this.count}`)  
- .width(200)  
- .height(80)  
- .fontSize(20)  
- .margin(60)  
- .onClick(() => {  
- this.count += 1;  
- })  
- }  
+build() {
+ Button(`click times: ${this.count}`)
+ .width(200)
+ .height(80)
+ .fontSize(20)
+ .margin(60)
+ .onClick(() => {
+ this.count += 1;
+ })
+ }
 }
+```
 
 以上代码预览如下，每当点击按钮，都会自动加 1。
 
@@ -2495,43 +2479,44 @@ build() {
 - 自定义组件 MyComponent 定义了被@State 装饰的状态变量 count 和 title，其中 title 的类型为自定义类 Model。如果 count 或 title 的值发生变化，则查询 MyComponent 中使用该状态变量的 UI 组件，并进行重新渲染。
 - EntryComponent 中有多个 MyComponent 组件实例，第一个 MyComponent 内部状态的更改不会影响第二个 MyComponent。
 
-class Model {  
+```ts
+class Model {
  public value: string;
 
-constructor(value: string) {  
- this.value = value;  
- }  
+constructor(value: string) {
+ this.value = value;
+ }
 }
 
-@Entry  
-@Component  
-struct EntryComponent {  
- build() {  
- Column() {  
- // 此处指定的参数都将在初始渲染时覆盖本地定义的默认值，并不是所有的参数都需要从父组件初始化  
- MyComponent({ count: 1, increaseBy: 2 })  
- MyComponent({ title: new Model('Hello, World 2'), count: 7 })  
- }  
- }  
+@Entry
+@Component
+struct EntryComponent {
+ build() {
+ Column() {
+ // 此处指定的参数都将在初始渲染时覆盖本地定义的默认值，并不是所有的参数都需要从父组件初始化
+ MyComponent({ count: 1, increaseBy: 2 })
+ MyComponent({ title: new Model('Hello, World 2'), count: 7 })
+ }
+ }
 }
 
-@Component  
-struct <a id="OLE_LINK7"></a>MyComponent {  
- @State title: Model = new Model('Hello World');  
- @State count: number = 0;  
+@Component
+struct <a id="OLE_LINK7"></a>MyComponent {
+ @State title: Model = new Model('Hello World');
+ @State count: number = 0;
  private increaseBy: number = 1;
 
-build() {  
- Column() {  
- Text(`${this.title.value}`)  
- .height(80)  
- Divider()  
- Button(`Click to change title`).onClick(() => {  
- // @State 变量的更新将触发上面的 Text 组件内容更新  
- this.title.value = this.title.value === 'Hello ArkUI' ? 'Hello World' : 'Hello ArkUI';  
- })  
- .height(80)  
- .width(250)  
+build() {
+ Column() {
+ Text(`${this.title.value}`)
+ .height(80)
+ Divider()
+ Button(`Click to change title`).onClick(() => {
+ // @State 变量的更新将触发上面的 Text 组件内容更新
+ this.title.value = this.title.value === 'Hello ArkUI' ? 'Hello World' : 'Hello ArkUI';
+ })
+ .height(80)
+ .width(250)
  .margin(5)
 
       Button(`Click to increase count=${this.count}`).onClick(() => {
@@ -2543,8 +2528,9 @@ build() {
         .margin(5)
     }
 
-}  
 }
+}
+```
 
 以上案例预览图如下,当点击两个“Click to change title”按钮时，对应的标题会在“Hello World”和“Hello ArkUI”之间进行切换。在第一个 MyComponent 中点击第二个按钮时会自动加 2；在第二个 MyComponent 中点击第二个按钮时会自动加 1。
 
@@ -2552,13 +2538,17 @@ build() {
 
 1. 使用默认的本地初始化：
 
+```ts
 @State title: Model = new Model('Hello World');
 
 @State count: number = 0;
+```
 
 1. 对于@State 来说，命名参数机制传递的值并不是必选的，如果没有命名参数传值，则使用本地初始化的默认值：
 
+```ts
 MyComponent({ count: 1, increaseBy: 2 })
+```
 
 #### @Prop 装饰器-父子单向同步
 
@@ -2876,53 +2866,20 @@ build() {
 
 1. **装饰器使用规则说明**
 
-**@Link 变量装饰器**
-
-**说明**
-
-装饰器参数
-
-无
-
-同步类型
-
-双向同步。
-
-父组件中@State, @StorageLink 和@Link 和子组件@Link 可以建立双向数据同步，反之亦然。
-
-允许装饰的变量类型
-
-Object、class、string、number、boolean、enum 类型，以及这些类型的数组。
-
-类型必须被指定，且和双向绑定状态变量的类型相同。
-
-不支持 any，不支持简单类型和复杂类型的联合类型，不允许使用 undefined 和 null。
-
-说明：不支持 Length、ResourceStr、ResourceColor 类型，Length、ResourceStr、ResourceColor 为简单类型和复杂类型的联合类型。
-
-被装饰变量的初始值
-
-无，禁止本地初始化。
+| <div style="width:120px"></div>@Link 变量装饰器 | 说明                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 装饰器参数                                      | 无                                                                                                                                                                                                                                                                                                                                            |
+| 同步类型                                        | 双向同步。<br/>父组件中@State, @StorageLink 和@Link 和子组件@Link 可以建立双向数据同步，反之亦然。                                                                                                                                                                                                                                            |
+| 允许装饰的变量类型                              | Object、class、string、number、boolean、enum 类型，以及这些类型的数组。<br/>类型必须被指定，且和双向绑定状态变量的类型相同。<br/>不支持 any，不支持简单类型和复杂类型的联合类型，不允许使用 undefined 和 null。<br/>说明：不支持 Length、ResourceStr、ResourceColor 类型，Length、ResourceStr、ResourceColor 为简单类型和复杂类型的联合类型。 |
+| 被装饰变量的初始值                              | 无，禁止本地初始化。                                                                                                                                                                                                                                                                                                                          |
 
 1. **变量的传递/访问规则说明**
 
-**传递/访问**
-
-**说明**
-
-从父组件初始化和更新
-
-必选。与父组件@State, @StorageLink 和@Link 建立双向绑定。允许父组件中@State、@Link、@Prop、@Provide、@Consume、@ObjectLink、@StorageLink、@StorageProp、@LocalStorageLink 和@LocalStorageProp 装饰变量初始化子组件@Link。
-
-从 API version 9 开始，@Link 子组件从父组件初始化@State 的语法为 Comp({ aLink: this.aState })。同样 Comp({aLink: $aState})也支持。
-
-用于初始化子组件
-
-允许，可用于初始化常规变量、@State、@Link、@Prop、@Provide。
-
-是否支持组件外访问
-
-私有，只能在所属组件内访问。
+| <div style="width:100px"></div>传递/访问 | 说明                                                                                                                                                                                                                                                                                                                                                             |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 从父组件初始化和更新                     | 必选。与父组件@State, @StorageLink 和@Link 建立双向绑定。允许父组件中@State、@Link、@Prop、@Provide、@Consume、@ObjectLink、@StorageLink、@StorageProp、@LocalStorageLink 和@LocalStorageProp 装饰变量初始化子组件@Link。<br/>从 API version 9 开始，@Link 子组件从父组件初始化@State 的语法为 Comp({ aLink: this.aState })。同样 Comp({aLink: $aState})也支持。 |
+| 用于初始化子组件                         | 允许，可用于初始化常规变量、@State、@Link、@Prop、@Provide。                                                                                                                                                                                                                                                                                                     |
+| 是否支持组件外访问                       | 私有，只能在所属组件内访问。                                                                                                                                                                                                                                                                                                                                     |
 
 初始化规则图示如下：
 
@@ -3273,6 +3230,7 @@ ForEach 接口基于数组类型数据来进行循环渲染，需要与容器组
 
 ### 接口描述
 
+```ts
 ForEach(
 
 arr: Array,
@@ -3282,66 +3240,15 @@ itemGenerator: (item: Array, index?: number) => void,
 keyGenerator?: (item: Array, index?: number): string => string
 
 )
+```
 
 关于 ForEach 参数如下：
 
-**参数名**
-
-**参数类型**
-
-**必填**
-
-**参数描述**
-
-arr
-
-Array
-
-是
-
-数据源，为 Array 类型的数组。
-
-**说明**：
-
-- 可以设置为空数组，此时不会创建子组件。
-
-- 可以设置返回值为数组类型的函数，例如 arr.slice(1, 3)，但设置的函数不应改变包括数组本身在内的任何状态变量，例如不应使用 Array.splice(),Array.sort()或 Array.reverse()这些会改变原数组的函数。
-
-itemGenerator
-
-(item: any, index?: number) => void
-
-是
-
-组件生成函数。
-
-- 为数组中的每个元素创建对应的组件。
-
-- item 参数：arr 数组中的数据项。
-
-- index 参数（可选）：arr 数组中的数据项索引。
-
-**说明**：
-
-- 组件的类型必须是 ForEach 的父容器所允许的。例如，ListItem 组件要求 ForEach 的父容器组件必须为 List 组件。
-
-keyGenerator
-
-(item: any, index?: number) => string
-
-否
-
-键值生成函数。
-
-- 为数据源 arr 的每个数组项生成唯一且持久的键值。函数返回值为开发者自定义的键值生成规则。
-
-- item 参数：arr 数组中的数据项。- index 参数（可选）：arr 数组中的数据项索引。
-
-**说明**：
-
-- 如果函数缺省，框架默认的键值生成函数为(item: T, index: number) => { return index + '\_\_' + JSON.stringify(item); }
-
-- 键值生成函数不应改变任何组件状态。
+| 参数名        | 参数类型                              | 必填 | 参数描述                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| arr           | Array                                 | 是   | 数据源，为 Array 类型的数组。<br/>说明：<br/> 可以设置为空数组，此时不会创建子组件。<br/> 可以设置返回值为数组类型的函数，例如 arr.slice(1, 3)，但设置的函数不应改变包括数组本身在内的任何状态变量，例如不应使用 Array.splice(),Array.sort()或 Array.reverse()这些会改变原数组的函数。                                                                                     |
+| itemGenerator | (item: any, index?: number) => void   | 是   | 组件生成函数。<br/> 为数组中的每个元素创建对应的组件。<br/> item 参数：arr 数组中的数据项。<br/> index 参数（可选）：arr 数组中的数据项索引。<br/> 说明：<br/> 组件的类型必须是 ForEach 的父容器所允许的。例如，ListItem 组件要求 ForEach 的父容器组件必须为 List 组件。                                                                                                   |
+| keyGenerator  | (item: any, index?: number) => string | 否   | 键值生成函数。<br/> 为数据源 arr 的每个数组项生成唯一且持久的键值。函数返回值为开发者自定义的键值生成规则。<br/> item 参数：arr 数组中的数据项。- index 参数（可选）：arr 数组中的数据项索引。<br/>说明：<br/> 如果函数缺省，框架默认的键值生成函数为(item: T, index: number) => { return index + '\_\_' + JSON.stringify(item); }<br/> 键值生成函数不应改变任何组件状态。 |
 
 - ForEach 的 itemGenerator 函数可以包含 if/else 条件渲染逻辑。另外，也可以在 if/else 条件渲染语句中使用 ForEach 组件。
 - 在初始化渲染时，ForEach 会加载数据源的所有数据，并为每个数据项创建对应的组件，然后将其挂载到渲染树上。如果数据源非常大或有特定的性能需求，建议使用 LazyForEach 组件。
@@ -4408,22 +4315,14 @@ Text(this.src) // 创建另一个文本组件，显示从上一个页面传递�
 在 UIAbility 实例创建时触发，系统会调用 onCreate 回调。可以在 onCreate 回调中进行相关初始化操作。
 
 ```ts
-import UIAbility from '@ohos.app.ability.UIAbility';
+import UIAbility from '@ohos.app.ability.UIAbility'
 
-import window from '@ohos.window';
+import window from '@ohos.window'
 
 export default class EntryAbility extends UIAbility {
-
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-
-        // 应用初始化
-
-        ...
-
-    }
-
-    ...
-
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 应用初始化
+  }
 }
 ```
 
@@ -4433,35 +4332,21 @@ export default class EntryAbility extends UIAbility {
 
 UIAbility 实例创建完成之后，在进入 Foreground 之前，系统会创建一个 WindowStage。每一个 UIAbility 实例都对应持有一个 WindowStage 实例。
 
-<a id="li12765165820520"></a><a id="ZH-CN_TOPIC_0000001365035920__li12765165"></a>WindowStage 为本地窗口管理器，用于管理窗口相关的内容，例如与界面相关的获焦/失焦、可见/不可见。可以在 onWindowStageCreate 回调中，设置 UI 页面加载、设置 WindowStage 的事件订阅。在 onWindowStageCreate(windowStage)中通过 loadContent 接口设置应用要加载的页面。
+WindowStage 为本地窗口管理器，用于管理窗口相关的内容，例如与界面相关的获焦/失焦、可见/不可见。可以在 onWindowStageCreate 回调中，设置 UI 页面加载、设置 WindowStage 的事件订阅。在 onWindowStageCreate(windowStage)中通过 loadContent 接口设置应用要加载的页面。
 
 ```ts
-import UIAbility from '@ohos.app.ability.UIAbility';
+import UIAbility from '@ohos.app.ability.UIAbility'
 
-import window from '@ohos.window';
+import window from '@ohos.window'
 
 export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 设置UI页面加载
 
-    ...
+    // 设置WindowStage的事件订阅（获焦/失焦、可见/不可见）
 
-    onWindowStageCreate(windowStage: window.WindowStage) {
-
-        // 设置UI页面加载
-
-        // 设置WindowStage的事件订阅（获焦/失焦、可见/不可见）
-
-       // ...
-
-        windowStage.loadContent('pages/Index', (err, data) => {
-
-          //  ...
-
-        });
-
-    }
-
-    //...
-
+    windowStage.loadContent('pages/Index', (err, data) => {})
+  }
 }
 ```
 
@@ -4476,32 +4361,19 @@ onForeground 回调，在 UIAbility 的 UI 页面可见之前，即 UIAbility �
 onBackground 回调，在 UIAbility 的 UI 页面完全不可见之后，即 UIAbility 切换至后台时候触发。可以在 onBackground 回调中释放 UI 页面不可见时无用的资源，或者在此回调中执行较为耗时的操作，例如状态保存等。
 
 ```ts
-import UIAbility from '@ohos.app.ability.UIAbility';
+import UIAbility from '@ohos.app.ability.UIAbility'
 
-import window from '@ohos.window';
+import window from '@ohos.window'
 
 export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // 申请系统需要的资源，或者重新申请在onBackground中释放的资源
+  }
 
-    ...
-
-    onForeground() {
-
-        // 申请系统需要的资源，或者重新申请在onBackground中释放的资源
-
-        ...
-
-    }
-
-    onBackground() {
-
-        // 释放UI页面不可见时无用的资源，或者在此回调中执行较为耗时的操作
-
-        // 例如状态保存等
-
-        ...
-
-    }
-
+  onBackground() {
+    // 释放UI页面不可见时无用的资源，或者在此回调中执行较为耗时的操作
+    // 例如状态保存等
+  }
 }
 ```
 
@@ -4515,22 +4387,14 @@ export default class EntryAbility extends UIAbility {
 对应于 onWindowStageCreate 回调。在 UIAbility 实例销毁之前，则会先进入 onWindowStageDestroy 回调，我们可以在该回调中释放 UI 页面资源。
 
 ```ts
-import UIAbility from '@ohos.app.ability.UIAbility';
+import UIAbility from '@ohos.app.ability.UIAbility'
 
-import window from '@ohos.window';
+import window from '@ohos.window'
 
 export default class EntryAbility extends UIAbility {
-
-    ...
-
-    onWindowStageDestroy() {
-
-        // 释放UI页面资源
-
-        ...
-
-    }
-
+  onWindowStageDestroy() {
+    // 释放UI页面资源
+  }
 }
 ```
 
@@ -4541,22 +4405,14 @@ export default class EntryAbility extends UIAbility {
 Destroy 状态在 UIAbility 销毁时触发。可以在 onDestroy 回调中进行系统资源的释放、数据的保存等操作。
 
 ```ts
-import UIAbility from '@ohos.app.ability.UIAbility';
+import UIAbility from '@ohos.app.ability.UIAbility'
 
-import window from '@ohos.window';
+import window from '@ohos.window'
 
 export default class EntryAbility extends UIAbility {
-
-    ...
-
-    onDestroy() {
-
-        // 系统资源的释放、数据的保存等
-
-        ...
-
-    }
-
+  onDestroy() {
+    // 系统资源的释放、数据的保存等
+  }
 }
 ```
 
@@ -4589,7 +4445,7 @@ singleton 启动模式的开发使用，在 module.json5 文件中的“launchTy
 
 "module": {
 
-     ...
+
 
      "abilities": [
 
@@ -4597,7 +4453,7 @@ singleton 启动模式的开发使用，在 module.json5 文件中的“launchTy
 
          "launchType": "singleton",
 
-         ...
+
 
        }
 
@@ -4625,7 +4481,7 @@ multiton 启动模式的开发使用，在 module.json5 文件中的“launchTyp
 
 "module": {
 
-     ...
+
 
      "abilities": [
 
@@ -4633,7 +4489,7 @@ multiton 启动模式的开发使用，在 module.json5 文件中的“launchTyp
 
          "launchType": "multiton",
 
-         ...
+
 
        }
 
@@ -4661,7 +4517,7 @@ specified 启动模式的开发使用的步骤如下所示。
 
 "module": {
 
-     ...
+
 
      "abilities": [
 
@@ -4669,7 +4525,7 @@ specified 启动模式的开发使用的步骤如下所示。
 
          "launchType": "specified",
 
-         ...
+
 
        }
 
@@ -4685,41 +4541,30 @@ specified 启动模式的开发使用的步骤如下所示。
 ```ts
 // 在启动指定实例模式的 UIAbility 时，给每一个 UIAbility 实例配置一个独立的 Key 标识
 
-function getInstance() {
+function getInstance() {}
 
-    ...
-
-}
-
-let context:common.UIAbilityContext = ...; // context 为调用方 UIAbility 的 UIAbilityContext
+let context: common.UIAbilityContext = null // context 为调用方 UIAbility 的 UIAbilityContext
 
 let want: Want = {
+  deviceId: '', // deviceId为空表示本设备
 
-    deviceId: '', // deviceId为空表示本设备
+  bundleName: 'com.example.myapplication',
 
-    bundleName: 'com.example.myapplication',
+  abilityName: 'SpecifiedAbility',
 
-    abilityName: 'SpecifiedAbility',
+  moduleName: 'specified', // moduleName非必选
 
-    moduleName: 'specified', // moduleName非必选
+  parameters: {
+    // 自定义信息
 
-    parameters: { // 自定义信息
-
-        instanceKey: getInstance(),
-
-    },
-
+    instanceKey: getInstance()
+  }
 }
 
-context.startAbility(want).then(() => {
-
-    ...
-
-}).catch((err: BusinessError) => {
-
-    ...
-
-})
+context
+  .startAbility(want)
+  .then(() => {})
+  .catch((err: BusinessError) => {})
 ```
 
 1. 在被拉起方 UIAbility 对应的 AbilityStage 的 onAcceptWant 生命周期回调中，解析传入的 want 参数，获取“instanceKey”自定义参数。根据业务需要返回一个该 UIAbility 实例的字符串 Key 标识。如果之前启动过此 Key 标识的 UIAbility，则会将之前的 UIAbility 拉回前台并获焦，而不创建新的实例，否则创建新的实例并启动。
@@ -4775,17 +4620,10 @@ ArkTS 为我们提供了丰富的容器组件来布局页面，本文将以构�
 
 了解布局容器的主轴和交叉轴，主要是为了让大家更好地理解子组件在主轴和交叉轴的排列方式。接下来，我们将详细讲解 Column 和 Row 容器的两个属性 justifyContent 和 alignItems。
 
-**属性名称**
-
-**描述**
-
-justifyContent
-
-设置子组件在主轴方向上的对齐格式。
-
-alignItems
-
-设置子组件在交叉轴方向上的对齐格式。
+| 属性名称       | 描述                                   |
+| -------------- | -------------------------------------- |
+| justifyContent | 设置子组件在主轴方向上的对齐格式。     |
+| alignItems     | 设置子组件在交叉轴方向上的对齐格式。｜ |
 
 1. **主轴方向的对齐（justifyContent）**
 
@@ -4911,17 +4749,10 @@ VerticalAlign 定义了以下几种类型：
 
 接下来，我们介绍 Column 和 Row 容器的接口。
 
-**容器组件**
-
-**接口**
-
-Column
-
-Column(value?:{space?: string | number})
-
-Row
-
-Row(value?:{space?: string | number})
+| 容器组件 | 接口                          |
+| -------- | ----------------------------- | -------- |
+| Column   | Column(value?:{space?: string | number}) |
+| Row      | Row(value?:{space?: string    | number}) |
 
 Column 和 Row 容器的接口都有一个可选参数 space，表示子组件在主轴方向上的间距。效果如下：
 
