@@ -2501,7 +2501,7 @@ struct EntryComponent {
 }
 
 @Component
-struct <a id="OLE_LINK7"></a>MyComponent {
+struct MyComponent {
  @State title: Model = new Model('Hello World');
  @State count: number = 0;
  private increaseBy: number = 1;
